@@ -41,27 +41,21 @@ const Home = () => (
         </Heading>
         <Section delay={0.1}>
           <Divider my={6} />
-          <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <SimpleGrid columns={[1, 2, 2]} gap={6}>
             <NextLink href="/login" passHref scroll={false}>
               <Button
-                colorScheme="green"
+                rightIcon={<ChevronRightIcon />}
+                colorScheme="blue"
                 width="100%"
-                mt={[2, 4]}
-                ml={4}
-                as="a"
-                href="/"
               >
                 Login
               </Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
               <Button
-                colorScheme="blue"
+                rightIcon={<ChevronRightIcon />}
+                colorScheme="green"
                 width="100%"
-                mt={[2, 4]}
-                ml={4}
-                as="a"
-                href="/"
               >
                 Signup
               </Button>

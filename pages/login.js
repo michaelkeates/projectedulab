@@ -37,7 +37,7 @@ const Login = () => (
 
       <Section delay={0.1}>
         <Section delay={0.1}>
-          <SimpleGrid columns={[2, 1, 1]} gap={6} marginTop="20px">
+          <SimpleGrid columns={[1, 1, 1]} gap={6} marginTop="20px">
             <form>
               <Input
                 type="email"
@@ -53,27 +53,25 @@ const Login = () => (
                 autoFocus
                 mt={[2, 4]}
               />
-              <Box mx="auto" width="100%">
+              <SimpleGrid columns={[2, 2, 2]} gap={1} marginTop="20px">
                 <Button
+                  rightIcon={<ChevronRightIcon />}
                   colorScheme="green"
-                  width="45%"
-                  mt={[2, 4]}
-                  ml={4}
+                  width="100%"
                   type="submit"
                 >
                   Sign Up
                 </Button>
                 <Button
+                  rightIcon={<ChevronRightIcon />}
                   colorScheme="red"
-                  width="45%"
-                  mt={[2, 4]}
-                  ml={4}
+                  width="100%"
                   as="a"
                   href="/"
                 >
                   Cancel
                 </Button>
-              </Box>
+              </SimpleGrid>
             </form>
           </SimpleGrid>
           <SimpleGrid columns={[3, 3, 3]} gap={6} marginTop="30px">
