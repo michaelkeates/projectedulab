@@ -47,6 +47,29 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => (
   </Box>
 )
 
+export const DoubleGridItem = ({ children, id, title, thumbnail }) => (
+  <Box w="100%" textAlign="center">
+    <NextLink href={`/qualificatons/${id}`} passHref scroll={false}>
+      <LinkBox cursor="pointer">
+        <Image
+          src={thumbnail}
+          alt={title}
+          className="grid-item-thumbnail"
+          //placeholder="blur"
+          height="256"
+          width="256"
+        />
+        <LinkOverlay href={`/qualificatons/${id}`}>
+          <Text mt={2} fontSize={14}>
+            {title}
+          </Text>
+        </LinkOverlay>
+        <Text fontSize={10}>{children}</Text>
+      </LinkBox>
+    </NextLink>
+  </Box>
+)
+
 export const PortfolioGridItem = ({ children, id, title, thumbnail }) => (
   <Box w="100%" textAlign="center">
     <NextLink href={`/portfolio/${id}`} passHref scroll={false}>

@@ -82,6 +82,9 @@ const Navbar = props => {
           <LinkItem href="/signup" path={path}>
             Signup
           </LinkItem>
+          <LinkItem href="/dashboard" path={path}>
+            Dashboard
+          </LinkItem>
         </Stack>
 
         <Box flex={1} align="right">
@@ -123,6 +126,20 @@ const Navbar = props => {
                     as={Link}
                   >
                     Signup
+                  </MenuItem>
+                </NextLink>
+                <NextLink href="/dashboard" passHref>
+                  <MenuItem
+                    px={4}
+                    py={2}
+                    transition="all 0.2s"
+                    _hover={{
+                      bg: useColorModeValue('whiteAlpha.600', 'whiteAlpha.300')
+                    }}
+                    _focus={{ boxShadow: 'none' }}
+                    as={Link}
+                  >
+                    Dashboard
                   </MenuItem>
                 </NextLink>
               </MenuList>
