@@ -145,6 +145,20 @@ const Navbar = props => {
                     Dashboard
                   </MenuItem>
                 </NextLink>
+                <NextLink href="/remote" passHref>
+                  <MenuItem
+                    px={4}
+                    py={2}
+                    transition="all 0.2s"
+                    _hover={{
+                      bg: useColorModeValue('whiteAlpha.600', 'whiteAlpha.300')
+                    }}
+                    _focus={{ boxShadow: 'none' }}
+                    as={Link}
+                  >
+                    Remote
+                  </MenuItem>
+                </NextLink>
               </MenuList>
             </Menu>
           </Box>
