@@ -76,38 +76,29 @@ const Signup = () => (
             </form>
           </SimpleGrid>
           <SimpleGrid columns={[3, 3, 3]} gap={6} marginTop="30px">
-            <NextLink href="/Signup" passHref scroll={false}>
+            <NextLink href="/login" passHref scroll={false}>
               <Button
                 leftIcon={<FaGoogle />}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="teal"
+                colorScheme="yellow"
                 width="100%"
                 textColor="white"
-              >
-                Google
-              </Button>
+              ></Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
               <Button
                 leftIcon={<FaGithub />}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="teal"
+                colorScheme="orange"
                 width="100%"
                 textColor="white"
-              >
-                Github
-              </Button>
+              ></Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
               <Button
                 leftIcon={<FaFacebook />}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="teal"
+                colorScheme="blue"
                 width="100%"
                 textColor="white"
-              >
-                Signup
-              </Button>
+              ></Button>
             </NextLink>
           </SimpleGrid>
         </Section>

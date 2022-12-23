@@ -81,34 +81,28 @@ const Login = () => (
             <NextLink href="/login" passHref scroll={false}>
               <Button
                 leftIcon={<FaGoogle />}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="teal"
+                colorScheme="yellow"
                 width="100%"
                 textColor="white"
               >
-                Google
               </Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
               <Button
                 leftIcon={<FaGithub />}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="teal"
+                colorScheme="orange"
                 width="100%"
                 textColor="white"
               >
-                Github
               </Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
               <Button
                 leftIcon={<FaFacebook />}
-                rightIcon={<ChevronRightIcon />}
-                colorScheme="teal"
+                colorScheme="blue"
                 width="100%"
                 textColor="white"
               >
-                Signup
               </Button>
             </NextLink>
           </SimpleGrid>
