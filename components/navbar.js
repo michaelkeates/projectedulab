@@ -85,6 +85,9 @@ const Navbar = props => {
           <LinkItem href="/dashboard" path={path}>
             Dashboard
           </LinkItem>
+          <LinkItem href="/remote" path={path}>
+            Remote
+          </LinkItem>
         </Stack>
 
         <Box flex={1} align="right">
