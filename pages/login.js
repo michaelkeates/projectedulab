@@ -76,18 +76,33 @@ const Login = () => (
           </SimpleGrid>
           <SimpleGrid columns={[3, 3, 3]} gap={6} marginTop="30px">
             <NextLink href="/login" passHref scroll={false}>
-              <Button aria-label="Google Login" leftIcon={<FaGoogle />}>
+              <Button
+                leftIcon={<FaGoogle />}
+                rightIcon={<ChevronRightIcon />}
+                colorScheme="teal"
+                width="100%"
+              >
                 Google
               </Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
-              <Button as="a" aria-label="Github Login" leftIcon={<FaGithub />}>
+              <Button
+                leftIcon={<FaGithub />}
+                rightIcon={<ChevronRightIcon />}
+                colorScheme="teal"
+                width="100%"
+              >
                 Github
               </Button>
             </NextLink>
             <NextLink href="/signup" passHref scroll={false}>
-              <Button aria-label="Facebook Login" leftIcon={<FaFacebook />}>
-                Facebook
+              <Button
+                leftIcon={<FaFacebook />}
+                rightIcon={<ChevronRightIcon />}
+                colorScheme="teal"
+                width="100%"
+              >
+                Signup
               </Button>
             </NextLink>
           </SimpleGrid>

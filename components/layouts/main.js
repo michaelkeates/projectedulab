@@ -9,14 +9,14 @@ const Main = ({ children, router }) => {
     <Box as="main" pb={8}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Michael's homepage" />
+        <meta name="description" content="Project eduLab" />
         <meta name="author" content="Michael Keates" />
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <meta property="og:site_name" content="Michael Keates" />
-        <meta name="og:title" content="Michael Keates" />
+        <meta property="og:site_name" content="Project eduLab" />
+        <meta name="og:title" content="Project eduLab" />
         <meta property="og:type" content="website" />
-        <title>Michael Keates - Homepage</title>
+        <title>Project eduLab</title>
       </Head>
 
       <NavBar path={router.asPath} />

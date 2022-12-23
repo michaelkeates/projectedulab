@@ -41,7 +41,7 @@ const Home = () => (
         </Heading>
         <Section delay={0.1}>
           <Divider my={6} />
-          <SimpleGrid columns={[1, 2, 2]} gap={6}>
+          <SimpleGrid columns={[2, 2, 2]} gap={6}>
             <NextLink href="/login" passHref scroll={false}>
               <Button
                 rightIcon={<ChevronRightIcon />}
