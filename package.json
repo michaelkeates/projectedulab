@@ -1,25 +1,39 @@
 {
-  "name": "projectedulab",
-  "version": "0.1.0",
-  "private": true,
+  "name": "keates-website",
+  "version": "1.0.0",
+  "description": "Michael Keates",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
+    "prettier": "prettier --write .",
     "lint": "next lint"
   },
+  "keywords": [],
+  "author": "Michael Keates",
+  "license": "MIT",
   "dependencies": {
-    "@apollo/client": "^3.7.3",
-    "@chakra-ui/react": "^2.4.4",
-    "@directus/sdk": "^10.3.0",
+    "@apollo/client": "^3.7.1",
+    "@chakra-ui/icons": "^2.0.12",
+    "@chakra-ui/react": "^2.4.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@next/font": "13.1.0",
-    "directus": "^9.22.1",
-    "framer-motion": "^8.0.1",
+    "chakra-ui": "^0.3.9",
+    "font-awesome": "^4.7.0",
+    "framer-motion": "^7.6.12",
     "graphql": "^16.6.0",
-    "next": "13.1.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next": "^13.0.5",
+    "puppeteer": "^19.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
+    "react-image-lightbox": "^5.1.4",
+    "react-player": "^2.11.0",
+    "three": "^0.146.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-next": "^13.0.5",
+    "prettier": "^2.8.0"
   }
 }
