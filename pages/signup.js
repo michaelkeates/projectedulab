@@ -28,9 +28,10 @@ const Signup = () => (
         mb={6}
         p={3}
         textAlign="center"
-        bg={useColorModeValue('blackAlpha.200', 'whiteAlpha.100')}
+        bg="green.300"
         css={{ backdropFilter: 'blur(10px)' }}
         padding="15px;"
+        textColor="white"
       >
         Signup
       </Box>
@@ -81,6 +82,7 @@ const Signup = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="teal"
                 width="100%"
+                textColor="white"
               >
                 Google
               </Button>
@@ -91,6 +93,7 @@ const Signup = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="teal"
                 width="100%"
+                textColor="white"
               >
                 Github
               </Button>
@@ -101,6 +104,7 @@ const Signup = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="teal"
                 width="100%"
+                textColor="white"
               >
                 Signup
               </Button>

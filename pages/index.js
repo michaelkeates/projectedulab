@@ -28,9 +28,10 @@ const Home = () => (
         mb={6}
         p={3}
         textAlign="center"
-        bg={useColorModeValue('blackAlpha.200', 'whiteAlpha.200')}
+        bg="red.400"
         css={{ backdropFilter: 'blur(10px)' }}
         padding="15px;"
+        textColor="white"
       >
         Hi! Welcome to Project eduLab! To get started click a button below.
       </Box>
@@ -43,6 +44,7 @@ const Home = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="blue"
                 width="100%"
+                textColor="white"
               >
                 Login
               </Button>
@@ -52,6 +54,7 @@ const Home = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="green"
                 width="100%"
+                textColor="white"
               >
                 Signup
               </Button>

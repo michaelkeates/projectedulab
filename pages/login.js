@@ -28,9 +28,10 @@ const Login = () => (
         mb={6}
         p={3}
         textAlign="center"
-        bg={useColorModeValue('blackAlpha.200', 'whiteAlpha.100')}
+        bg="blue.300"
         css={{ backdropFilter: 'blur(10px)' }}
         padding="15px;"
+        textColor="white"
       >
         Login
       </Box>
@@ -59,6 +60,7 @@ const Login = () => (
                   colorScheme="green"
                   width="100%"
                   type="submit"
+                  textColor="white"
                 >
                   Sign Up
                 </Button>
@@ -68,6 +70,7 @@ const Login = () => (
                   width="100%"
                   as="a"
                   href="/"
+                  textColor="white"
                 >
                   Cancel
                 </Button>
@@ -81,6 +84,7 @@ const Login = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="teal"
                 width="100%"
+                textColor="white"
               >
                 Google
               </Button>
@@ -91,6 +95,7 @@ const Login = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="teal"
                 width="100%"
+                textColor="white"
               >
                 Github
               </Button>
@@ -101,6 +106,7 @@ const Login = () => (
                 rightIcon={<ChevronRightIcon />}
                 colorScheme="teal"
                 width="100%"
+                textColor="white"
               >
                 Signup
               </Button>
