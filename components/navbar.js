@@ -96,11 +96,8 @@ const Navbar = props => {
                 aria-label="Options"
                 _focus={{ boxShadow: 'none' }}
               />
-              <MenuList
-                bg="{useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}"
-                css={{ backdropFilter: 'blur(10px)'}}
-              >
-                <NextLink href="/about" passHref>
+              <MenuList css={{ backdropFilter: 'blur(10px)' }}>
+                <NextLink href="/login" passHref>
                   <MenuItem
                     px={4}
                     py={2}
@@ -108,14 +105,13 @@ const Navbar = props => {
                     _hover={{
                       bg: useColorModeValue('whiteAlpha.600', 'whiteAlpha.300')
                     }}
-                    _expanded={{ bg: 'blue.400' }}
                     _focus={{ boxShadow: 'none' }}
                     as={Link}
                   >
-                    About
+                    Login
                   </MenuItem>
                 </NextLink>
-                <NextLink href="/repositories" passHref>
+                <NextLink href="/signup" passHref>
                   <MenuItem
                     px={4}
                     py={2}
@@ -123,41 +119,10 @@ const Navbar = props => {
                     _hover={{
                       bg: useColorModeValue('whiteAlpha.600', 'whiteAlpha.300')
                     }}
-                    _expanded={{ bg: 'blue.400' }}
                     _focus={{ boxShadow: 'none' }}
                     as={Link}
                   >
-                    Portfolio
-                  </MenuItem>
-                </NextLink>
-                <NextLink href="/photography" passHref>
-                  <MenuItem
-                    px={4}
-                    py={2}
-                    transition="all 0.2s"
-                    _hover={{
-                      bg: useColorModeValue('whiteAlpha.600', 'whiteAlpha.300')
-                    }}
-                    _expanded={{ bg: 'blue.400' }}
-                    _focus={{ boxShadow: 'none' }}
-                    as={Link}
-                  >
-                    Photography
-                  </MenuItem>
-                </NextLink>
-                <NextLink href="/posts" passHref>
-                  <MenuItem
-                    px={4}
-                    py={2}
-                    transition="all 0.2s"
-                    _hover={{
-                      bg: useColorModeValue('whiteAlpha.600', 'whiteAlpha.300')
-                    }}
-                    _expanded={{ bg: 'blue.400' }}
-                    _focus={{ boxShadow: 'none' }}
-                    as={Link}
-                  >
-                    Blog
+                    Signup
                   </MenuItem>
                 </NextLink>
               </MenuList>

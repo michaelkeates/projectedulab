@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react'
 const Footer = () => {
   return (
     <Box align="center" opacity={0.4} fontSize="11px" paddingTop="25px">
-      Project for the fufillment of the requirements of the course something at
+      Project for the fufillment of the requirements of the course IS3D660 at
       the University of South Wales.<br></br>
       <br></br>
       &copy; {new Date().getFullYear()} Michael Keates (23009273)

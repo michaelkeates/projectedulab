@@ -32,14 +32,10 @@ const Home = () => (
         css={{ backdropFilter: 'blur(10px)' }}
         padding="15px;"
       >
-        Hi! Welcome to Project eduLab!
+        Hi! Welcome to Project eduLab! To get started click a button below.
       </Box>
 
       <Section delay={0.1}>
-        <Heading as="h2" size="1xl" textAlign="center" paddingTop="25px">
-          Welcome! To get started click a button below.
-        </Heading>
-        <Section delay={0.1}>
           <Divider my={6} />
           <SimpleGrid columns={[2, 2, 2]} gap={6}>
             <NextLink href="/login" passHref scroll={false}>
@@ -61,7 +57,6 @@ const Home = () => (
               </Button>
             </NextLink>
           </SimpleGrid>
-        </Section>
       </Section>
     </Container>
   </Layout>
