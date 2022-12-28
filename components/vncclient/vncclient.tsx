@@ -19,7 +19,7 @@ const VncClient: React.FunctionComponent<VncClientProps> = (
     <>
       <VncScreen
         //url={url}
-        url="wss://192-168-0-103.766ecefd3d1b629d31ca998f4ee69f4730787fdf.myunraid.net/wsproxy/5700/"
+        url="wss://192-168-0-103.766ecefd3d1b629d31ca998f4ee69f4730787fdf.myunraid.net/wsproxy/5701/"
         scaleViewport
         background="#000000"
         resizeSession={true}
@@ -30,7 +30,7 @@ const VncClient: React.FunctionComponent<VncClientProps> = (
       />
     </>
   ) : (
-    <div>VNC URL not provided wtf.</div>
+    <div>VNC URL not provided</div>
   );
 };
 
