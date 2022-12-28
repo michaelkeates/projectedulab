@@ -1,9 +1,15 @@
-import Head from 'next/head'
-import NavBar from '../navbar'
-import { Box, Container } from '@chakra-ui/react'
-import Footer from '../footer'
+import Head from 'next/head';
+import NavBar from '../navbar';
+import { Box, Container } from '@chakra-ui/react';
+import Footer from '../footer';
+import { Router } from 'next/router';
 
-const Main = ({ children, router }) => {
+interface MainProps {
+  children: React.ReactNode;
+  router: Router;
+}
+
+const Main: React.FC<MainProps> = ({ children, router }) => {
   return (
     <Box as="main" pb={8}>
       <Head>
@@ -21,13 +27,12 @@ const Main = ({ children, router }) => {
       <NavBar path={router.asPath} />
 
       <Container maxW="container.md" pt={250}>
-
         {children}
 
         <Footer />
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

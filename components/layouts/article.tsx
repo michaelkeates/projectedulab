@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import Head from 'next/head'
-import { GridItemStyle } from '../grid-item'
+import { motion } from 'framer-motion';
+import Head from 'next/head';
+import { GridItemStyle } from '../grid-item';
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -8,8 +8,13 @@ const variants = {
   exit: { opacity: 0, x: -0, y: 20 }
 }
 
-const Layout = ({ children, title }) => {
-  const t = `${title} - Project eduLab`
+interface LayoutProps {
+  children: React.ReactNode;
+  title: string;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+  const t = `${title} - Project eduLab`;
   return (
     <motion.article
       initial="hidden"
@@ -32,7 +37,7 @@ const Layout = ({ children, title }) => {
         <GridItemStyle />
       </>
     </motion.article>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
