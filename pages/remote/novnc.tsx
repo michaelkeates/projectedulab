@@ -28,8 +28,13 @@ const DynamicComponent = dynamic(
   }
 )
 
+type LayoutProps = {
+  title: string
+  // Other props go here
+}
+
 const Home = () => (
-  <Layout>
+  <Layout title="My Page">
     <Container>
       <Box
         borderRadius="lg"
