@@ -20,7 +20,7 @@ import Paragraph from '../components/paragraph'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { DoubleGridItem, WorkGridItem } from '../components/grid-item'
-import Image from 'next/image'
+import NextLink from 'next/link'
 
 import test from '../public/images/computer.png'
 import quiz from '../public/images/ubuntu.png'
@@ -57,6 +57,16 @@ const Remote = () => (
             <WorkGridItem id="uswapplied" thumbnail={quiz} title="Ubuntu">
                 Log into your Ubuntu PC
             </WorkGridItem>
+            <NextLink href="/remote/novnc" passHref scroll={false}>
+              <Button
+                rightIcon={<ChevronRightIcon />}
+                colorScheme="green"
+                width="100%"
+                textColor="white"
+              >
+                VNC
+              </Button>
+            </NextLink>
           </Box>
         </SimpleGrid>
       </Section>

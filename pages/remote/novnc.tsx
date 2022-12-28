@@ -1,0 +1,59 @@
+import NextLink from 'next/link'
+import {
+  Container,
+  Heading,
+  Box,
+  SimpleGrid,
+  Button,
+  useColorModeValue,
+  chakra,
+  Divider
+} from '@chakra-ui/react'
+import {
+  ChevronRightIcon,
+  InfoIcon,
+  StarIcon,
+  ViewIcon
+} from '@chakra-ui/icons'
+import Paragraph from '../../components/paragraph'
+import Layout from '../../components/layouts/article'
+import Section from '../../components/section'
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
+
+const DynamicComponent = dynamic(
+  () => import('../../components/vncclient/vncclient'),
+  {
+    ssr: false
+  }
+)
+
+const Home = () => (
+  <Layout>
+    <Container>
+      <Box
+        borderRadius="lg"
+        mb={6}
+        p={3}
+        textAlign="center"
+        bg="red.400"
+        css={{ backdropFilter: 'blur(10px)' }}
+        padding="15px;"
+        textColor="white"
+      >
+        Hi! View your remote desktop below. If you are having issues, please
+        keep your mouth shut!
+      </Box>
+
+      <Section delay={0.1}>
+        <Divider my={6} />
+        <SimpleGrid columns={[1, 1, 1]} gap={6}>
+          <DynamicComponent url={'.'} />
+        </SimpleGrid>
+      </Section>
+    </Container>
+  </Layout>
+)
+
+export default Home
+export { getServerSideProps } from '../../components/chakra'

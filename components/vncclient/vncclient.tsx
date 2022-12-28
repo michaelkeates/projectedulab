@@ -24,8 +24,8 @@ const VncClient: React.FunctionComponent<VncClientProps> = (
         background="#000000"
         resizeSession={true}
         style={{
-          width: '45vw',
-          height: '45vh',
+          width: '100%',
+          height: '32vh',
         }}
       />
     </>
