@@ -35,7 +35,7 @@ type LayoutProps = {
 
 const Home = () => (
   <Layout title="My Page">
-    <Container>
+    <Container maxWidth={1065}>
       <Box
         borderRadius="lg"
         mb={6}

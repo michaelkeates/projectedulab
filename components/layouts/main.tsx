@@ -26,7 +26,7 @@ const Main: React.FC<MainProps> = ({ children, router }) => {
 
       <NavBar path={router.asPath} />
 
-      <Container maxW="container.md" pt={250}>
+      <Container maxW='container.sm' pt={250}>
         {children}
 
         <Footer />
