@@ -10,11 +10,9 @@ import SignUpLayout from '../../layouts/SignUpLayout'
 export const SignUpPage: NextPage = () => {
   return (
     <SignUpLayout title="Sign Up">
-      <OAuthLinks />
+
       <Divider my="sm" />
-      <AuthLink icon={<FaLock />} variant="outline" link="/sign-up/passwordless">
-        Continue with passwordless email
-      </AuthLink>
+
       <AuthLink variant="subtle" link="/sign-up/email-password">
         Continue with email + password
       </AuthLink>

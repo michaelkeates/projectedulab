@@ -12,11 +12,9 @@ import { Box } from '@chakra-ui/react'
 export const SignInPage: NextPage = () => {
   return (
     <SignInLayout title="Sign In">
-      <OAuthLinks />
+
       <Divider my="sm" />
-      <AuthLink icon={<FaLock />} variant="outline" link="/sign-in/passwordless">
-        Continue with passwordless email
-      </AuthLink>
+
       <AuthLink variant="subtle" link="/sign-in/email-password">
         Continue with email + password
       </AuthLink>
