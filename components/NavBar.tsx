@@ -79,8 +79,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
 };
 
 const data: MenuItemProps[] = [
-  //{ icon: <FaHouseUser size={16} />, color: "blue", label: "Home", link: "/" },
-  //{ icon: <FaQuestion size={16} />, label: "About", link: "/about" },
+  { icon: <FaHouseUser size={16} />, color: "blue", label: "Home", link: "/" },
+  { icon: <FaQuestion size={16} />, label: "About", link: "/about" },
 ];
 
 export default function NavBar() {
