@@ -56,4 +56,4 @@ const Home: NextPage = () => {
   )
 }
 
-//export default authProtected(Home)
+export default authProtected(Home)
