@@ -11,7 +11,7 @@ import {
 } from '@nhost/nextjs'
 import { useAuthQuery } from '@nhost/react-apollo'
 
-import { authProtected } from '../components/protected-route'
+//import { authProtected } from '../components/protected-route'
 import { BOOKS_QUERY } from '../helpers'
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
@@ -56,4 +56,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default authProtected(Home)
+//export default authProtected(Home)
