@@ -48,9 +48,7 @@ const Home: NextPage = () => {
       <div>{accessToken}</div>
       {isAuthenticated && (
         <ul>
-          {data?.books.map((item) => (
-            <li key={item.id}>{item.title}</li>
-          ))}
+          <div>Helloooooo!</div>
         </ul>
       )}
       {!loading && error && <div>ok {JSON.stringify(error)}</div>}
@@ -58,4 +56,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default authProtected(Home)
+//export default authProtected(Home)

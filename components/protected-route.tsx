@@ -21,3 +21,6 @@ import { useEffect } from 'react'
 //    return <Comp {...props} />
 //  }
 //}
+
+export function authProtected() {
+}
