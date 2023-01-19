@@ -6,7 +6,7 @@ interface Props {
   // define the shape of the props object here
 }
 
-export function authProtected(Comp: React.ComponentType<Props>) {
+export function authProtected(Comp: React.FC<Props>) {
   return function AuthProtected(props: Props) {
     const router = useRouter()
     const { isLoading, isAuthenticated } = useAuthenticationStatus()
