@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-//import {
-//  FaGlobe,
-//  FaHouseUser,
-//  FaLock,
-//  FaQuestion,
-//  FaSignOutAlt,
-//} from "react-icons/fa";
+import {
+  FaGlobe,
+  FaHouseUser,
+  FaLock,
+  FaQuestion,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 import {
   Group,
@@ -94,7 +94,7 @@ export default function NavBar() {
         {links}
         {authenticated && (
           <MenuItem
-            //icon={<FaLock />}
+            icon={<FaLock />}
             color="grape"
             label="Guarded Server-side"
             link="/guarded-ssr"
@@ -102,21 +102,21 @@ export default function NavBar() {
         )}
         {authenticated && (
           <MenuItem
-            //icon={<FaLock />}
+            icon={<FaLock />}
             label="Guarded Client-side"
             link="/guarded-csr"
           />
         )}
         {authenticated && (
           <MenuItem
-            //icon={<FaGlobe />}
+            icon={<FaGlobe />}
             label="Public Client-side"
             link="/public-csr"
           />
         )}
         {authenticated && (
           <MenuItem
-            //icon={<FaGlobe />}
+            icon={<FaGlobe />}
             color="grape"
             label="Public Server-side"
             link="/public-ssr"
@@ -124,14 +124,14 @@ export default function NavBar() {
         )}
         {authenticated && (
           <MenuItem
-            //icon={<FaSignOutAlt />}
+            icon={<FaSignOutAlt />}
             label="Virtual Machines"
             link="/remote/novnc"
           />
         )}
         {authenticated && (
           <MenuItem
-            //icon={<FaSignOutAlt />}
+            icon={<FaSignOutAlt />}
             label="Sign Out"
             action={async () => {
               await signOut();
