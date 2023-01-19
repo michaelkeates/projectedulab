@@ -23,11 +23,11 @@ export const SignUpPasswordPage: NextPage = () => {
   const signUp = async () => {
     const result = await signUpEmailPassword(email, password)
     if (result.isError) {
-      showNotification({
-        color: 'red',
-        title: 'Error',
-        message: result.error.message
-      })
+      //showNotification({
+      //  color: 'red',
+      //  title: 'Error',
+      //  message: result.error.message
+      //})
     } else if (result.needsEmailVerification) {
       setEmailVerificationToggle(true)
     } else {
