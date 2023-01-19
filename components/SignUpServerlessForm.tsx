@@ -12,11 +12,11 @@ export const SignUpPasswordlessForm: React.FC = () => {
   const signIn = async () => {
     const result = await signInEmailPasswordless(email)
     if (result.isError) {
-      showNotification({
-        color: 'red',
-        title: 'Error',
-        message: result.error.message
-      })
+      //showNotification({
+        //color: 'red',
+        //title: 'Error',
+        //message: result.error.message
+      //})
     } else {
       setEmailVerificationToggle(true)
     }
