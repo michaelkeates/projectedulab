@@ -2,12 +2,8 @@ import { useAuthenticationStatus } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-interface Props {
-  // define the shape of the props object here
-}
-
-export function authProtected(Comp: React.FC<Props>) {
-  return function AuthProtected(props: Props) {
+export function authProtected(Comp) {
+  return function AuthProtected(props) {
     const router = useRouter()
     const { isLoading, isAuthenticated } = useAuthenticationStatus()
     console.log('Authentication guard: check auth status', { isLoading, isAuthenticated })
