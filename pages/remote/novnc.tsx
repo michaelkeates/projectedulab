@@ -9,15 +9,15 @@ import {
   chakra,
   Divider
 } from '@chakra-ui/react'
-import {
-  ChevronRightIcon,
-  InfoIcon,
-  StarIcon,
-  ViewIcon
-} from '@chakra-ui/icons'
-import Paragraph from '../../components/paragraph'
-import Layout from '../../components/layouts/article'
-import Section from '../../components/section'
+//import {
+//  ChevronRightIcon,
+//  InfoIcon,
+//  StarIcon,
+//  ViewIcon
+//} from '@chakra-ui/icons'
+//import Paragraph from '../../components/paragraph'
+//import Layout from '../../components/layouts/article'
+//import Section from '../../components/section'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
@@ -34,8 +34,7 @@ type LayoutProps = {
 }
 
 const Home = () => (
-  <Layout title="My Page">
-    <Container maxWidth={968}>
+    <Container maxW={968}>
       <Box
         borderRadius="lg"
         mb={6}
@@ -50,15 +49,14 @@ const Home = () => (
         keep your mouth shut!
       </Box>
 
-      <Section delay={0.1}>
+
         <Divider my={6} />
         <SimpleGrid columns={[1, 1, 1]} gap={6}>
           <DynamicComponent url={'.'} />
         </SimpleGrid>
-      </Section>
     </Container>
-  </Layout>
+
 )
 
 export default Home
-export { getServerSideProps } from '../../components/chakra'
+
