@@ -17,11 +17,12 @@ export const SignInPasswordPage: NextPage = () => {
   const signIn = async () => {
     const result = await signInEmailPassword(email, password)
     if (result.isError) {
-      //showNotification({
-      //  color: 'red',
-      //  title: 'Error',
-      //  message: result.error.message
-      //})
+      showNotification({
+        color: 'red',
+        title: 'Error',
+        //message: result.error.message
+        message: 'Invalid email or password'
+      })
     } else if (result.needsEmailVerification) {
       showNotification({
         color: 'red',
@@ -53,7 +54,7 @@ export const SignInPasswordPage: NextPage = () => {
       </SimpleGrid>
       <Divider />
       <AuthLink link="/sign-in" variant="white">
-        &#8592; Other Login Options
+        &#8592; Go Back
       </AuthLink>
     </SignInLayout>
   )

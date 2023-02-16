@@ -20,8 +20,7 @@ export const SignInLayout: React.FC<{ title?: string; children: React.ReactNode 
             Don&lsquo;t have an account?{' '}
             <Anchor component={Link} href="/sign-up">
               Sign up
-            </Anchor>{' '}
-            or <Anchor onClick={signIn}>enter the app anonymously</Anchor>
+            </Anchor>
           </Text>
         </Center>
       }

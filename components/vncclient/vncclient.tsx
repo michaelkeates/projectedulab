@@ -1,21 +1,29 @@
+//components/vncclient/vncclient.tsx
+//import dependencies and types from react-vnc
 import React, { useEffect, useState } from 'react';
 import { VncScreen } from 'react-vnc';
 
+//define the props for the vncclient component
 interface VncClientProps {
   container?: Element;
   url: string;
 }
 
+//define the vnclient component
 const VncClient: React.FunctionComponent<VncClientProps> = (
   props,
 ): JSX.Element => {
   const [url, setUrl] = useState('');
 
+  //useEffect to set the url
   useEffect(() => {
     setUrl(props.url);
   }, [props]);
 
+  //return the vncscreen component
+  //return if the url is not empty
   return url.length > 0 ? (
+    //parameters for the vncscreen component
     <>
       <VncScreen
         //url={url}
@@ -37,4 +45,5 @@ const VncClient: React.FunctionComponent<VncClientProps> = (
   );
 };
 
+//export the vnclient component
 export default VncClient;

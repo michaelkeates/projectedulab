@@ -1,37 +1,22 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import { Container, Title } from '@mantine/core'
+import { Container, Title } from "@mantine/core";
 
 export const AboutPage: React.FC = () => {
   return (
     <Container>
-      <Title>About this example</Title>
+      <Title>About Project eduLab</Title>
       <p>
-        This application demonstrates how to create a NextJs frontend that works with the Nhost
-        stack .
+        Project eduLab is a project that aims to produce an alternative 'proof
+        of concept' online educational web learning platform for the fufilment
+        of the requirments of the course IS3D660 for the University of South
+        Wales
       </p>
       <div>
-        Nhost cloud leverages the following services in the backend:
-        <ul>
-          <li>Hasura</li>
-          <li>Hasura Auth</li>
-          <li>Hasura Storage</li>
-          <li>Custom functions</li>
-        </ul>
-      </div>
-      <div>
-        This frontend is built with the following technologies:
-        <ul>
-          <li>NextJs</li>
-          <li>Mantine</li>
-          <li>and of course, the Nhost NextJs client</li>
-        </ul>
-      </div>
-      <div>
-        Now let&apos;s go to the <Link href="/">home page</Link>
+        Go back to the <Link href="/">home page</Link>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

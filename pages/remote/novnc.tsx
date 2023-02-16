@@ -22,8 +22,10 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
 const DynamicComponent = dynamic(
+  //import the vncclient component
   () => import('../../components/vncclient/vncclient'),
   {
+    //Server-Side Rendering is disabled
     ssr: false
   }
 )

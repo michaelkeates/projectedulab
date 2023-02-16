@@ -17,7 +17,7 @@ auth:
       blocked_emails: ''
     allowed_redirect_urls: ''
   anonymous_users_enabled: false
-  client_url: http://localhost:3000
+  client_url: http://ubuntu.michaelkeates.co.uk
   disable_new_users: false
   email:
     passwordless:
