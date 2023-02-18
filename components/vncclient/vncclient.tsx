@@ -27,7 +27,8 @@ const VncClient: React.FunctionComponent<VncClientProps> = (
     <>
       <VncScreen
         //url={url}
-        url="wss://192-168-0-103.766ecefd3d1b629d31ca998f4ee69f4730787fdf.myunraid.net/wsproxy/5700/"
+        url="wss://192.168.0.103/wsproxy/5702/"
+        //url="wss://test.michaelkeates.co.uk/websockify/"
         scaleViewport={true}
         background="#000000"
         resizeSession={true}
