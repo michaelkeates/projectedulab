@@ -4,7 +4,7 @@ import { VncScreen } from "react-vnc";
 function App() {
   const [url, setUrl] = useState("wss://192.168.0.103/wsproxy/5702/");
   const [connected, setConnected] = useState(false);
-  //const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
+  const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
 
   const Spacer = () => (
     <div style={{ width: "2rem", display: "inline-block" }} />
@@ -40,7 +40,21 @@ function App() {
         websockets URLs) are supported.
       </div>
 
-
+      <div style={{ margin: "1rem" }}>
+        <button
+          onClick={() => {
+            const { connect, connected, disconnect } =
+              vncScreenRef.current ?? {};
+            if (connected) {
+              disconnect?.();
+              return;
+            }
+            connect?.();
+          }}
+        >
+          Connect / Disconnect
+        </button>
+      </div>
 
       <div style={{ margin: "1rem" }}>
         {isValid(url) ? (

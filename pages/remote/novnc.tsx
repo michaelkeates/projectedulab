@@ -54,7 +54,7 @@ const Home = () => (
 
         <Divider my={6} />
         <SimpleGrid columns={[1, 1, 1]} gap={6}>
-          <DynamicComponent url={'.'} />
+          <DynamicComponent />
         </SimpleGrid>
     </Container>
 
