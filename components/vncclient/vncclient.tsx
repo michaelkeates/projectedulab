@@ -4,6 +4,7 @@ import { VncScreen } from "react-vnc";
 function App() {
   const [url, setUrl] = useState("wss://192.168.0.103/wsproxy/5702/");
   const [connected, setConnected] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
 
   const Spacer = () => (
@@ -31,46 +32,46 @@ function App() {
     }
   };
 
+  const handleFullScreenClick = () => {
+    const elem = document.getElementById("vnc-screen-container");
+    if (elem) {
+      if (!fullscreen) {
+        elem.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+      setFullscreen(!fullscreen);
+    }
+  };
+
   return (
     <>
-      <div style={{ margin: "1rem" }}>
-        <label htmlFor="url">URL for VNC Stream2</label>
-        <Spacer />
-
-        <input
-          type="text"
-          onChange={({ target: { value } }) => {
-            setUrl(value);
-          }}
-          name="url"
-          value={url}
-          placeholder="wss://your-vnc-url"
-        />
-      </div>
-
-      <div style={{ opacity: 0.5, margin: "1rem" }}>
-        Since the site is loaded over HTTPS, only `wss://` URLs (SSL encrypted
-        websockets URLs) are supported.
-      </div>
-
       <div style={{ margin: "1rem" }}>
         <button onClick={handleConnectClick}>
           {connected ? "Disconnect" : "Connect"}
         </button>
+
+        <button onClick={handleFullScreenClick}>Full Screen</button>
       </div>
 
-      <div style={{ margin: "1rem" }}>
+      <div
+        style={{ margin: "1rem", height: "75vh" }}
+        id="vnc-screen-container"
+      >
         {isValid(url) ? (
           <VncScreen
             url={url}
             scaleViewport
             background="#000000"
             style={{
-              width: "75vw",
-              height: "75vh",
+              width: "100%",
+              height: "100%",
             }}
             debug
             ref={vncScreenRef}
+            onClipboard={(e) => {
+              console.log("onClipboard", e);
+            }}
           />
         ) : (
           <div>VNC URL not provided.</div>
