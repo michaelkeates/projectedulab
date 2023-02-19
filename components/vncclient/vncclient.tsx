@@ -18,6 +18,19 @@ function App() {
     return true;
   };
 
+  const handleConnectClick = () => {
+    const { connect, connected, disconnect } =
+      vncScreenRef.current ?? {};
+
+    if (connected) {
+      disconnect?.();
+      setConnected(false);
+    } else if (!connected) {
+      connect?.();
+      setConnected(true);
+    }
+  };
+
   return (
     <>
       <div style={{ margin: "1rem" }}>
@@ -41,18 +54,8 @@ function App() {
       </div>
 
       <div style={{ margin: "1rem" }}>
-        <button
-          onClick={() => {
-            const { connect, connected, disconnect } =
-              vncScreenRef.current ?? {};
-            if (connected) {
-              disconnect?.();
-              return;
-            }
-            connect?.();
-          }}
-        >
-          Connect / Disconnect
+        <button onClick={handleConnectClick}>
+          {connected ? "Disconnect" : "Connect"}
         </button>
       </div>
 
@@ -67,6 +70,7 @@ function App() {
               height: "75vh",
             }}
             debug
+            ref={vncScreenRef}
           />
         ) : (
           <div>VNC URL not provided.</div>
