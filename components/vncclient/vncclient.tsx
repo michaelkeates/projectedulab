@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
 
 function App() {
-  const [url, setUrl] = useState("wss://192.168.0.103/wsproxy/5702/");
+  //const [url, setUrl] = useState("wss://192.168.0.103/wsproxy/5702/");
+  const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/5702/");
   const [connected, setConnected] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
+  const [webSocket, setWebSocket] = useState(null);
 
   const Spacer = () => (
     <div style={{ width: "2rem", display: "inline-block" }} />
