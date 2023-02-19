@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <div style={{ margin: "1rem" }}>
-        <label htmlFor="url">URL for VNC Stream</label>
+        <label htmlFor="url">URL for VNC Stream2</label>
         <Spacer />
 
         <input
