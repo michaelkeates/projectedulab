@@ -37,7 +37,7 @@ export const SignUpPasswordPage: NextPage = () => {
       //showNotification({
       //  color: 'red',
       //  title: 'Error',
-      //  message: result.error.message
+      //  message: result.error.message2
       //})
     } else if (result.needsEmailVerification) {
       setEmailVerificationToggle(true);
