@@ -17,7 +17,6 @@ const devTools =
 //  })
 //}
 const nhost = new NhostClient({ backendUrl: BACKEND_URL, devTools });
-const title = "Project eduLab";
 function MyApp({ Component, pageProps }: AppProps) {
   // * Monorepo-related. See: https://stackoverflow.com/questions/71843247/react-nextjs-type-error-component-cannot-be-used-as-a-jsx-component
   // const AnyComponent = Component as any
