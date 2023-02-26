@@ -4,23 +4,9 @@ import { NhostClient, NhostProvider } from "@nhost/nextjs";
 import { NhostApolloProvider } from "@nhost/react-apollo";
 //import { inspect } from '@xstate/inspect'
 import type { AppProps } from "next/app";
-import Head from "next/head";
-import NavBar from "../components/NavBar";
 import { BACKEND_URL } from "../helpers";
 import "../styles/globals.css?inline";
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
-import DrawerTopBar from "../components/DrawerTopBar";
-import SideDrawer from "../components/SideDrawer";
-
-const colors = {
-  brand: {
-    900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
-  },
-};
-
-const theme = extendTheme({ colors });
+import { ChakraProvider } from "@chakra-ui/react";
 
 const devTools =
   typeof window !== "undefined" && !!process.env.NEXT_PUBLIC_DEBUG;
