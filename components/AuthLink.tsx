@@ -14,6 +14,7 @@ const AuthLink: React.FC<{
     <Link href={link} passHref>
       <Button
       colorScheme='blue'
+      width="100%"
       >
         {children}
       </Button>

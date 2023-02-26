@@ -90,13 +90,13 @@ export const SignUpPasswordPage: NextPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <SimpleGrid cols={2} spacing={6}>
-              <AuthLink link="/sign-up" variant="white">
-                &#8592; Other Registration Options
-              </AuthLink>
+            <SimpleGrid cols={1} spacing={6}>
               <Button onClick={signUp}>
-                Continue with email + password
+                Signup
               </Button>
+              <AuthLink link="/sign-up" variant="white">
+                &#8592; Go Back
+              </AuthLink>
             </SimpleGrid>
           </SimpleGrid>
           <Divider />
