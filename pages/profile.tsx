@@ -22,7 +22,8 @@ import { BOOKS_QUERY } from "../helpers";
 const Home: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
   const isAuthenticated = useAuthenticated();
-  const [email] = useState("");
+  //const [email] = useState("");
+  const [email] = useState("your current email")
   const [password] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -70,6 +71,38 @@ const Home: NextPage = () => {
         <Text fontSize={100} color="gray.300">
           Welcome
         </Text>
+        {isAuthenticated ? (
+          <>
+            User authenticated: {isAuthenticated ? "yes" : "no"}
+            <Button onClick={signOut}>Logout</Button>
+            <Input
+              value={email}
+              onChange={(e) => setNewEmail(e.target.value)}
+            />
+            <Button onClick={() => changeEmail(email)}>Change email</Button>
+            <div>{JSON.stringify(changeEmailResult)}</div>
+            <Button onClick={() => changePassword(password)}>
+              Change password
+            </Button>
+            <Input
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <div>{JSON.stringify(changePasswordResult)}</div>
+            <Title>Guarded Server-side Page</Title>
+            <div>Access token: {accessToken}</div>
+          </>
+        ) : (
+          <div>go to /sign-in</div>
+        )}
+
+        {isAuthenticated && (
+          <ul>
+            <div>Helloooooo!</div>
+            <Button onClick={signOut}>Logout</Button>
+          </ul>
+        )}
+        {!loading && error && <div>ok {JSON.stringify(error)}</div>}
       </Flex>
     </HStack>
   );

@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
 
 function App() {
-  const [url, setUrl] = useState("ws://192.168.0.91/websockify");
-  //const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/5702/");
-  //const [url, setUrl] = useState("ws://test.michaelkeates.co.uk/websockify");
+  //const [url, setUrl] = useState("wss://192.168.0.91/websockify");
+  const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/5702/");
+  //const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/websockify");
   const [connected, setConnected] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
