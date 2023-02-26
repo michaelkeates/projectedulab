@@ -24,8 +24,8 @@ export const SignInPage: NextPage = () => {
         position="relative"
         borderRadius="3xl"
       >
-        <Text fontSize={100} color="gray.300">
-          Welcome to Project eduLab
+        <Text fontSize={90} color="gray.300">
+          Welcome
         </Text>
         <Text fontSize={20} color="gray.300" marginBottom="2%" textAlign="center" paddingLeft="20%" paddingRight="20%">
           Project eduLab is a project that aims to produce an alternative 'proof
