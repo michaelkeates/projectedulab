@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 
+import { Input, Title } from "@mantine/core";
 import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
@@ -47,9 +48,22 @@ const Home: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Text fontSize={100} color="gray.300">
-          Welcome
+        <Text fontSize={80} color="gray.300">
+          Welcome!
         </Text>
+        <Box
+          borderRadius="lg"
+          mb={6}
+          p={3}
+          textAlign="center"
+          bg="red.400"
+          css={{ backdropFilter: "blur(10px)" }}
+          padding="15px;"
+          textColor="white"
+        >
+          Hi! View your remote desktop below. If you are having issues, please
+          keep your mouth shut!
+        </Box>
       </Flex>
     </HStack>
   );

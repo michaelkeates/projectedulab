@@ -1,9 +1,21 @@
 import React, { useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
+import type { NextPage } from "next";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  Text,
+  Button,
+  Grid,
+} from "@chakra-ui/react";
 
 function App() {
   //const [url, setUrl] = useState("wss://192.168.0.91/websockify");
-  const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/5702/");
+  const [url, setUrl] = useState(
+    "wss://test.michaelkeates.co.uk/wsproxy/5702/"
+  );
   //const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/websockify");
   const [connected, setConnected] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
@@ -22,8 +34,7 @@ function App() {
   };
 
   const handleConnectClick = () => {
-    const { connect, connected, disconnect } =
-      vncScreenRef.current ?? {};
+    const { connect, connected, disconnect } = vncScreenRef.current ?? {};
 
     if (connected) {
       disconnect?.();
@@ -49,25 +60,35 @@ function App() {
   return (
     <>
       <div style={{ margin: "1rem" }}>
-        <button onClick={handleConnectClick}>
-          {connected ? "Disconnect" : "Connect"}
-        </button>
-
-        <button onClick={handleFullScreenClick}>Full Screen</button>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+          <Button
+            onClick={handleConnectClick}
+            colorScheme="blue"
+            width="100%"
+            marginBottom="5%"
+          >
+            {connected ? "Disconnect" : "Connect"}
+          </Button>
+          <Button
+            onClick={handleFullScreenClick}
+            colorScheme="red"
+            width="100%"
+            marginBottom="5%"
+          >
+            Full Screen
+          </Button>
+        </Grid>
       </div>
 
-      <div
-        style={{ margin: "1rem", height: "75vh" }}
-        id="vnc-screen-container"
-      >
+      <div style={{ margin: "1rem", height: "100%" }} id="vnc-screen-container">
         {isValid(url) ? (
           <VncScreen
             url={url}
             scaleViewport
             background="#000000"
             style={{
-              width: "100%",
-              height: "100%",
+              width: "900px",
+              height: "900px",
             }}
             debug
             ref={vncScreenRef}
