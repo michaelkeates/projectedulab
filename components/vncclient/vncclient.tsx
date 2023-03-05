@@ -12,9 +12,9 @@ import {
 } from "@chakra-ui/react";
 
 function App() {
-  //const [url, setUrl] = useState("wss://192.168.0.91/websockify");
+  //const [url, setUrl] = useState("wss://192.168.0.91/websockify/5702/");
   const [url, setUrl] = useState(
-    "wss://test.michaelkeates.co.uk/wsproxy/5702/"
+    "wss://test.michaelkeates.co.uk/wsproxy/"
   );
   //const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/websockify");
   const [connected, setConnected] = useState(false);
@@ -87,8 +87,8 @@ function App() {
             scaleViewport
             background="#000000"
             style={{
-              width: "900px",
-              height: "900px",
+              width: "700px",
+              height: "500px",
             }}
             debug
             ref={vncScreenRef}

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Input, Title } from "@mantine/core";
 import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
-import { MdMenu } from "react-icons/md";
+import { Md10Mp, MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
 
 import { authProtected } from "../components/protected-route";
@@ -26,6 +26,7 @@ const Home: NextPage = () => {
         justifyContent="space-between"
         transition="ease-in-out .2s"
         borderRadius="3xl"
+        //hidden={collapse}
       >
         <Sidebar collapse={collapse} />
       </Flex>
@@ -56,13 +57,12 @@ const Home: NextPage = () => {
           mb={6}
           p={3}
           textAlign="center"
-          bg="red.400"
+          bg="blue.400"
           css={{ backdropFilter: "blur(10px)" }}
           padding="15px;"
           textColor="white"
         >
-          Hi! View your remote desktop below. If you are having issues, please
-          keep your mouth shut!
+          Hi! I've got nothing to show you here. Please go to the profile page.
         </Box>
       </Flex>
     </HStack>

@@ -11,7 +11,7 @@ export const Logo = ({ collapse }) => (
     gap={4}
   >
     <Box display="flex" alignItems="center" gap={2}>
-      <Icon as={BiSquareRounded} fontSize={30} />
+      <Icon as={BiSquareRounded} fontSize={30} color="blackAlpha.700" />
       {collapse && (
         <Text fontWeight="bold" fontSize={16}>
           Project eduLab
