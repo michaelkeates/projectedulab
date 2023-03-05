@@ -11,8 +11,8 @@ export const BOOKS_QUERY = gql`
 ;
 
 export const GET_UNANSWERED_QUESTIONS = gql`
-query unanswered_questions($hasura_session: json = "") {
-  auth_unanswered_questions(args: {hasura_session: $hasura_session}) {
+query unanswered_questions {
+  auth_unanswered_questions(args: {hasura_session: "x-hasura-user-id"}) {
     id
     question
     question_answers {

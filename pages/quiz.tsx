@@ -59,12 +59,13 @@ function Quiz() {
   if (data?.auth_unanswered_questions?.length > 0) {
     const { auth_unanswered_questions } = data;
     const currentQuestion = auth_unanswered_questions[currentIndex];
+    if (!currentQuestion) return null; // add this line
     const onNextClicked = (selectedOption) => {
-      const currentAnswers = currentQuestion.auth_question_answers;
+      const currentAnswers = currentQuestion.question_answers;
       const answer = currentAnswers.find(
         (answers) => answers.answer === selectedOption
       );
-      if (answer.is_correct) {
+      if (answer && answer.is_correct) { // add this check
         setScore(score + 1);
       }
       if (currentIndex + 1 > auth_unanswered_questions.length - 1) {
@@ -133,5 +134,6 @@ function Quiz() {
     );
   }
 };
+
 
 export default authProtected(Quiz);
