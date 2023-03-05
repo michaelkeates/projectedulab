@@ -26,6 +26,16 @@ export const Navigation = ({ collapse }) => {
             Home
           </Button>
         </NextLink>
+        <NextLink href="/create" passHref>
+          <Button colorScheme="blue" width="100%" marginBottom="5%">
+            Create Quiz
+          </Button>
+        </NextLink>
+        <NextLink href="/quiz" passHref>
+          <Button colorScheme="blue" width="100%" marginBottom="5%">
+            Take Quiz
+          </Button>
+        </NextLink>
         <NextLink href="/remote/novnc" passHref>
           <Button colorScheme="blue" width="100%" marginBottom="5%">
             Virtual Machines
