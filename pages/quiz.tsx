@@ -35,7 +35,7 @@ import { NoQuestion } from "@/components/NoQuestion";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
-const Home: NextPage = () => {
+function Quiz() {
   const { loading, data } = useAuthQuery(GET_UNANSWERED_QUESTIONS);
   const [restartQuiz] = useMutation(RESTART_QUIZ);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,11 +56,11 @@ const Home: NextPage = () => {
   };
 
   if (loading) return <Text>Loading...</Text>;
-  if (data && data.auth_unanswered_questions.length > 0) {
+  if (data?.auth_unanswered_questions?.length > 0) {
     const { auth_unanswered_questions } = data;
     const currentQuestion = auth_unanswered_questions[currentIndex];
     const onNextClicked = (selectedOption) => {
-      const currentAnswers = currentQuestion.question_answers;
+      const currentAnswers = currentQuestion.auth_question_answers;
       const answer = currentAnswers.find(
         (answers) => answers.answer === selectedOption
       );
@@ -110,10 +110,8 @@ const Home: NextPage = () => {
                     <Question
                       onNextClicked={onNextClicked}
                       question={currentQuestion}
-                      //key={currentQuestion.id}
-                      key="Something"
+                      key={currentQuestion.id}
                     />
-                    <Text>{auth_unanswered_questions.length}</Text>
                   </Box>
                 )}
                 {showFinished ? (
@@ -123,10 +121,9 @@ const Home: NextPage = () => {
                     </Button>
                   </Flex>
                 ) : (
-                  // <Text textAlign="left">
-                  //   {currentIndex + 1} / {unansweredQuestions.length}
-                  // </Text>
-                  <Text></Text>
+                  <Text textAlign="left">
+                    {currentIndex + 1} / {auth_unanswered_questions.length}
+                  </Text>
                 )}
               </Box>
             </ul>
@@ -137,4 +134,4 @@ const Home: NextPage = () => {
   }
 };
 
-export default authProtected(Home);
+export default authProtected(Quiz);
