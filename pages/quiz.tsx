@@ -17,11 +17,7 @@ import {
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
 import {
-  useAccessToken,
   useAuthenticated,
-  useChangeEmail,
-  useChangePassword,
-  useSignOut,
 } from "@nhost/nextjs";
 import { useAuthQuery } from "@nhost/react-apollo";
 
@@ -35,7 +31,7 @@ import { NoQuestion } from "@/components/NoQuestion";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
-function Quiz() {
+const Quiz: NextPage = () => {
   const { loading, data } = useAuthQuery(GET_UNANSWERED_QUESTIONS);
   const [restartQuiz] = useMutation(RESTART_QUIZ);
   const [currentIndex, setCurrentIndex] = useState(0);
