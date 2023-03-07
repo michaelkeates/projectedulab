@@ -124,8 +124,7 @@ const Quiz: NextPage = () => {
         </Flex>
       </HStack>
     );
-  }
-  return <NoQuestion />;
+  };
 };
 
 export default authProtected(Quiz);
