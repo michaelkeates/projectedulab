@@ -16,9 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
-import {
-  useAuthenticated,
-} from "@nhost/nextjs";
+import { useAuthenticated } from "@nhost/nextjs";
 import { useAuthQuery } from "@nhost/react-apollo";
 
 import { authProtected } from "../components/protected-route";
@@ -61,7 +59,8 @@ const Quiz: NextPage = () => {
       const answer = currentAnswers.find(
         (answers) => answers.answer === selectedOption
       );
-      if (answer && answer.is_correct) { // add this check
+      if (answer && answer.is_correct) {
+        // add this check
         setScore(score + 1);
       }
       if (currentIndex + 1 > auth_unanswered_questions.length - 1) {
@@ -91,9 +90,6 @@ const Quiz: NextPage = () => {
             top={6}
             left={6}
           />
-          <Text fontSize={50} color="gray.300">
-            Create a new quiz Question!
-          </Text>
           {isAuthenticated && (
             <ul>
               <Box>
@@ -128,10 +124,11 @@ const Quiz: NextPage = () => {
         </Flex>
       </HStack>
     );
-  } else {
+  } else if (data?.auth_unanswered_questions?.length === 0) {
     return <NoQuestion />;
+  } else {
+    return <Text>Something went wrong</Text>;
   }
 };
-
 
 export default authProtected(Quiz);
