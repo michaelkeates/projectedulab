@@ -25,7 +25,7 @@ import { useMutation } from "@apollo/client";
 
 import { Question } from "../components/Question";
 import { Results } from "../components/Results";
-import { NoQuestion } from "@/components/NoQuestion";
+import { NoQuestion } from "../components/NoQuestion";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
@@ -47,10 +47,10 @@ const Quiz: NextPage = () => {
       console.log(error);
       return alert("Error restarting quiz");
     }
-  }
+  };
 
   if (loading) return <Text>Loading...</Text>;
-  if (data.auth_unanswered_questions.length > 0) {
+  //if (data.auth_unanswered_questions.length > 1) {
     const { auth_unanswered_questions } = data;
     const currentQuestion = auth_unanswered_questions[currentIndex];
     if (!currentQuestion) return null; // add this line
@@ -124,9 +124,7 @@ const Quiz: NextPage = () => {
         </Flex>
       </HStack>
     );
-  } else {
-    return <NoQuestion />;
-  };
-};
+  }
+//};
 
 export default authProtected(Quiz);
