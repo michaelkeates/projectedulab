@@ -128,6 +128,8 @@ const Quiz: NextPage = () => {
         </Flex>
       </HStack>
     );
+  } else {
+    return <NoQuestion />;
   }
 };
 
