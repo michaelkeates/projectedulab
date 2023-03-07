@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SUBMIT_ANSWER } from "../helpers";
 import { Box, Button, Flex, Heading } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 export function Question({ question, onNextClicked }) {
   const [answered, setAnswered] = useState(false);
@@ -31,9 +32,9 @@ export function Question({ question, onNextClicked }) {
 
   return (
     <Box>
-      <Heading as="h1" textAlign="center">
-        How Many Can You Get Right?
-      </Heading>
+        <Text fontSize={60} color="gray.300">
+          How many can you get right?
+        </Text>
       {question && (
         <Box>
           <Heading mt={8} as="h6" size="md" textAlign="center">
