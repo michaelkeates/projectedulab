@@ -124,11 +124,8 @@ const Quiz: NextPage = () => {
         </Flex>
       </HStack>
     );
-  } else if (data?.auth_unanswered_questions?.length === 0) {
-    return <NoQuestion />;
-  } else {
-    return <Text>Something went wrong</Text>;
   }
+  return <NoQuestion />;
 };
 
 export default authProtected(Quiz);
