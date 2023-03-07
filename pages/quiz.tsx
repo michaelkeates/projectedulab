@@ -47,10 +47,10 @@ const Quiz: NextPage = () => {
       console.log(error);
       return alert("Error restarting quiz");
     }
-  };
+  }
 
   if (loading) return <Text>Loading...</Text>;
-  if (data?.auth_unanswered_questions?.length > 0) {
+  if (data.auth_unanswered_questions.length > 0) {
     const { auth_unanswered_questions } = data;
     const currentQuestion = auth_unanswered_questions[currentIndex];
     if (!currentQuestion) return null; // add this line
@@ -124,6 +124,8 @@ const Quiz: NextPage = () => {
         </Flex>
       </HStack>
     );
+  } else {
+    return <NoQuestion />;
   };
 };
 
