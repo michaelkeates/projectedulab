@@ -1,0 +1,24 @@
+version: '3.6'
+services:
+  auth: #this is the name of the auth service
+    image: nhost/hasura-auth:0.16.2 #this specifies the Docker image to use for the auth service
+    depends_on: #this specifies the services that this container depends on
+      - postgres #this is the name of the Postgres service
+      - graphql-engine #this is the name of the Hasura GraphQL Engine service
+    restart: always #tis specifies that the container should always restart if it stops
+    volumes: #specifies the volumes to mount inside the container
+      - ./emails:/app/email-templates #mounts the local directory `./emails` to `/app/email-templates` inside the container
+    environment: #specifies the environment variables to be set inside the container
+      AUTH_HOST: '0.0.0.0' #set the IP address for the auth service
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:-secretpgpassword}@postgres:5432/postgres #sets the URL for the Postgres database to be used by the Hasura GraphQL Engine
+      HASURA_GRAPHQL_GRAPHQL_URL: http://graphql-engine:8080/v1/graphql #sets the URL for the Hasura GraphQL Engine
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET} #set the JWT secret for the Hasura GraphQL Engine
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET} #set the admin secret for the Hasura GraphQL Engine
+      AUTH_CLIENT_URL: ${AUTH_CLIENT_URL:-http://localhost:3000} #set the URL for the auth client
+      AUTH_SMTP_HOST: mailhog #set the hostname for the SMTP server used by the auth service
+      AUTH_SMTP_PORT: 1025 #this sets the port for the SMTP server used by the auth service
+      AUTH_SMTP_USER: user #set the username for the SMTP server used by the auth service
+      AUTH_SMTP_PASS: password #set the password for the SMTP server used by the auth service
+      AUTH_SMTP_SENDER: mail@example.com #set the email address for the sender of emails sent by the auth service
+    expose: #set specifies the ports to be exposed by the container
+      - 4000 # This exposes port 4000 inside the container to the host machine

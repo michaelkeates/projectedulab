@@ -1,17 +1,16 @@
+//pages/sign-in/index.tsx
+//import dependencies/packages
 import { NextPage } from "next";
-import { FaLock } from "react-icons/fa";
-
-import { Divider } from "@mantine/core";
-
+//import AuthLink from components so code is not repeated can be reused in other pages
 import AuthLink from "../../components/AuthLink";
-import OAuthLinks from "../../components/OauthLinks";
-import SignInLayout from "../../layouts/SignInLayout";
-import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
-import { ChakraBaseProvider, extendBaseTheme } from "@chakra-ui/react";
-import chakraTheme from "@chakra-ui/theme";
+//import Chakra UI components for styling
+import { Flex, HStack, Text } from "@chakra-ui/react";
 
+//create a NextPage component
 export const SignInPage: NextPage = () => {
+  //return the JSX to be rendered
   return (
+    //create a HStack component to hold the main content and add the AuthLink component below which is a button that was imported from the components folder
     <HStack w="full" h="100vh" bg="gray.100" padding={10}>
       <Flex
         as="main"
@@ -24,14 +23,21 @@ export const SignInPage: NextPage = () => {
         position="relative"
         borderRadius="3xl"
       >
-        <Text fontSize={90} color="gray.300">
+        <Text fontSize={{ base: "6vw", md: 90 }} color="gray.300">
           Welcome
         </Text>
-        <Text fontSize={20} color="gray.300" marginBottom="2%" textAlign="center" paddingLeft="20%" paddingRight="20%">
+        <Text
+          fontSize={20}
+          color="gray.300"
+          marginBottom="2%"
+          textAlign="center"
+          paddingLeft="20%"
+          paddingRight="20%"
+        >
           Project eduLab is a project that aims to produce an alternative 'proof
-          of concept' online educational web learning platform for the fufilment
-          of the requirements of the course IS3D660 for the University of South
-          Wales
+          of concept' online educational web learning platform for the
+          fulfilment of the requirements of the course IS3D660 for the
+          University of South Wales
         </Text>
         <AuthLink variant="subtle" link="/sign-in/email-password">
           Continue
@@ -40,5 +46,6 @@ export const SignInPage: NextPage = () => {
     </HStack>
   );
 };
-
+//text for title changed to "base" to make it responsive for mobile devices using 'breakpoints'
+//export the page
 export default SignInPage;

@@ -1,0 +1,161 @@
+#version of docker-compose
+version: '3.6'
+services:
+  #traefik is a reverse proxy that will route requests to the correct service
+  traefik:
+    image: "traefik:v2.5"
+    container_name: "traefik"
+    command:
+    #options for traefik
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:1337"
+    ports:
+    #ports to expose so they we can access the services
+      - "1337:1337"
+      - "9090:8080"
+    volumes:
+    #volumes to mount
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  #postgres is the database that will store all the data
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./initdb.d:/docker-entrypoint-initdb.d:ro
+    environment:
+    #password for the postgres user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secretpgpassword}
+    ports:
+    #port to expose so we can access the database
+      - '5432:5432'
+  #graphql engine is the graphql server that will serve the graphql api
+  graphql-engine:
+    image: hasura/graphql-engine:v2.15.2
+    depends_on:
+      - 'postgres'
+    restart: always
+    expose:
+      - 8080
+    environment:
+    #the secret that will be used to authenticate with the graphql api for security
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:-secretpgpassword}@postgres:5432/postgres
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: public
+      HASURA_GRAPHQL_LOG_LEVEL: debug
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hasura.rule=Host(`localhost`) && PathPrefix(`/`)"
+      - "traefik.http.routers.hasura.entrypoints=web"
+  #auth is the authentication server that will handle user registration, login, etc and stores them into the database
+  auth:
+    image: nhost/hasura-auth:0.16.2
+    depends_on:
+      - postgres
+      - graphql-engine
+    restart: always
+    volumes:
+      - ./emails:/app/email-templates
+    environment:
+    #options including email settings for user to confirm after they register with website
+      AUTH_HOST: '0.0.0.0'
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:-secretpgpassword}@postgres:5432/postgres
+      HASURA_GRAPHQL_GRAPHQL_URL: http://graphql-engine:8080/v1/graphql
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      AUTH_CLIENT_URL: ${AUTH_CLIENT_URL:-http://localhost:3000}
+      AUTH_SMTP_HOST: mailhog
+      AUTH_SMTP_PORT: 1025
+      AUTH_SMTP_USER: user
+      AUTH_SMTP_PASS: password
+      AUTH_SMTP_SENDER: mail@example.com
+    expose: 
+      - 4000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.strip-auth.stripprefix.prefixes=/v1/auth"
+      - "traefik.http.routers.auth.rule=Host(`localhost`) && PathPrefix(`/v1/auth`)"
+      - "traefik.http.routers.auth.middlewares=strip-auth@docker"
+      - "traefik.http.routers.auth.entrypoints=web"
+  #hasura storage is the storage server that will handle file uploads
+  storage:
+    image: nhost/hasura-storage:0.3.1
+    depends_on:
+      - postgres
+      - graphql-engine
+      - minio
+    restart: always
+    expose:
+      - 8000
+    environment:
+      PUBLIC_URL: http://localhost:${PROXY_PORT:-1337}
+      HASURA_METADATA: 1
+      HASURA_ENDPOINT: http://graphql-engine:8080/v1
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      S3_ACCESS_KEY: ${STORAGE_ACCESS_KEY}
+      S3_SECRET_KEY: ${STORAGE_SECRET_KEY}
+      S3_ENDPOINT: http://minio:8484
+      S3_BUCKET: nhost
+      POSTGRES_MIGRATIONS: 1
+      POSTGRES_MIGRATIONS_SOURCE: postgres://postgres:${POSTGRES_PASSWORD:-secretpgpassword}@postgres:5432/postgres?sslmode=disable
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.storage.rule=Host(`localhost`) && PathPrefix(`/v1/storage`)"
+      - "traefik.http.routers.storage.entrypoints=web"
+      # Rewrite the path so it matches with the new storage API path introduced in hasura-storage 0.2
+      - "traefik.http.middlewares.strip-suffix.replacepathregex.regex=^/v1/storage/(.*)"
+      - "traefik.http.middlewares.strip-suffix.replacepathregex.replacement=/v1/$$1"
+      - "traefik.http.routers.storage.middlewares=strip-suffix@docker"
+    command: serve
+  functions:
+    image: nhost/functions:0.1.8
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.strip-functions.stripprefix.prefixes=/v1/functions"
+      - "traefik.http.routers.functions.rule=Host(`localhost`) && PathPrefix(`/v1/functions`)"
+      - "traefik.http.routers.functions.middlewares=strip-functions@docker"
+      - "traefik.http.routers.functions.entrypoints=web"
+    restart: always
+    expose: 
+      - 3000
+    volumes:
+      - .:/opt/project
+      - functions_node_modules:/opt/project/node_modules
+      - /opt/project/data/
+      - /opt/project/initdb.d/
+  #minio is is an opensource, high performance, distributed object storage system that provides security features such as encryption, access control, and logging etc.
+  minio:
+    image: minio/minio:RELEASE.2021-09-24T00-24-24Z
+    entrypoint: sh
+    command: -c 'mkdir -p /data/nhost && /opt/bin/minio server --address :8484 /data'
+    environment:
+      MINIO_ROOT_USER: ${STORAGE_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${STORAGE_SECRET_KEY}
+    ports:
+      - ${MINIO_PORT:-8484}:8484
+    volumes:
+      - ./data/minio:/data
+  mailhog:
+    image: mailhog/mailhog
+    environment:
+      SMTP_HOST: ${AUTH_SMTP_HOST:-mailhog}
+      SMTP_PORT: ${AUTH_SMTP_PORT:-1025}
+      SMTP_PASS: ${AUTH_SMTP_PASS:-password}
+      SMTP_USER: ${AUTH_SMTP_USER:-user}
+      SMTP_SECURE: "${AUTH_SMTP_SECURE:-false}"
+      SMTP_SENDER: ${AUTH_SMTP_SENDER:-hbp@hbp.com}
+    ports:
+      - ${AUTH_SMTP_PORT:-1025}:1025 
+      - 8025:8025
+    volumes:
+      - ./data/mailhog:/maildir
+  dashboard:
+    image: nhost/dashboard:0.7.4
+    ports:
+      - "3030:3000"
+volumes:
+  functions_node_modules:

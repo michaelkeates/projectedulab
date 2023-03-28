@@ -1,0 +1,12 @@
+version: '3.6'  #specifies the version of the Docker Compose syntax to use.
+services:
+  postgres:
+    image: postgres  #specifies the name of the Docker image to use for this service.
+    restart: always  #configures the container to always restart if it stops.
+    volumes:
+      - ./data/db:/var/lib/postgresql/data  #mount the local directory "./data/db" to the container's "/var/lib/postgresql/data" directory.
+      - ./initdb.d:/docker-entrypoint-initdb.d:ro  #mount the local directory "./initdb.d" to the container's "/docker-entrypoint-initdb.d" directory as read-only.
+    environment:  #set environment variables inside the container.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secretpgpassword}  #set the "POSTGRES_PASSWORD" environment variable to the value of the "POSTGRES_PASSWORD" environment variable from the host, or defaults to "secretpgpassword" if it's not set.
+    ports:
+      - '5432:5432'  #map port 5432 on the container to port 5432 on the host.

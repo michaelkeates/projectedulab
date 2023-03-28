@@ -1,0 +1,18 @@
+graphql-engine:
+  image: hasura/graphql-engine:v2.15.2
+  depends_on:
+    - 'postgres' #this service depends on the 'postgres' service being running
+  restart: always
+  expose:
+    - 8080 #expose port 8080 so we can access the dashboard in brwoser
+  environment:
+    HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD:-secretpgpassword}@postgres:5432/postgres #set the database URL for Hasura to connect to
+    HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET} #set the JWT secret for Hasura to use for authentication
+    HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET} #set the admin secret for Hasura
+    HASURA_GRAPHQL_UNAUTHORIZED_ROLE: public #set the unauthorized role for Hasura
+    HASURA_GRAPHQL_LOG_LEVEL: debug #set the logging level for Hasura
+    HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' #enable the Hasura console
+  labels:
+    - "traefik.enable=true" #enable Traefik
+    - "traefik.http.routers.hasura.rule=Host(`localhost`) && PathPrefix(`/`)" #set the rule for Traefik to route traffic to this service
+    - "traefik.http.routers.hasura.entrypoints=web" #set the entry point for Traefik to use for this service

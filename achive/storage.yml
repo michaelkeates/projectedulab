@@ -1,0 +1,18 @@
+version: '3.6'
+services:
+  storage:
+    image: nhost/hasura-storage:0.3.1   #use the nhost/hasura-storage image with version 0.3.1
+    depends_on:
+      - postgres    #reply on the postgres service
+      - graphql-engine    #rely on the graphql-engine service
+      - minio   #rely on the minio service
+    restart: always   #always restart the container if it fails or stops
+    expose:
+      - 8000   #expose port 8000 to other services within the Docker network
+    environment:
+      PUBLIC_URL: http://localhost:${PROXY_PORT:-1337}   #set the public URL of the storage service to http://localhost:${PROXY_PORT:-1337}
+      HASURA_METADATA: 1   #set the HASURA_METADATA environment variable to 1
+      HASURA_ENDPOINT: http://graphql-engine:8080/v1   #set the HASURA_ENDPOINT environment variable to http://graphql-engine:8080/v1
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}   #set the HASURA_GRAPHQL_ADMIN_SECRET environment variable to the value of the corresponding environment variable
+      S3_ACCESS_KEY: ${STORAGE_ACCESS_KEY}   #set the S3_ACCESS_KEY environment variable to the value of the corresponding environment variable
+      S3_SECRET_KEY   #the S3_SECRET_KEY environment variable is not set here and needs to be set in another file or via the command line

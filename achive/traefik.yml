@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  traefik:
+    image: traefik:v2.5
+    command:
+      #tell Traefik to listen to Docker events so that it can dynamically discover services
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      #enable the Traefik dashboard, which is accessible at http://localhost:8080/dashboard/
+      - "--api.dashboard=true"
+      #enable the API endpoint, which can be used to configure Traefik dynamically
+      - "--api=true"
+      #enable HTTPS redirection for all incoming HTTP requests
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      #enable SSL/TLS termination for incoming HTTPS requests
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
+    ports:
+      #expose the Traefik dashboard at http://localhost:8080/dashboard/
+      - "8080:8080"
+      #expose the HTTPS endpoint
+      - "443:443"
+    volumes:
+      #mount the Docker socket so that Traefik can listen to Docker events
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      #mount the Traefik configuration file
+      - "./traefik.yml:/traefik.yml:ro"
+      #mount the SSL/TLS certificates
+      - "./certs:/certs:ro"
+    #set the network mode to "bridge"
+    network_mode: bridge
+    #set the container name to "traefik"
+    container_name: traefik

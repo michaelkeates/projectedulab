@@ -25,6 +25,7 @@ query unanswered_questions {
 `
 ;
 
+
 export const CREATE_NEW_QUESTION = gql`
 mutation create_new_question(
   $question: String!
@@ -44,6 +45,7 @@ mutation create_new_question(
 `
 ;
 
+
 export const SUBMIT_ANSWER = gql`
 mutation submit_question($answer_id: uuid, $question_id: uuid) {
   insert_auth_users_answers_one(
@@ -54,6 +56,7 @@ mutation submit_question($answer_id: uuid, $question_id: uuid) {
 }
 `
 ;
+
 
 export const RESTART_QUIZ = gql`
 mutation restartQuiz {
