@@ -1,4 +1,4 @@
-//pages/sign-up/email-password.tsx
+// Importing necessary modules and components from Next.js, React, Mantine, Chakra UI, and nhost
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
@@ -15,13 +15,18 @@ import { Flex, HStack, Text, Button } from "@chakra-ui/react";
 import AuthLink from "../../components/AuthLink";
 import SignUpLayout from "../../layouts/SignUpLayout";
 
+//define a Next.js functional component called SignUpPasswordPage
 export const SignUpPasswordPage: NextPage = () => {
+  //using Next.js useRouter hook to access the router object
   const router = useRouter();
+  //using nhost's useSignUpEmailPassword hook to get the signUpEmailPassword function
   const { signUpEmailPassword } = useSignUpEmailPassword();
+  //using useState hook to manage state for email, password, confirmPassword, and emailVerificationToggle
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailVerificationToggle, setEmailVerificationToggle] = useState(false);
+  //using useMemo hook to check if the password and confirmPassword match
   const differentPassword = useMemo(
     () =>
       password &&
@@ -29,20 +34,26 @@ export const SignUpPasswordPage: NextPage = () => {
       "Should match the given password",
     [password, confirmPassword]
   );
+  //define a signUp function to handle user sign up
   const signUp = async () => {
+    //using nhost's signUpEmailPassword function to sign up the user with the email and password provided
     const result = await signUpEmailPassword(email, password);
+    //display an error notification if the sign up process encounters an error
     if (result.isError) {
       showNotification({
         color: "red",
         title: "Error",
         message: result.isError,
       });
+    //display a verification email modal if the user needs to verify their email address
     } else if (result.needsEmailVerification) {
       setEmailVerificationToggle(true);
+    //redirect the user to the home page if sign up is successful
     } else {
       router.replace("/");
     }
   };
+  //return JSX to render the sign up page UI
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={10}>
       <Flex
@@ -56,7 +67,9 @@ export const SignUpPasswordPage: NextPage = () => {
         position="relative"
         borderRadius="3xl"
       >
+        {/*rendering a sign up layout component*/}
         <SignUpLayout>
+          {/*rendering a verification email modal*/}
           <Modal
             title="Verification email sent"
             transition="fade"
@@ -74,6 +87,7 @@ export const SignUpPasswordPage: NextPage = () => {
             <Text fontSize={{ base: "6vw", md: 30 }} color="gray.600">
               Signup
             </Text>
+            {/* Form inputs for email, password, and confirm password */}
             <TextInput
               type="email"
               placeholder="Email Address"
@@ -91,6 +105,7 @@ export const SignUpPasswordPage: NextPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
+            {/* Signup button and link to go back to sign-in page */}
             <SimpleGrid cols={1} spacing={6}>
               <Button colorScheme="green" onClick={signUp}>
                 Signup

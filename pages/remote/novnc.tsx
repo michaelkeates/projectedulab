@@ -1,11 +1,11 @@
 import NextLink from "next/link";
-import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton, Text, Grid } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../../components/Sidebar";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import type { NextPage } from "next";
+import { authProtected } from "../../components/protected-route";
 
 const DynamicComponent = dynamic(
   //import the vncclient component
@@ -16,12 +16,7 @@ const DynamicComponent = dynamic(
   }
 );
 
-type LayoutProps = {
-  title: string;
-  // Other props go here
-};
-
-const Home: NextPage = () => {
+const noVNC: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={10}>
@@ -59,13 +54,12 @@ const Home: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Text fontSize={100} color="gray.300">
-          Welcome
-        </Text>
-        <DynamicComponent />
+        <Box maxW="800px" maxH="500px">
+          <DynamicComponent />
+        </Box>
       </Flex>
     </HStack>
   );
 };
 
-export default Home;
+export default authProtected(noVNC);

@@ -46,18 +46,21 @@ function App() {
     }
   };
 
-  //declare the function to handle the fullscreen button
   const handleFullScreenClick = () => {
     const elem = document.getElementById("vnc-screen-container");
     if (elem) {
-      if (!fullscreen) {
-        elem.requestFullscreen();
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch((err) => {
+          console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+        setFullscreen(true);
       } else {
         document.exitFullscreen();
+        setFullscreen(false);
       }
-      setFullscreen(!fullscreen);
     }
   };
+  
 
   //display the buttons using good ole div
   return (
