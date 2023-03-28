@@ -23,11 +23,11 @@ export const SignInPage: NextPage = () => {
         position="relative"
         borderRadius="3xl"
       >
-        <Text fontSize={{ base: "6vw", md: 90 }} color="gray.300">
+        <Text fontSize={{ base: "8vw", md: 90 }} color="gray.300">
           Welcome
         </Text>
         <Text
-          fontSize={20}
+          fontSize={{ base: "3vw", md: 20 }}
           color="gray.300"
           marginBottom="2%"
           textAlign="center"

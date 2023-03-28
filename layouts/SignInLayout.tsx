@@ -1,31 +1,36 @@
-import Link from 'next/link'
+//layouts/SignInLayout.tsx
 
-import { Anchor, Center, Text } from '@mantine/core'
-import { useSignInAnonymous } from '@nhost/nextjs'
+import Link from "next/link"; //import the Link component from the Next.js framework
+import { Anchor, Center, Text } from "@mantine/core"; //import Anchor, Center, and Text components from Mantine UI
+import AuthLayout from "./AuthLayout"; //import the AuthLayout component from a local file
 
-import AuthLayout from './AuthLayout'
-
-export const SignInLayout: React.FC<{ title?: string; children: React.ReactNode }> = (props) => {
-  const { signInAnonymous } = useSignInAnonymous()
-  const signIn = async () => {
-    await signInAnonymous()
-    // TODO capture errors
-  }
+//define a new React function component called SignInLayout
+export const SignInLayout: React.FC<{
+  title?: string;
+  children: React.ReactNode;
+}> = (props) => {
   return (
     <AuthLayout
-      {...props}
+      {...props} //pass all the props to the AuthLayout component
       footer={
+        //render a footer with a text and a Link component to the sign-up page
         <Center>
+          {" "}
+          {/*render the children of the Center component in the center */}
           <Text>
-            Don&lsquo;t have an account?{' '}
-            <Anchor component={Link} href="/sign-up">
-              Sign up
+            {" "}
+            {/*render a Text component */}
+            Don&lsquo;t have an account? {/*display a text string beneath the text input*/}
+            <Anchor component={Link} href="/sign-up/email-password">
+              {" "}
+              {/*render an Anchor component that links to the sign-up page*/}
+              Sign up {/*display a text string*/}
             </Anchor>
           </Text>
         </Center>
       }
     />
-  )
-}
+  );
+};
 
-export default SignInLayout
+export default SignInLayout; //export the SignInLayout component as the default export of the module

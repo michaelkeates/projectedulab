@@ -1,7 +1,7 @@
+//pages/sign-up/email-password.tsx
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
-
 import {
   Divider,
   Modal,
@@ -11,9 +11,7 @@ import {
 } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useSignUpEmailPassword } from "@nhost/nextjs";
-
-import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
-
+import { Flex, HStack, Text, Button } from "@chakra-ui/react";
 import AuthLink from "../../components/AuthLink";
 import SignUpLayout from "../../layouts/SignUpLayout";
 
@@ -34,11 +32,11 @@ export const SignUpPasswordPage: NextPage = () => {
   const signUp = async () => {
     const result = await signUpEmailPassword(email, password);
     if (result.isError) {
-      //showNotification({
-      //  color: 'red',
-      //  title: 'Error',
-      //  message: result.error.message2
-      //})
+      showNotification({
+        color: "red",
+        title: "Error",
+        message: result.isError,
+      });
     } else if (result.needsEmailVerification) {
       setEmailVerificationToggle(true);
     } else {
@@ -58,7 +56,7 @@ export const SignUpPasswordPage: NextPage = () => {
         position="relative"
         borderRadius="3xl"
       >
-        <SignUpLayout title="Signup">
+        <SignUpLayout>
           <Modal
             title="Verification email sent"
             transition="fade"
@@ -73,6 +71,9 @@ export const SignUpPasswordPage: NextPage = () => {
             your email address and to complete your registration.
           </Modal>
           <SimpleGrid cols={1} spacing={6}>
+            <Text fontSize={{ base: "6vw", md: 30 }} color="gray.600">
+              Signup
+            </Text>
             <TextInput
               type="email"
               placeholder="Email Address"
@@ -91,10 +92,10 @@ export const SignUpPasswordPage: NextPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <SimpleGrid cols={1} spacing={6}>
-              <Button onClick={signUp}>
+              <Button colorScheme="green" onClick={signUp}>
                 Signup
               </Button>
-              <AuthLink link="/sign-up" variant="white">
+              <AuthLink link="/sign-in" variant="white">
                 &#8592; Go Back
               </AuthLink>
             </SimpleGrid>

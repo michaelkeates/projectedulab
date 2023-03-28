@@ -60,7 +60,7 @@ const Quiz: NextPage = () => {
         (answers) => answers.answer === selectedOption
       );
       if (answer && answer.is_correct) {
-        // add this check
+        //add this check
         setScore(score + 1);
       }
       if (currentIndex + 1 > auth_unanswered_questions.length - 1) {
