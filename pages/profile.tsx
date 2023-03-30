@@ -2,7 +2,15 @@ import type { NextPage } from "next";
 import { useState } from "react";
 
 import { Input, Title } from "@mantine/core";
-import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  Text,
+  Button,
+  Stack,
+} from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
 import {
@@ -23,7 +31,7 @@ const Home: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
   const isAuthenticated = useAuthenticated();
   //const [email] = useState("");
-  const [email] = useState("your current email")
+  const [email] = useState("your current email");
   const [password] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -35,22 +43,6 @@ const Home: NextPage = () => {
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Flex
-        as="aside"
-        w="full"
-        h="full"
-        maxW={collapse ? 300 : 0}
-        bg="white"
-        alignItems="start"
-        padding={6}
-        flexDirection="column"
-        justifyContent="space-between"
-        transition="max-width ease-in-out .2s"
-        borderRadius="3xl"
-        //hidden={collapse}
-      >
-        <Sidebar collapse={collapse}/>
-      </Flex>
-      <Flex
         as="main"
         w="full"
         h="full"
@@ -61,14 +53,16 @@ const Home: NextPage = () => {
         position="relative"
         borderRadius="3xl"
       >
-        <IconButton
-          aria-label="Menu Colapse"
-          icon={<MdMenu />}
+        <Stack
+          direction="column"
+          spacing={4}
+          align="center"
           position="absolute"
           top={6}
           left={6}
-          onClick={() => setCollapse(!collapse)}
-        />
+        >
+          <Sidebar collapse={collapse} />
+        </Stack>
         <Text fontSize={100} color="gray.300">
           Welcome
         </Text>

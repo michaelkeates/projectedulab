@@ -10,6 +10,7 @@ import {
   Button,
   Grid,
   Center,
+  Stack,
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { useAuthenticated } from "@nhost/nextjs";
@@ -71,22 +72,6 @@ const Quiz: NextPage = () => {
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Flex
-        as="aside"
-        w="full"
-        h="full"
-        maxW={collapse ? 300 : 0}
-        bg="white"
-        alignItems="start"
-        padding={6}
-        flexDirection="column"
-        justifyContent="space-between"
-        transition="max-width ease-in-out .2s"
-        borderRadius="3xl"
-        //hidden={collapse}
-      >
-        <Sidebar collapse={collapse} />
-      </Flex>
-      <Flex
         as="main"
         w="full"
         h="full"
@@ -96,16 +81,17 @@ const Quiz: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        p={{ base: "2", md: "10" }} // adjust padding based on screen size
       >
-        <IconButton
-          aria-label="Menu Colapse"
-          icon={<MdMenu />}
+        <Stack
+          direction="column"
+          spacing={4}
+          align="center"
           position="absolute"
           top={6}
           left={6}
-          onClick={() => setCollapse(!collapse)}
-        />
+        >
+          <Sidebar collapse={collapse} />
+        </Stack>
         {isAuthenticated && (
           <ul>
             <Box>
