@@ -7,6 +7,7 @@ import type { NextPage } from "next";
 import { authProtected } from "../../components/protected-route";
 // Import the ClipboardInputBox component
 import ClipboardInputBox from "../../components/vncclient/clipboardinputbox";
+import { useMediaQuery } from "@chakra-ui/react";
 
 const DynamicComponent = dynamic(
   //import the vncclient component
@@ -19,6 +20,7 @@ const DynamicComponent = dynamic(
 
 const noVNC: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   // Declare a state variable to hold the text from the clipboard
   //const [clipboardText, setClipboardText] = useState("");
   return (
@@ -27,7 +29,7 @@ const noVNC: NextPage = () => {
         as="aside"
         w="full"
         h="full"
-        maxW={collapse ? 350 : 100}
+        maxW={isLargerThan768 ? (collapse ? 350 : 100) : 0}
         bg="white"
         alignItems="start"
         padding={6}
@@ -35,6 +37,7 @@ const noVNC: NextPage = () => {
         justifyContent="space-between"
         transition="ease-in-out .2s"
         borderRadius="3xl"
+        className={!isLargerThan768 && collapse ? "sidebar-collapsed" : ""}
       >
         <Sidebar collapse={collapse} />
       </Flex>
@@ -57,7 +60,7 @@ const noVNC: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Box maxW="800px" maxH="500px">
+        <Box maxW="800px" maxH="500px" w="full" h="100vh">
           <DynamicComponent />
           {/* Render the ClipboardInputBox component with the onClipboard prop */}
           {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}

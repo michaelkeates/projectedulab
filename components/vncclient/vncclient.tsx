@@ -5,6 +5,8 @@ import {
   Button,
   Grid,
 } from "@chakra-ui/react";
+import {fullscreen} from "fullscreen-polyfill"; //added to allow full screen on a mobile device
+
 
 function App() {
   //declare the url to connect to as a state variable
@@ -59,7 +61,7 @@ function App() {
         setFullscreen(false);
       }
     }
-  };
+  };  
   
 
   //display the buttons using good ole div

@@ -10,6 +10,5 @@ export const Sidebar = ({ collapse }) => (
       <Logo collapse={collapse} />
       <Navigation collapse={collapse} />
     </Box>
-    <AvatarBox collapse={collapse} />
   </React.Fragment>
 );
