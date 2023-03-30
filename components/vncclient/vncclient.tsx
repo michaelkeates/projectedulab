@@ -22,11 +22,6 @@ function App() {
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  //declare the spacer component to add space between buttons
-  const Spacer = () => (
-    <div style={{ width: "2rem", display: "inline-block" }} />
-  );
-
   //declare the function to check if the url is valid else return false
   //wss is like https but for websockets and ws is like http but for websockets
   const isValid = (vncUrl: string) => {
@@ -51,36 +46,11 @@ function App() {
     }
   };
 
-  const handleFullScreenClick = () => {
-    const elem = document.getElementById("vnc-screen-container");
-    if (elem) {
-      if (!document.fullscreenElement) {
-        elem.requestFullscreen().catch((err) => {
-          console.log(
-            `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
-          );
-        });
-        setIsFullScreen(true);
-      } else {
-        document.exitFullscreen();
-        setIsFullScreen(false);
-      }
-    }
-
-    document.addEventListener("fullscreenchange", () => {
-      if (document.fullscreenElement) {
-        setFullscreen(true);
-      } else {
-        setFullscreen(false);
-      }
-    });
-  };
-
   //display the buttons using good ole div
   return (
     <>
-      <div>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} marginTop="-25px">
+      {/*<div>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} marginTop="-25px" marginBottom="25px">
           <IconButton
             variant="ghost"
             aria-label="search"
@@ -98,15 +68,15 @@ function App() {
             onClick={handleFullScreenClick}
           />
         </Grid>
-      </div>
+  </div>*/}
 
-      <div id="vnc-screen-container">
+
         {isValid(url) ? (
           //if url is valid, display the vnc screen with styling, else display a message
           <VncScreen
             url={url}
-            scaleViewport
-            background="#ffffff"
+            background="white"
+            scaleViewport={true}
             style={{
               //width: "700px",
               width: "100%",
@@ -122,7 +92,7 @@ function App() {
         ) : (
           <div>VNC URL not provided.</div>
         )}
-      </div>
+
     </>
   );
 }
