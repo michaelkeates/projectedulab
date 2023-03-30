@@ -1,9 +1,17 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-
-import { Input, Title } from "@mantine/core";
-import { Box, Flex, HStack, IconButton, Text, Button } from "@chakra-ui/react";
-import { Md10Mp, MdMenu } from "react-icons/md";
+import NextLink from "next/link";
+import { Title } from "@mantine/core";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  Text,
+  Button,
+  Grid,
+} from "@chakra-ui/react";
+import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
 
 import { authProtected } from "../components/protected-route";
@@ -13,22 +21,22 @@ import { authProtected } from "../components/protected-route";
 const Home: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
   return (
-    <HStack w="full" h="100vh" bg="gray.100" padding={10}>
+    <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Flex
         as="aside"
         w="full"
         h="full"
-        maxW={collapse ? 350 : 100}
+        maxW={collapse ? 300 : 0}
         bg="white"
         alignItems="start"
         padding={6}
         flexDirection="column"
         justifyContent="space-between"
-        transition="ease-in-out .2s"
+        transition="max-width ease-in-out .2s"
         borderRadius="3xl"
         //hidden={collapse}
       >
-        <Sidebar collapse={collapse} />
+        <Sidebar collapse={collapse}/>
       </Flex>
       <Flex
         as="main"
@@ -62,8 +70,64 @@ const Home: NextPage = () => {
           padding="15px;"
           textColor="white"
         >
-          Hi! I've got nothing to show you here. Please go to the profile page.
+          Hi! Select one of the options below to get started.
         </Box>
+        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+          <Box
+            borderRadius="lg"
+            mb={6}
+            p={3}
+            textAlign="center"
+            bg="blue.400"
+            css={{ backdropFilter: "blur(10px)" }}
+            padding="15px;"
+            textColor="white"
+          >
+            <Title order={3}>Create Quiz</Title>
+            <br></br>
+            <NextLink href="create" passHref>
+              <Button colorScheme="blue" width="100%" marginBottom="5%">
+                Let's Go!
+              </Button>
+            </NextLink>
+          </Box>
+          <Box
+            borderRadius="lg"
+            mb={6}
+            p={3}
+            textAlign="center"
+            bg="red.400"
+            css={{ backdropFilter: "blur(10px)" }}
+            padding="15px;"
+            textColor="white"
+          >
+            <Title order={3}>Take Quiz</Title>
+            <br></br>
+            <NextLink href="quiz" passHref>
+              <Button colorScheme="red" width="100%" marginBottom="5%">
+                Let's Go!
+              </Button>
+            </NextLink>
+          </Box>
+          <Box
+            borderRadius="lg"
+            mb={6}
+            p={3}
+            textAlign="center"
+            bg="orange.400"
+            css={{ backdropFilter: "blur(10px)" }}
+            padding="15px;"
+            textColor="white"
+          >
+            <Title order={3}>Virtual Machines</Title>
+            <br></br>
+            <NextLink href="remote/novnc" passHref>
+              <Button colorScheme="orange" width="100%" marginBottom="5%">
+                Let's Go!
+              </Button>
+            </NextLink>
+          </Box>
+        </Grid>
       </Flex>
     </HStack>
   );

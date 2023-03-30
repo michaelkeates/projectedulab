@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 
-import { Title } from "@mantine/core";
 import {
   Box,
   Flex,
@@ -9,13 +8,10 @@ import {
   IconButton,
   Text,
   Button,
-  Input,
-  Radio,
-  Stack,
+  Grid,
   Center,
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
-import { Sidebar } from "../components/Sidebar";
 import { useAuthenticated } from "@nhost/nextjs";
 import { useAuthQuery } from "@nhost/react-apollo";
 
@@ -51,80 +47,104 @@ const Quiz: NextPage = () => {
 
   if (loading) return <Text>Loading...</Text>;
   //if (data.auth_unanswered_questions.length > 1) {
-    const { auth_unanswered_questions } = data;
-    const currentQuestion = auth_unanswered_questions[currentIndex];
-    if (!currentQuestion) return null; // add this line
-    const onNextClicked = (selectedOption) => {
-      const currentAnswers = currentQuestion.question_answers;
-      const answer = currentAnswers.find(
-        (answers) => answers.answer === selectedOption
-      );
-      if (answer && answer.is_correct) {
-        //add this check
-        setScore(score + 1);
-      }
-      if (currentIndex + 1 > auth_unanswered_questions.length - 1) {
-        setShowFinished(true);
-        return;
-      }
-      setCurrentIndex(currentIndex + 1);
-    };
-
-    return (
-      <HStack w="full" h="100vh" bg="gray.100" padding={10}>
-        <Flex
-          as="main"
-          w="full"
-          h="full"
-          bg="white"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-          position="relative"
-          borderRadius="3xl"
-        >
-          <IconButton
-            aria-label="Menu Colapse"
-            icon={<MdMenu />}
-            position="absolute"
-            top={6}
-            left={6}
-          />
-          {isAuthenticated && (
-            <ul>
-              <Box>
-                {showFinished ? (
-                  <Results
-                    score={score}
-                    numOfQuestions={auth_unanswered_questions.length}
-                  />
-                ) : (
-                  <Box>
-                    <Question
-                      onNextClicked={onNextClicked}
-                      question={currentQuestion}
-                      key={currentQuestion.id}
-                    />
-                  </Box>
-                )}
-                {showFinished ? (
-                  <Flex mt={8}>
-                    <Button width="50%" variant="outline" onClick={resetQuiz}>
-                      Try Again
-                    </Button>
-                  </Flex>
-                ) : (
-                  <Text textAlign="left">
-                    {currentIndex + 1} / {auth_unanswered_questions.length}
-                  </Text>
-                )}
-              </Box>
-            </ul>
-          )}
-        </Flex>
-      </HStack>
+  const { auth_unanswered_questions } = data;
+  const currentQuestion = auth_unanswered_questions[currentIndex];
+  if (!currentQuestion) return null; // add this line
+  const onNextClicked = (selectedOption) => {
+    const currentAnswers = currentQuestion.question_answers;
+    const answer = currentAnswers.find(
+      (answers) => answers.answer === selectedOption
     );
-  }
+    if (answer && answer.is_correct) {
+      //add this check
+      setScore(score + 1);
+    }
+    if (currentIndex + 1 > auth_unanswered_questions.length - 1) {
+      setShowFinished(true);
+      return;
+    }
+    setCurrentIndex(currentIndex + 1);
+  };
+
+  return (
+    <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
+      <Flex
+        as="main"
+        w="full"
+        h="full"
+        bg="white"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        position="relative"
+        borderRadius="3xl"
+        p={{ base: "2", md: "10" }} // adjust padding based on screen size
+      >
+        <IconButton
+          aria-label="Menu Colapse"
+          icon={<MdMenu />}
+          position="absolute"
+          top={6}
+          left={6}
+        />
+        {isAuthenticated && (
+          <ul>
+            <Box>
+              {showFinished ? (
+                <Results
+                  score={score}
+                  numOfQuestions={auth_unanswered_questions.length}
+                />
+              ) : (
+                <Box>
+                  <Question
+                    onNextClicked={onNextClicked}
+                    question={currentQuestion}
+                    key={currentQuestion.id}
+                  />
+                </Box>
+              )}
+              {showFinished ? (
+                <Grid templateColumns="repeat(2, 1fr)" gap={4} mt={8}>
+                  <Button width="100%" variant="outline" onClick={resetQuiz}>
+                    Try Again
+                  </Button>
+                  <Button
+                    width="100%"
+                    colorScheme="red"
+                    as="a"
+                    href="/"
+                    marginLeft="2"
+                  >
+                    Cancel
+                  </Button>
+                </Grid>
+              ) : (
+                <Center mt={8} mb={4}>
+                  <Text textAlign="center">
+                    Question: {currentIndex + 1} /{" "}
+                    {auth_unanswered_questions.length}
+                  </Text>
+                </Center>
+              )}
+            </Box>
+            <Grid templateColumns="repeat(1, 1fr)" gap={4} mt={8}>
+              <Button
+                width="100%"
+                colorScheme="red"
+                as="a"
+                href="/"
+                marginLeft="2"
+              >
+                Cancel
+              </Button>
+            </Grid>
+          </ul>
+        )}
+      </Flex>
+    </HStack>
+  );
+};
 //};
 
 export default authProtected(Quiz);

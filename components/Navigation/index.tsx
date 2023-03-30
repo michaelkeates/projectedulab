@@ -1,4 +1,12 @@
-import { IconProps, List, ListItem, Text, Button } from "@chakra-ui/react";
+import {
+  IconProps,
+  List,
+  ListItem,
+  Text,
+  Button,
+  IconButton,
+  Flex,
+} from "@chakra-ui/react";
 import {
   MdOutlineSpaceDashboard,
   MdOutlineShoppingBag,
@@ -13,45 +21,76 @@ import {
 import { NavItem } from "./NavItem";
 import { useAuthenticated, useSignOut } from "@nhost/nextjs";
 import NextLink from "next/link";
+import { AiOutlineSearch, AiFillHome, AiFillQuestionCircle, AiTwotoneSnippets, AiTwotoneExperiment, AiTwotoneSetting, AiOutlineLogout } from "react-icons/ai";
+import { BiSquareRounded } from "react-icons/bi";
 
 export const Navigation = ({ collapse }) => {
   const isAuthenticated = useAuthenticated();
   const { signOut } = useSignOut();
 
   return (
-    <List w="full" my={8}>
-      <ListItem>
+    <Flex
+      w="full"
+      alignItems="center"
+      justifyContent="space-between"
+      flexDirection={collapse ? "column" : "column"}
+      gap={4}
+      paddingTop="15px"
+    >
       <NextLink href="/" passHref>
-          <Button colorScheme="blue" width="100%" marginBottom="5%">
-            Home
-          </Button>
-        </NextLink>
-        <NextLink href="/create" passHref>
-          <Button colorScheme="blue" width="100%" marginBottom="5%">
-            Create Quiz
-          </Button>
-        </NextLink>
-        <NextLink href="/quiz" passHref>
-          <Button colorScheme="blue" width="100%" marginBottom="5%">
-            Take Quiz
-          </Button>
-        </NextLink>
-        <NextLink href="/remote/novnc" passHref>
-          <Button colorScheme="blue" width="100%" marginBottom="5%">
-            Virtual Machines
-          </Button>
-        </NextLink>
-        <NextLink href="/profile" passHref>
-          <Button colorScheme="blue" width="100%" marginBottom="5%">
-            Settings
-          </Button>
-        </NextLink>
-        {isAuthenticated && (
-          <Button colorScheme="red" onClick={signOut} width="100%">
-            Logout
-          </Button>
-        )}
-      </ListItem>
-    </List>
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiFillHome />}
+          fontSize={26}
+          color="green.400"
+        />
+      </NextLink>
+      <NextLink href="/create" passHref>
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiFillQuestionCircle />}
+          fontSize={26}
+          color="green.400"
+        />
+      </NextLink>
+      <NextLink href="/quiz" passHref>
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiTwotoneSnippets />}
+          fontSize={26}
+          color="green.400"
+        />
+      </NextLink>
+      <NextLink href="/remote/novnc" passHref>
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiTwotoneExperiment />}
+          fontSize={26}
+          color="green.400"
+        />
+      </NextLink>
+      <NextLink href="/profile" passHref>
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiTwotoneSetting />}
+          fontSize={26}
+          color="green.400"
+        />
+      </NextLink>
+      {isAuthenticated && (
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiOutlineLogout />}
+          fontSize={26}
+          color="red.400"
+        />
+      )}
+    </Flex>
   );
 };
