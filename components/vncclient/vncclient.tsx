@@ -1,8 +1,16 @@
 //import needed modules/dependencies including react-vnc
 import React, { useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
-import { Button, Grid } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Button, Grid, IconButton } from "@chakra-ui/react";
+import {
+  AiOutlineSearch,
+  AiFillHome,
+  AiFillQuestionCircle,
+  AiTwotoneSnippets,
+  AiTwotoneExperiment,
+  AiTwotoneSetting,
+  AiOutlineLogout,
+} from "react-icons/ai";
 
 function App() {
   //declare the url to connect to as a state variable
@@ -71,39 +79,34 @@ function App() {
   //display the buttons using good ole div
   return (
     <>
-
-        {/*<Grid templateColumns="repeat(2, 1fr)" gap={6}>
-          <Button
+      <div>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} marginTop="-25px">
+          <IconButton
+            variant="ghost"
+            aria-label="search"
+            icon={<AiTwotoneSetting />}
+            fontSize={26}
+            color="blackAlpha.400"
             onClick={handleConnectClick}
-            colorScheme="blue"
-            width="100%"
-            marginBottom="5%"
-          >
-            {connected ? "Disconnect" : "Disconnect"}
-          </Button>
-         <Button
-            //onClick={handleFullScreenClick}
-            colorScheme="red"
-            width="100%"
-            marginBottom="5%"
-          >
-  Full Screen
-  </Button>
-          <NextLink href="fullscreen" passHref>
-            <Button colorScheme="red" width="100%" marginBottom="5%">
-              FullScreen
-            </Button>
-          </NextLink>
-  </Grid>*/}
+          />
+          <IconButton
+            variant="ghost"
+            aria-label="search"
+            icon={<AiTwotoneSetting />}
+            fontSize={26}
+            color="blackAlpha.400"
+            onClick={handleFullScreenClick}
+          />
+        </Grid>
+      </div>
 
-
-
+      <div id="vnc-screen-container">
         {isValid(url) ? (
           //if url is valid, display the vnc screen with styling, else display a message
           <VncScreen
             url={url}
             scaleViewport
-            background="#000000"
+            background="#ffffff"
             style={{
               //width: "700px",
               width: "100%",
@@ -119,7 +122,7 @@ function App() {
         ) : (
           <div>VNC URL not provided.</div>
         )}
-
+      </div>
     </>
   );
 }

@@ -60,18 +60,16 @@ const noVNC: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Flex flexDirection="column" align="center">
-          <Box
-            maxW={{ base: "100%", sm: "500px", md: "800px", lg: "1000px" }}
-            maxH={{ base: "auto", sm: "250px", md: "450px", lg: "600px" }}
-            w="full"
-            h="100vh"
-          >
-            <DynamicComponent />
-            {/* Render the ClipboardInputBox component with the onClipboard prop */}
-            {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}
-          </Box>
-        </Flex>
+        <Box
+          maxW={{ base: "100%", sm: "500px", md: "800px", lg: "90%" }}
+          maxH={{ base: "auto", sm: "250px", md: "450px", lg: "90%" }}
+          w="full"
+          h="full"
+        >
+          <DynamicComponent />
+          {/* Render the ClipboardInputBox component with the onClipboard prop */}
+          {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}
+        </Box>
       </Flex>
     </HStack>
   );

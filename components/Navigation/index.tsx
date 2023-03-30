@@ -21,7 +21,15 @@ import {
 import { NavItem } from "./NavItem";
 import { useAuthenticated, useSignOut } from "@nhost/nextjs";
 import NextLink from "next/link";
-import { AiOutlineSearch, AiFillHome, AiFillQuestionCircle, AiTwotoneSnippets, AiTwotoneExperiment, AiTwotoneSetting, AiOutlineLogout } from "react-icons/ai";
+import {
+  AiOutlineSearch,
+  AiFillHome,
+  AiFillQuestionCircle,
+  AiTwotoneSnippets,
+  AiTwotoneExperiment,
+  AiTwotoneSetting,
+  AiOutlineLogout,
+} from "react-icons/ai";
 import { BiSquareRounded } from "react-icons/bi";
 
 export const Navigation = ({ collapse }) => {
@@ -73,16 +81,15 @@ export const Navigation = ({ collapse }) => {
           color="orange.400"
         />
       </NextLink>
-      <NextLink href="/profile" passHref>
-        <IconButton
-          variant="ghost"
-          aria-label="search"
-          icon={<AiTwotoneSetting />}
-          fontSize={26}
-          color="blackAlpha.400"
-        />
-      </NextLink>
-      {isAuthenticated && (
+        <NextLink href="/profile" passHref>
+          <IconButton
+            variant="ghost"
+            aria-label="search"
+            icon={<AiTwotoneSetting />}
+            fontSize={26}
+            color="blackAlpha.400"
+          />
+        </NextLink>
         <IconButton
           variant="ghost"
           aria-label="search"
@@ -91,7 +98,6 @@ export const Navigation = ({ collapse }) => {
           color="red.400"
           onClick={signOut}
         />
-      )}
     </Flex>
   );
 };
