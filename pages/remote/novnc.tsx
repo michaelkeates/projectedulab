@@ -1,13 +1,10 @@
 import { Box, Flex, HStack, IconButton } from "@chakra-ui/react";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdFullscreen } from "react-icons/md";
 import { Sidebar } from "../../components/Sidebar";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { NextPage } from "next";
 import { authProtected } from "../../components/protected-route";
-// Import the ClipboardInputBox component
-import ClipboardInputBox from "../../components/vncclient/clipboardinputbox";
-import { useMediaQuery } from "@chakra-ui/react";
 
 const DynamicComponent = dynamic(
   //import the vncclient component
@@ -20,9 +17,15 @@ const DynamicComponent = dynamic(
 
 const noVNC: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
-  // Declare a state variable to hold the text from the clipboard
-  //const [clipboardText, setClipboardText] = useState("");
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  const handleFullscreenClick = () => {
+    const mainElement = mainRef.current;
+    if (mainElement) {
+      mainElement.requestFullscreen();
+    }
+  };
+
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Flex
@@ -51,14 +54,23 @@ const noVNC: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
+        ref={mainRef}
       >
         <IconButton
-          aria-label="Menu Colapse"
+          aria-label="Menu Collapse"
           icon={<MdMenu />}
           position="absolute"
           top={6}
           left={6}
           onClick={() => setCollapse(!collapse)}
+        />
+        <IconButton
+          aria-label="Full Screen"
+          icon={<MdFullscreen />}
+          position="absolute"
+          top={6}
+          right={6}
+          onClick={handleFullscreenClick}
         />
         <Box
           maxW={{ base: "100%", sm: "500px", md: "800px", lg: "90%" }}
