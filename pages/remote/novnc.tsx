@@ -1,11 +1,12 @@
-import NextLink from "next/link";
-import { Box, Flex, HStack, IconButton, Text, Grid } from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../../components/Sidebar";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import type { NextPage } from "next";
 import { authProtected } from "../../components/protected-route";
+// Import the ClipboardInputBox component
+import ClipboardInputBox from "../../components/vncclient/clipboardinputbox";
 
 const DynamicComponent = dynamic(
   //import the vncclient component
@@ -18,6 +19,8 @@ const DynamicComponent = dynamic(
 
 const noVNC: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
+  // Declare a state variable to hold the text from the clipboard
+  //const [clipboardText, setClipboardText] = useState("");
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={10}>
       <Flex
@@ -56,6 +59,8 @@ const noVNC: NextPage = () => {
         />
         <Box maxW="800px" maxH="500px">
           <DynamicComponent />
+          {/* Render the ClipboardInputBox component with the onClipboard prop */}
+          {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}
         </Box>
       </Flex>
     </HStack>
