@@ -84,7 +84,7 @@ const Quiz: NextPage = () => {
         borderRadius="3xl"
         //hidden={collapse}
       >
-        <Sidebar collapse={collapse}/>
+        <Sidebar collapse={collapse} />
       </Flex>
       <Flex
         as="main"
@@ -124,18 +124,9 @@ const Quiz: NextPage = () => {
                 </Box>
               )}
               {showFinished ? (
-                <Grid templateColumns="repeat(2, 1fr)" gap={4} mt={8}>
+                <Grid templateColumns="repeat(1, 1fr)" gap={4} mt={4}>
                   <Button width="100%" variant="outline" onClick={resetQuiz}>
                     Try Again
-                  </Button>
-                  <Button
-                    width="100%"
-                    colorScheme="red"
-                    as="a"
-                    href="/"
-                    marginLeft="2"
-                  >
-                    Cancel
                   </Button>
                 </Grid>
               ) : (
@@ -147,17 +138,20 @@ const Quiz: NextPage = () => {
                 </Center>
               )}
             </Box>
-            <Grid templateColumns="repeat(1, 1fr)" gap={4} mt={8}>
-              <Button
-                width="100%"
-                colorScheme="red"
-                as="a"
-                href="/"
-                marginLeft="2"
-              >
-                Cancel
-              </Button>
-            </Grid>
+            <Box>
+              <Grid templateColumns="repeat(1, 1fr)" gap={4} mt={4}>
+                <Button
+                  width="100%"
+                  colorScheme="red"
+                  as="a"
+                  href="/"
+                  //error
+                  //marginLeft="2"
+                >
+                  Cancel
+                </Button>
+              </Grid>
+            </Box>
           </ul>
         )}
       </Flex>

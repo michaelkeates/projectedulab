@@ -39,7 +39,7 @@ const noVNC: NextPage = () => {
         borderRadius="3xl"
         //hidden={collapse}
       >
-        <Sidebar collapse={collapse}/>
+        <Sidebar collapse={collapse} />
       </Flex>
       <Flex
         as="main"
@@ -60,11 +60,18 @@ const noVNC: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Box maxW="800px" maxH="500px" w="full" h="100vh">
-          <DynamicComponent />
-          {/* Render the ClipboardInputBox component with the onClipboard prop */}
-          {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}
-        </Box>
+        <Flex flexDirection="column" align="center">
+          <Box
+            maxW={{ base: "100%", sm: "500px", md: "800px", lg: "1000px" }}
+            maxH={{ base: "auto", sm: "250px", md: "450px", lg: "600px" }}
+            w="full"
+            h="100vh"
+          >
+            <DynamicComponent />
+            {/* Render the ClipboardInputBox component with the onClipboard prop */}
+            {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}
+          </Box>
+        </Flex>
       </Flex>
     </HStack>
   );

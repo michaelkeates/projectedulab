@@ -35,7 +35,7 @@ export function Question({ question, onNextClicked }) {
 
   return (
     <Box>
-      <Text fontSize={{ base: "8vw", md: 60 }} color="gray.300">
+      <Text fontSize={{ base: "6vw", md: 60 }} color="gray.300">
         How many can you get right?
       </Text>
       {question && (
@@ -46,7 +46,7 @@ export function Question({ question, onNextClicked }) {
         </Box>
       )}
       <Flex flexDirection="column" justifyContent="center" mt={8}>
-        <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+        <Grid templateColumns="repeat(1, 1fr)" gap={4}>
           {question &&
             question.question_answers.map((option, index) => {
               return (

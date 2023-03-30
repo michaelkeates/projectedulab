@@ -61,8 +61,15 @@ function App() {
         setFullscreen(false);
       }
     }
-  };  
   
+    document.addEventListener("fullscreenchange", () => {
+      if (document.fullscreenElement) {
+        setFullscreen(true);
+      } else {
+        setFullscreen(false);
+      }
+    });
+  };
 
   //display the buttons using good ole div
   return (

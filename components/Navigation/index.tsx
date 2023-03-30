@@ -89,6 +89,7 @@ export const Navigation = ({ collapse }) => {
           icon={<AiOutlineLogout />}
           fontSize={26}
           color="red.400"
+          onClick={signOut}
         />
       )}
     </Flex>

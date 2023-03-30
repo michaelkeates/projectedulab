@@ -14,9 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { Sidebar } from "../components/Sidebar";
-import {
-  useAuthenticated,
-} from "@nhost/nextjs";
+import { useAuthenticated } from "@nhost/nextjs";
 
 import { authProtected } from "../components/protected-route";
 import { CREATE_NEW_QUESTION } from "../helpers";
@@ -106,7 +104,7 @@ const Home: NextPage = () => {
         borderRadius="3xl"
         //hidden={collapse}
       >
-        <Sidebar collapse={collapse}/>
+        <Sidebar collapse={collapse} />
       </Flex>
       <Flex
         as="main"
@@ -118,6 +116,7 @@ const Home: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
+        padding={{ base: 2, md: 5 }}
       >
         <IconButton
           aria-label="Menu Colapse"
@@ -127,7 +126,7 @@ const Home: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Text fontSize={50} color="gray.300">
+        <Text fontSize={{ base: "8vw", md: 50 }} color="gray.300">
           Create a new quiz Question!
         </Text>
         {isAuthenticated && (

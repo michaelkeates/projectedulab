@@ -57,8 +57,8 @@ const Home: NextPage = () => {
           left={6}
           onClick={() => setCollapse(!collapse)}
         />
-        <Text fontSize={80} color="gray.300">
-          Welcome!
+        <Text fontSize={{ base: "8vw", md: 80 }} color="gray.300">
+          Welcome
         </Text>
         <Box
           borderRadius="lg"
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
         >
           Hi! Select one of the options below to get started.
         </Box>
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={2}>
           <Box
             borderRadius="lg"
             mb={6}
