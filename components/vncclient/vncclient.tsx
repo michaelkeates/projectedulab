@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
 import { Button, Grid } from "@chakra-ui/react";
-import { fullscreen } from "fullscreen-polyfill"; //added to allow full screen on a mobile device
+import NextLink from "next/link";
 
 function App() {
   //declare the url to connect to as a state variable
@@ -71,28 +71,33 @@ function App() {
   //display the buttons using good ole div
   return (
     <>
-      <div style={{ margin: "1rem" }}>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+
+        {/*<Grid templateColumns="repeat(2, 1fr)" gap={6}>
           <Button
             onClick={handleConnectClick}
             colorScheme="blue"
             width="100%"
             marginBottom="5%"
           >
-            {connected ? "Disconnect" : "Connect"}
+            {connected ? "Disconnect" : "Disconnect"}
           </Button>
-          <Button
-            onClick={handleFullScreenClick}
+         <Button
+            //onClick={handleFullScreenClick}
             colorScheme="red"
             width="100%"
             marginBottom="5%"
           >
-            Full Screen
-          </Button>
-        </Grid>
-      </div>
+  Full Screen
+  </Button>
+          <NextLink href="fullscreen" passHref>
+            <Button colorScheme="red" width="100%" marginBottom="5%">
+              FullScreen
+            </Button>
+          </NextLink>
+  </Grid>*/}
 
-      <div style={{ margin: "1rem", height: "100%" }} id="vnc-screen-container">
+
+
         {isValid(url) ? (
           //if url is valid, display the vnc screen with styling, else display a message
           <VncScreen
@@ -114,7 +119,7 @@ function App() {
         ) : (
           <div>VNC URL not provided.</div>
         )}
-      </div>
+
     </>
   );
 }
