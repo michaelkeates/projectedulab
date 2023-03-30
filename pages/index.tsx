@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         borderRadius="3xl"
         //hidden={collapse}
       >
-        <Sidebar collapse={collapse}/>
+        <Sidebar collapse={collapse} />
       </Flex>
       <Flex
         as="main"

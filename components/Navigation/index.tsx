@@ -35,7 +35,7 @@ export const Navigation = ({ collapse }) => {
       justifyContent="space-between"
       flexDirection={collapse ? "column" : "column"}
       gap={4}
-      paddingTop="15px"
+      paddingTop="55px"
     >
       <NextLink href="/" passHref>
         <IconButton
@@ -43,7 +43,7 @@ export const Navigation = ({ collapse }) => {
           aria-label="search"
           icon={<AiFillHome />}
           fontSize={26}
-          color="green.400"
+          color="yellow.400"
         />
       </NextLink>
       <NextLink href="/create" passHref>
@@ -52,7 +52,7 @@ export const Navigation = ({ collapse }) => {
           aria-label="search"
           icon={<AiFillQuestionCircle />}
           fontSize={26}
-          color="green.400"
+          color="blue.400"
         />
       </NextLink>
       <NextLink href="/quiz" passHref>
@@ -61,7 +61,7 @@ export const Navigation = ({ collapse }) => {
           aria-label="search"
           icon={<AiTwotoneSnippets />}
           fontSize={26}
-          color="green.400"
+          color="red.400"
         />
       </NextLink>
       <NextLink href="/remote/novnc" passHref>
@@ -70,7 +70,7 @@ export const Navigation = ({ collapse }) => {
           aria-label="search"
           icon={<AiTwotoneExperiment />}
           fontSize={26}
-          color="green.400"
+          color="orange.400"
         />
       </NextLink>
       <NextLink href="/profile" passHref>
@@ -79,7 +79,7 @@ export const Navigation = ({ collapse }) => {
           aria-label="search"
           icon={<AiTwotoneSetting />}
           fontSize={26}
-          color="green.400"
+          color="blackAlpha.400"
         />
       </NextLink>
       {isAuthenticated && (

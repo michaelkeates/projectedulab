@@ -91,21 +91,22 @@ const Home: NextPage = () => {
   };
 
   return (
-    <HStack w="full" h="100vh" bg="gray.100" padding={10}>
+    <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Flex
         as="aside"
         w="full"
         h="full"
-        maxW={collapse ? 350 : 100}
+        maxW={collapse ? 300 : 0}
         bg="white"
         alignItems="start"
         padding={6}
         flexDirection="column"
         justifyContent="space-between"
-        transition="ease-in-out .2s"
+        transition="max-width ease-in-out .2s"
         borderRadius="3xl"
+        //hidden={collapse}
       >
-        <Sidebar collapse={collapse} />
+        <Sidebar collapse={collapse}/>
       </Flex>
       <Flex
         as="main"

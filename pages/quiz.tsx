@@ -22,6 +22,7 @@ import { useMutation } from "@apollo/client";
 import { Question } from "../components/Question";
 import { Results } from "../components/Results";
 import { NoQuestion } from "../components/NoQuestion";
+import { Sidebar } from "../components/Sidebar";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
@@ -32,6 +33,7 @@ const Quiz: NextPage = () => {
   const [score, setScore] = useState(0);
   const [showFinished, setShowFinished] = useState(false);
   const isAuthenticated = useAuthenticated();
+  const [collapse, setCollapse] = useState(false);
 
   const resetQuiz = async () => {
     try {
@@ -69,6 +71,22 @@ const Quiz: NextPage = () => {
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Flex
+        as="aside"
+        w="full"
+        h="full"
+        maxW={collapse ? 300 : 0}
+        bg="white"
+        alignItems="start"
+        padding={6}
+        flexDirection="column"
+        justifyContent="space-between"
+        transition="max-width ease-in-out .2s"
+        borderRadius="3xl"
+        //hidden={collapse}
+      >
+        <Sidebar collapse={collapse}/>
+      </Flex>
+      <Flex
         as="main"
         w="full"
         h="full"
@@ -86,6 +104,7 @@ const Quiz: NextPage = () => {
           position="absolute"
           top={6}
           left={6}
+          onClick={() => setCollapse(!collapse)}
         />
         {isAuthenticated && (
           <ul>

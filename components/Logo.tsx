@@ -18,13 +18,5 @@ export const Logo = ({ collapse }) => (
         </Text>
       )}
     </Box>
-    <IconButton
-      variant="ghost"
-      aria-label="search"
-      icon={<AiOutlineSearch />}
-      fontSize={26}
-      color="gray.400"
-      borderRadius="50%"
-    />
   </Flex>
 );
