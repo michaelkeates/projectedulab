@@ -1,23 +1,18 @@
 //import needed modules/dependencies including react-vnc
 import React, { useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
-import {
-  Button,
-  Grid,
-} from "@chakra-ui/react";
-import {fullscreen} from "fullscreen-polyfill"; //added to allow full screen on a mobile device
-
+import { Button, Grid } from "@chakra-ui/react";
+import { fullscreen } from "fullscreen-polyfill"; //added to allow full screen on a mobile device
 
 function App() {
   //declare the url to connect to as a state variable
-  const [url, setUrl] = useState(
-    "wss://test.michaelkeates.co.uk/wsproxy/"
-  );
-  
+  const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
+
   //declare the state variables
   const [connected, setConnected] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   //declare the spacer component to add space between buttons
   const Spacer = () => (
@@ -53,15 +48,17 @@ function App() {
     if (elem) {
       if (!document.fullscreenElement) {
         elem.requestFullscreen().catch((err) => {
-          console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+          console.log(
+            `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+          );
         });
-        setFullscreen(true);
+        setIsFullScreen(true);
       } else {
         document.exitFullscreen();
-        setFullscreen(false);
+        setIsFullScreen(false);
       }
     }
-  
+
     document.addEventListener("fullscreenchange", () => {
       if (document.fullscreenElement) {
         setFullscreen(true);
@@ -94,7 +91,7 @@ function App() {
           </Button>
         </Grid>
       </div>
-      
+
       <div style={{ margin: "1rem", height: "100%" }} id="vnc-screen-container">
         {isValid(url) ? (
           //if url is valid, display the vnc screen with styling, else display a message
