@@ -25,3 +25,17 @@ button {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.container {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+

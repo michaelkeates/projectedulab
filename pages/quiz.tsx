@@ -23,6 +23,7 @@ import { useMutation } from "@apollo/client";
 import { Question } from "../components/Question";
 import { Results } from "../components/Results";
 import { NoQuestion } from "../components/NoQuestion";
+
 import { Sidebar } from "../components/Sidebar";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
@@ -35,6 +36,15 @@ const Quiz: NextPage = () => {
   const [showFinished, setShowFinished] = useState(false);
   const isAuthenticated = useAuthenticated();
   const [collapse, setCollapse] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuStateChange = (state: { isOpen: boolean }) => {
+    setIsMenuOpen(state.isOpen);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const resetQuiz = async () => {
     try {
@@ -71,6 +81,21 @@ const Quiz: NextPage = () => {
 
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        marginLeft="3vh"
+        marginTop="5vh"
+        zIndex={1}
+        w={isMenuOpen ? "250px" : "0"}
+        h="full"
+        bg="gray.100"
+        overflow="hidden"
+        transition="width 0.3s ease-in-out"
+      >
+        <Sidebar collapse={false} />
+      </Box>
       <Flex
         as="main"
         w="full"
@@ -81,17 +106,22 @@ const Quiz: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
+        right={2}
+        zIndex={1}
+        style={{
+          transform: isMenuOpen ? "translateX(80px)" : "none",
+          transition: "transform 0.3s ease-in-out",
+        }}
       >
-        <Stack
-          direction="column"
-          spacing={4}
-          align="center"
+        <IconButton
+          aria-label="Menu"
+          icon={<MdMenu />}
           position="absolute"
-          top={6}
-          left={6}
-        >
-          <Sidebar collapse={collapse} />
-        </Stack>
+          top={4}
+          left={4}
+          borderRadius="full"
+          onClick={toggleMenu}
+        />
         {isAuthenticated && (
           <ul>
             <Box>

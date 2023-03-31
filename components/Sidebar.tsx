@@ -6,7 +6,7 @@ import { Navigation } from "./Navigation";
 
 export const Sidebar = ({ collapse }) => (
   <React.Fragment>
-    <Box w="full">
+    <Box w="10">
       <Logo collapse={collapse} />
       <Navigation collapse={collapse} />
     </Box>

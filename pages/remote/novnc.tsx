@@ -1,10 +1,10 @@
 import { Box, Flex, HStack, IconButton, Stack } from "@chakra-ui/react";
 import { MdMenu, MdFullscreen } from "react-icons/md";
-import { Sidebar } from "../../components/Sidebar";
 import dynamic from "next/dynamic";
 import { useState, useRef } from "react";
 import type { NextPage } from "next";
 import { authProtected } from "../../components/protected-route";
+import { Sidebar } from "../../components/Sidebar";
 
 const DynamicComponent = dynamic(
   //import the vncclient component
@@ -26,30 +26,59 @@ const noVNC: NextPage = () => {
     }
   };
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuStateChange = (state: { isOpen: boolean }) => {
+    setIsMenuOpen(state.isOpen);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        marginLeft="3vh"
+        marginTop="5vh"
+        zIndex={1}
+        w={isMenuOpen ? "250px" : "0"}
+        h="full"
+        bg="gray.100"
+        overflow="hidden"
+        transition="width 0.3s ease-in-out"
+      >
+        <Sidebar collapse={false} />
+      </Box>
       <Flex
         as="main"
         w="full"
         h="full"
         bg="white"
+        right={2}
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        ref={mainRef}
+        zIndex={1}
+        style={{
+          transform: isMenuOpen ? "translateX(80px)" : "none",
+          transition: "transform 0.3s ease-in-out",
+        }}
       >
-        <Stack
-          direction="column"
-          spacing={4}
-          align="center"
+        <IconButton
+          aria-label="Menu"
+          icon={<MdMenu />}
           position="absolute"
-          top={6}
-          left={6}
-        >
-          <Sidebar collapse={collapse} />
-        </Stack>
+          top={4}
+          left={4}
+          borderRadius="full"
+          onClick={toggleMenu}
+        />
         <IconButton
           aria-label="Full Screen"
           icon={<MdFullscreen />}
