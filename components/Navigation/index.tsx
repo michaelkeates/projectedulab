@@ -38,11 +38,11 @@ export const Navigation = ({ collapse }) => {
 
   return (
     <Flex
-      w="full"
-      alignItems="center"
-      justifyContent="space-between"
+      //w="full"
+      //alignItems="center"
+      //justifyContent="space-between"
       flexDirection={collapse ? "column" : "column"}
-      gap={4}
+      //gap={4}
       paddingTop="55px"
     >
       <NextLink href="/" passHref>

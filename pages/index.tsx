@@ -57,7 +57,7 @@ const Home: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        right={2}
+        right={1}
         zIndex={1}
         style={{
           transform: isMenuOpen ? "translateX(80px)" : "none",
@@ -82,13 +82,20 @@ const Home: NextPage = () => {
           p={3}
           textAlign="center"
           bg="blue.400"
-          css={{ backdropFilter: "blur(10px)" }}
           padding="15px;"
           textColor="white"
+          marginLeft="2"
+          marginRight="2"
+          fontSize={{ base: "4vw", md: 21 }}
         >
           Hi! Select one of the options below to get started.
         </Box>
-        <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+        <Grid
+          templateColumns="repeat(2, 1fr)"
+          gap={2}
+          marginLeft="2"
+          marginRight="2"
+        >
           <Box
             borderRadius="lg"
             mb={6}
@@ -99,10 +106,10 @@ const Home: NextPage = () => {
             padding="15px;"
             textColor="white"
           >
-            <Title order={3}>Create Quiz</Title>
+            <Text fontSize={{ base: "6vw", md: 24 }}>Create Quiz</Text>
             <br></br>
             <NextLink href="create" passHref>
-              <Button colorScheme="blue" width="100%" marginBottom="5%">
+              <Button colorScheme="blue" width="100%" marginBottom="5%" fontSize={{ base: "4vw", md: 16 }}>
                 Let's Go!
               </Button>
             </NextLink>
@@ -117,10 +124,10 @@ const Home: NextPage = () => {
             padding="15px;"
             textColor="white"
           >
-            <Title order={3}>Take Quiz</Title>
+            <Text fontSize={{ base: "6vw", md: 24 }}>Take Quiz</Text>
             <br></br>
             <NextLink href="quiz" passHref>
-              <Button colorScheme="red" width="100%" marginBottom="5%">
+              <Button colorScheme="red" width="100%" marginBottom="5%" fontSize={{ base: "4vw", md: 16 }}>
                 Let's Go!
               </Button>
             </NextLink>
@@ -135,10 +142,10 @@ const Home: NextPage = () => {
             padding="15px;"
             textColor="white"
           >
-            <Title order={3}>Virtual Machines</Title>
+            <Text fontSize={{ base: "6vw", md: 24 }}>Virtual Machine</Text>
             <br></br>
             <NextLink href="remote/novnc" passHref>
-              <Button colorScheme="orange" width="100%" marginBottom="5%">
+              <Button colorScheme="orange" width="100%" marginBottom="5%" fontSize={{ base: "4vw", md: 16 }}>
                 Let's Go!
               </Button>
             </NextLink>

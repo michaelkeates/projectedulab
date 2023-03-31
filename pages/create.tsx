@@ -126,7 +126,7 @@ const Home: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        right={2}
+        right={1}
         zIndex={1}
         style={{
           transform: isMenuOpen ? "translateX(80px)" : "none",

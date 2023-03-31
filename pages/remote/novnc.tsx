@@ -58,7 +58,7 @@ const noVNC: NextPage = () => {
         w="full"
         h="full"
         bg="white"
-        right={2}
+        right={1}
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
