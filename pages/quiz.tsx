@@ -99,6 +99,7 @@ const Quiz: NextPage = () => {
       <Flex
         as="main"
         w="full"
+        minH={{ base: "100vh", md: "auto" }}
         h="full"
         bg="white"
         alignItems="center"
@@ -106,8 +107,8 @@ const Quiz: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        right={1}
         zIndex={1}
+        right={1}
         style={{
           transform: isMenuOpen ? "translateX(80px)" : "none",
           transition: "transform 0.3s ease-in-out",
@@ -140,14 +141,14 @@ const Quiz: NextPage = () => {
                 </Box>
               )}
               {showFinished ? (
-                <Grid templateColumns="repeat(1, 1fr)" gap={4} mt={4}>
+                <Grid templateColumns="repeat(1, 1fr)" gap={4} mt={1}>
                   <Button width="100%" variant="outline" onClick={resetQuiz}>
                     Try Again
                   </Button>
                 </Grid>
               ) : (
-                <Center mt={8} mb={4}>
-                  <Text textAlign="center">
+                <Center mt={3} mb={4}>
+                  <Text fontSize={{ base: "3vw", md: 24 }} textAlign="center">
                     Question: {currentIndex + 1} /{" "}
                     {auth_unanswered_questions.length}
                   </Text>

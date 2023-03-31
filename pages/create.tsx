@@ -12,6 +12,7 @@ import {
   Stack,
   Center,
   Box,
+  Grid,
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { useAuthenticated } from "@nhost/nextjs";
@@ -119,6 +120,7 @@ const Home: NextPage = () => {
       <Flex
         as="main"
         w="full"
+        minH={{ base: "100vh", md: "auto" }}
         h="full"
         bg="white"
         alignItems="center"
@@ -126,8 +128,8 @@ const Home: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        right={1}
         zIndex={1}
+        right={1}
         style={{
           transform: isMenuOpen ? "translateX(80px)" : "none",
           transition: "transform 0.3s ease-in-out",
@@ -142,108 +144,140 @@ const Home: NextPage = () => {
           borderRadius="full"
           onClick={toggleMenu}
         />
-        <Text fontSize={{ base: "8vw", md: 50 }} color="gray.300">
+        <Text
+          fontSize={{ base: "8vw", md: 50 }}
+          color="gray.300"
+          textAlign="center"
+        >
           Create a new quiz Question!
         </Text>
         {isAuthenticated && (
-          <ul>
-            <form onSubmit={handleSubmit}>
-              <Input
-                type="text"
-                name="question"
-                placeholder="Enter your question"
-                onChange={handleInputChange}
-                value={questionForm.question}
-                mt={[2, 4]}
-              />
-              <Stack isInline mt={[2, 4]}>
+          <Box ml={[2, 4]} mr={[2, 4]}>
+            <ul>
+              <form onSubmit={handleSubmit}>
                 <Input
                   type="text"
-                  name="answer_1"
-                  placeholder="First answer"
+                  name="question"
+                  placeholder="Enter your question"
                   onChange={handleInputChange}
-                  value={questionForm.answer_1}
+                  value={questionForm.question}
+                  mt={[2, 4]}
+                  size={{ base: "sm", md: "md" }}
                 />
-                <Input
-                  type="text"
-                  name="answer_2"
-                  placeholder="Second answer"
-                  onChange={handleInputChange}
-                  value={questionForm.answer_2}
-                />
-                <Input
-                  type="text"
-                  name="answer_3"
-                  placeholder="Third answer"
-                  onChange={handleInputChange}
-                  value={questionForm.answer_3}
-                />
-                <Input
-                  type="text"
-                  name="answer_4"
-                  placeholder="Forth answer"
-                  onChange={handleInputChange}
-                  value={questionForm.answer_4}
-                />
-              </Stack>
-              <Center mt={4}>
-                <Stack spacing={[0, 4]} direction="row">
-                  <Radio
-                    name="correct"
+                <Grid
+                  templateColumns={["1fr", "repeat(2, 1fr)"]}
+                  gap={4}
+                  marginTop="15px"
+                >
+                  <Input
+                    type="text"
+                    name="answer_1"
+                    placeholder="First answer"
                     onChange={handleInputChange}
                     value={questionForm.answer_1}
-                    isChecked={
-                      questionForm.correct !== "" &&
-                      questionForm.correct === questionForm.answer_1
-                    }
-                  >
-                    {questionForm.answer_1 ? questionForm.answer_1 : "answer 1"}
-                  </Radio>
-                  <Radio
-                    name="correct"
+                    size={{ base: "sm", md: "md" }}
+                  />
+                  <Input
+                    type="text"
+                    name="answer_2"
+                    placeholder="Second answer"
                     onChange={handleInputChange}
                     value={questionForm.answer_2}
-                    isChecked={
-                      questionForm.correct !== "" &&
-                      questionForm.correct === questionForm.answer_2
-                    }
-                  >
-                    {questionForm.answer_2 ? questionForm.answer_2 : "answer 2"}
-                  </Radio>
-                  <Radio
-                    name="correct"
+                    size={{ base: "sm", md: "md" }}
+                  />
+                  <Input
+                    type="text"
+                    name="answer_3"
+                    placeholder="Third answer"
                     onChange={handleInputChange}
                     value={questionForm.answer_3}
-                    isChecked={
-                      questionForm.correct !== "" &&
-                      questionForm.correct === questionForm.answer_3
-                    }
-                  >
-                    {questionForm.answer_3 ? questionForm.answer_3 : "answer 3"}
-                  </Radio>
-                  <Radio
-                    name="correct"
+                    size={{ base: "sm", md: "md" }}
+                  />
+                  <Input
+                    type="text"
+                    name="answer_4"
+                    placeholder="Fourth answer"
                     onChange={handleInputChange}
                     value={questionForm.answer_4}
-                    isChecked={
-                      questionForm.correct !== "" &&
-                      questionForm.correct === questionForm.answer_4
-                    }
+                    size={{ base: "sm", md: "md" }}
+                  />
+                </Grid>
+
+                <Center mt={4}>
+                  <Flex
+                    direction={["column", "row"]}
+                    flexWrap="wrap"
+                    justify="space-between"
                   >
-                    {questionForm.answer_4 ? questionForm.answer_4 : "answer 4"}
-                  </Radio>
+                    <Radio
+                      name="correct"
+                      onChange={handleInputChange}
+                      value={questionForm.answer_1}
+                      isChecked={
+                        questionForm.correct !== "" &&
+                        questionForm.correct === questionForm.answer_1
+                      }
+                      mb={[2, 0]}
+                    >
+                      {questionForm.answer_1
+                        ? questionForm.answer_1
+                        : "answer 1"}
+                    </Radio>
+                    <Radio
+                      name="correct"
+                      onChange={handleInputChange}
+                      value={questionForm.answer_2}
+                      isChecked={
+                        questionForm.correct !== "" &&
+                        questionForm.correct === questionForm.answer_2
+                      }
+                      mb={[2, 0]}
+                    >
+                      {questionForm.answer_2
+                        ? questionForm.answer_2
+                        : "answer 2"}
+                    </Radio>
+                    <Radio
+                      name="correct"
+                      onChange={handleInputChange}
+                      value={questionForm.answer_3}
+                      isChecked={
+                        questionForm.correct !== "" &&
+                        questionForm.correct === questionForm.answer_3
+                      }
+                      mb={[2, 0]}
+                    >
+                      {questionForm.answer_3
+                        ? questionForm.answer_3
+                        : "answer 3"}
+                    </Radio>
+                    <Radio
+                      name="correct"
+                      onChange={handleInputChange}
+                      value={questionForm.answer_4}
+                      isChecked={
+                        questionForm.correct !== "" &&
+                        questionForm.correct === questionForm.answer_4
+                      }
+                      mb={[2, 0]}
+                    >
+                      {questionForm.answer_4
+                        ? questionForm.answer_4
+                        : "answer 4"}
+                    </Radio>
+                  </Flex>
+                </Center>
+                <Stack isInline mt={[2, 4]} mx="auto">
+                  <Button colorScheme="green" width="50%" type="submit">
+                    Create Question
+                  </Button>
+                  <Button colorScheme="red" width="50%" as="a" href="/">
+                    Cancel
+                  </Button>
                 </Stack>
-              </Center>
-              <Stack isInline mt={[2, 4]} mx="auto">
-                <Button colorScheme="green" width="50%" type="submit">
-                  Create Question
-                </Button>
-                <Button colorScheme="red" width="50%" as="a" href="/">
-                  Cancel
-                </Button>
-              </Stack>
-            </form>
-          </ul>
+              </form>
+            </ul>
+          </Box>
         )}
       </Flex>
     </HStack>

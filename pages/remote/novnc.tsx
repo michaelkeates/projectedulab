@@ -57,14 +57,15 @@ const noVNC: NextPage = () => {
         as="main"
         w="full"
         h="full"
+        minH={{ base: "100vh", md: "auto" }}
         bg="white"
-        right={1}
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
         zIndex={1}
+        right={1}
         style={{
           transform: isMenuOpen ? "translateX(80px)" : "none",
           transition: "transform 0.3s ease-in-out",

@@ -35,30 +35,30 @@ export function Question({ question, onNextClicked }) {
 
   return (
     <Box>
-      <Text fontSize={{ base: "6vw", md: 60 }} color="gray.300">
+      <Text fontSize={{ base: "5vw", md: 42 }} color="gray.300">
         How many can you get right?
       </Text>
       {question && (
         <Box>
-          <Heading mt={8} as="h6" size="md" textAlign="center">
+          <Text fontSize={{ base: "5vw", md: 34 }} textAlign="center">
             Question: {question.question}
-          </Heading>
+          </Text>
         </Box>
       )}
-      <Flex flexDirection="column" justifyContent="center" mt={8}>
+      <Flex flexDirection="column" justifyContent="center" mt={4}>
         <Grid templateColumns="repeat(1, 1fr)" gap={4}>
           {question &&
             question.question_answers.map((option, index) => {
               return (
                 <Button
                   mx="auto"
-                  mt="4"
                   width="100%"
-                  minWidth="150px"
+                  minHeight={{ base: "5px", md: "10px" }}
                   variant={selectedButton === index ? "solid" : "outline"}
                   colorScheme={selectedButton === index ? "orange" : "gray"}
                   key={option.answer}
                   onClick={() => onOptionClicked(option, index)}
+                  fontSize={{ base: "3vw", md: "xl" }}
                 >
                   {option.answer}
                 </Button>

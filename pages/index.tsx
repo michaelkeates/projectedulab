@@ -50,6 +50,7 @@ const Home: NextPage = () => {
       <Flex
         as="main"
         w="full"
+        minH={{ base: "100vh", md: "auto" }}
         h="full"
         bg="white"
         alignItems="center"
@@ -57,8 +58,8 @@ const Home: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
-        right={1}
         zIndex={1}
+        right={1}
         style={{
           transform: isMenuOpen ? "translateX(80px)" : "none",
           transition: "transform 0.3s ease-in-out",
@@ -109,7 +110,12 @@ const Home: NextPage = () => {
             <Text fontSize={{ base: "6vw", md: 24 }}>Create Quiz</Text>
             <br></br>
             <NextLink href="create" passHref>
-              <Button colorScheme="blue" width="100%" marginBottom="5%" fontSize={{ base: "4vw", md: 16 }}>
+              <Button
+                colorScheme="blue"
+                width="100%"
+                marginBottom="5%"
+                fontSize={{ base: "4vw", md: 16 }}
+              >
                 Let's Go!
               </Button>
             </NextLink>
@@ -127,7 +133,12 @@ const Home: NextPage = () => {
             <Text fontSize={{ base: "6vw", md: 24 }}>Take Quiz</Text>
             <br></br>
             <NextLink href="quiz" passHref>
-              <Button colorScheme="red" width="100%" marginBottom="5%" fontSize={{ base: "4vw", md: 16 }}>
+              <Button
+                colorScheme="red"
+                width="100%"
+                marginBottom="5%"
+                fontSize={{ base: "4vw", md: 16 }}
+              >
                 Let's Go!
               </Button>
             </NextLink>
@@ -145,7 +156,12 @@ const Home: NextPage = () => {
             <Text fontSize={{ base: "6vw", md: 24 }}>Virtual Machine</Text>
             <br></br>
             <NextLink href="remote/novnc" passHref>
-              <Button colorScheme="orange" width="100%" marginBottom="5%" fontSize={{ base: "4vw", md: 16 }}>
+              <Button
+                colorScheme="orange"
+                width="100%"
+                marginBottom="5%"
+                fontSize={{ base: "4vw", md: 16 }}
+              >
                 Let's Go!
               </Button>
             </NextLink>
