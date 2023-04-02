@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-//import { jsx } from '@codemirror/lang-jsx';
 import { python } from '@codemirror/lang-python';
 import { csharp } from "@replit/codemirror-lang-csharp";
 
@@ -23,8 +22,6 @@ function CodeEditor() {
     switch (language) {
       case 'javascript':
         return javascript({ jsx: true });
-      //case 'jsx':
-        //return jsx();
       case 'python':
         return python();
       case 'csharp':

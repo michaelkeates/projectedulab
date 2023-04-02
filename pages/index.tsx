@@ -147,6 +147,29 @@ const Home: NextPage = () => {
             mb={6}
             p={3}
             textAlign="center"
+            bg="green.400"
+            css={{ backdropFilter: "blur(10px)" }}
+            padding="15px;"
+            textColor="white"
+          >
+            <Text fontSize={{ base: "6vw", md: 24 }}>Code Editor</Text>
+            <br></br>
+            <NextLink href="code" passHref>
+              <Button
+                colorScheme="green"
+                width="100%"
+                marginBottom="5%"
+                fontSize={{ base: "4vw", md: 16 }}
+              >
+                Let's Go!
+              </Button>
+            </NextLink>
+          </Box>
+          <Box
+            borderRadius="lg"
+            mb={6}
+            p={3}
+            textAlign="center"
             bg="orange.400"
             css={{ backdropFilter: "blur(10px)" }}
             padding="15px;"

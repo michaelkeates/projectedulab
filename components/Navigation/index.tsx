@@ -29,6 +29,7 @@ import {
   AiTwotoneExperiment,
   AiTwotoneSetting,
   AiOutlineLogout,
+  AiTwotoneCode
 } from "react-icons/ai";
 import { BiSquareRounded } from "react-icons/bi";
 
@@ -52,6 +53,7 @@ export const Navigation = ({ collapse }) => {
           icon={<AiFillHome />}
           fontSize={26}
           color="yellow.400"
+          colorScheme={"blackAlpha"}
         />
       </NextLink>
       <NextLink href="/create" passHref>
@@ -61,6 +63,7 @@ export const Navigation = ({ collapse }) => {
           icon={<AiFillQuestionCircle />}
           fontSize={26}
           color="blue.400"
+          colorScheme={"blackAlpha"}
         />
       </NextLink>
       <NextLink href="/quiz" passHref>
@@ -70,6 +73,17 @@ export const Navigation = ({ collapse }) => {
           icon={<AiTwotoneSnippets />}
           fontSize={26}
           color="red.400"
+          colorScheme={"blackAlpha"}
+        />
+      </NextLink>
+      <NextLink href="/code" passHref>
+        <IconButton
+          variant="ghost"
+          aria-label="search"
+          icon={<AiTwotoneCode />}
+          fontSize={26}
+          color="green.400"
+          colorScheme={"blackAlpha"}
         />
       </NextLink>
       <NextLink href="/remote/novnc" passHref>
@@ -79,6 +93,7 @@ export const Navigation = ({ collapse }) => {
           icon={<AiTwotoneExperiment />}
           fontSize={26}
           color="orange.400"
+          colorScheme={"blackAlpha"}
         />
       </NextLink>
         <NextLink href="/profile" passHref>
@@ -88,6 +103,7 @@ export const Navigation = ({ collapse }) => {
             icon={<AiTwotoneSetting />}
             fontSize={26}
             color="blackAlpha.400"
+            colorScheme={"blackAlpha"}
           />
         </NextLink>
         <IconButton
@@ -97,6 +113,7 @@ export const Navigation = ({ collapse }) => {
           fontSize={26}
           color="red.400"
           onClick={signOut}
+          colorScheme={"blackAlpha"}
         />
     </Flex>
   );
