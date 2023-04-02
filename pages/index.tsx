@@ -71,7 +71,6 @@ const Home: NextPage = () => {
           position="absolute"
           top={4}
           left={4}
-          borderRadius="full"
           onClick={toggleMenu}
         />
         <Text fontSize={{ base: "8vw", md: 80 }} color="gray.300">

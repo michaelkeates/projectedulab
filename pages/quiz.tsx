@@ -120,7 +120,6 @@ const Quiz: NextPage = () => {
           position="absolute"
           top={4}
           left={4}
-          borderRadius="full"
           onClick={toggleMenu}
         />
         {isAuthenticated && (
