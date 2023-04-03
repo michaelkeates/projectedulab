@@ -13,7 +13,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
-import { authProtected } from "../components/Protected-route";
+import { authProtected } from "../components/protected-route";
 import { Sidebar } from "../components/Sidebar";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/

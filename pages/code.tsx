@@ -11,7 +11,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
-import { authProtected } from "../components/Protected-route";
+import { authProtected } from "../components/protected-route";
 import { Sidebar } from "../components/Sidebar";
 import CodeEditor from "../components/CodeEditor";
 
