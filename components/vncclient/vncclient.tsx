@@ -93,7 +93,7 @@ function App() {
           scaleViewport={true}
           style={{
             width: "100%",
-            height: isFullScreen ? window.innerHeight : "100%",
+            height: isFullScreen ? window.innerHeight : "800px",
           }}
           debug
           ref={vncScreenRef}
