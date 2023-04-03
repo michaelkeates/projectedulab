@@ -79,14 +79,6 @@ const noVNC: NextPage = () => {
           left={4}
           onClick={toggleMenu}
         />
-        <IconButton
-          aria-label="Full Screen"
-          icon={<MdFullscreen />}
-          position="absolute"
-          top={6}
-          right={6}
-          onClick={handleFullscreenClick}
-        />
         <Box
           maxW={{ base: "100%", sm: "500px", md: "800px", lg: "90%" }}
           maxH={{ base: "auto", sm: "250px", md: "450px", lg: "90%" }}

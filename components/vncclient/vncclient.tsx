@@ -1,17 +1,23 @@
-//import needed modules/dependencies including react-vnc
-import React, { useState, useRef } from "react";
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  Stack,
+  Grid,
+  Input,
+} from "@chakra-ui/react";
+import { MdMenu, MdFullscreen, MdContentCopy } from "react-icons/md";
+
+import React, { useEffect, useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
 
 function App() {
-  //declare the url to connect to as a state variable
   const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
-
-  //declare the state variables
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [clipboardText, setClipboardText] = useState(""); // add state for clipboard text
 
-  //declare the function to check if the url is valid else return false
-  //wss is like https but for websockets and ws is like http but for websockets
   const isValid = (vncUrl: string) => {
     if (!vncUrl.startsWith("ws://") && !vncUrl.startsWith("wss://")) {
       return false;
@@ -20,53 +26,77 @@ function App() {
     return true;
   };
 
-  //display the buttons using good ole div
+  useEffect(() => {
+    const handleClipboardUpdate = (e) => {
+      navigator.clipboard.writeText(e.detail.text);
+    };
+
+    window.addEventListener("clipboardUpdate", handleClipboardUpdate);
+
+    return () => {
+      window.removeEventListener("clipboardUpdate", handleClipboardUpdate);
+    };
+  }, []);
+
+  const handleClipboardInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setClipboardText(e.target.value);
+  };
+
+  const handleClipboardButtonClick = () => {
+    if (vncScreenRef.current) {
+      vncScreenRef.current.clipboardPaste(clipboardText);
+    }
+  };
+
   return (
     <>
-      {/*<div>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} marginTop="-25px" marginBottom="25px">
-          <IconButton
-            variant="ghost"
-            aria-label="search"
-            icon={<AiTwotoneSetting />}
-            fontSize={26}
-            color="blackAlpha.400"
-            onClick={handleConnectClick}
-          />
-          <IconButton
-            variant="ghost"
-            aria-label="search"
-            icon={<AiTwotoneSetting />}
-            fontSize={26}
-            color="blackAlpha.400"
-            onClick={handleFullScreenClick}
-          />
-        </Grid>
-  </div>*/}
+      <Grid
+        position="absolute"
+        top={4}
+        right={6}
+        templateColumns="repeat(3, max-content)"
+        columnGap={4}
+      >
+        <Input
+          mr={2}
+          width={{ base: "100%", md: "100%" }}
+          type="text"
+          value={clipboardText}
+          onChange={handleClipboardInputChange}
+        />
+        <IconButton
+          aria-label="Copy to clipboard"
+          icon={<MdContentCopy />}
+          onClick={handleClipboardButtonClick}
+        />
+        <IconButton
+          aria-label="Fullscreen"
+          icon={<MdFullscreen />}
+          //onClick={handleFullscreenClick}
+        />
+      </Grid>
 
-
-        {isValid(url) ? (
-          //if url is valid, display the vnc screen with styling, else display a message
-          <VncScreen
-            url={url}
-            background="white"
-            scaleViewport={true}
-            style={{
-              //width: "700px",
-              width: "100%",
-              //height: "500px",
-              height: "100%",
-            }}
-            debug
-            ref={vncScreenRef}
-            onClipboard={(e) => {
-              console.log("onClipboard", e);
-            }}
-          />
-        ) : (
-          <div>VNC URL not provided.</div>
-        )}
-
+      {isValid(url) ? (
+        <VncScreen
+          url={url}
+          background="white"
+          scaleViewport={true}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+          debug
+          ref={vncScreenRef}
+          onClipboard={(e) => {
+            console.log("onClipboard", e);
+            navigator.clipboard.writeText(e.detail.text);
+          }}
+        />
+      ) : (
+        <div>VNC URL not provided.</div>
+      )}
     </>
   );
 }
