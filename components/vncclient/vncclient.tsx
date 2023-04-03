@@ -1,4 +1,4 @@
-import { IconButton, Grid, Input } from "@chakra-ui/react";
+import { IconButton, Grid, Input, Flex } from "@chakra-ui/react";
 import { MdFullscreen, MdContentCopy, MdClear } from "react-icons/md";
 
 import React, { useEffect, useState, useRef } from "react";
@@ -56,59 +56,67 @@ function App() {
         templateColumns="repeat(4, max-content)"
         columnGap={4}
       >
-        <Input
-          mr={2}
-          width={{ base: "200px", md: "100%" }}
-          type="text"
-          value={clipboardText}
-          onChange={handleClipboardInputChange}
-        />
-        <IconButton
-          aria-label="Clear clipboard"
-          icon={<MdClear />}
-          onClick={handleClearButtonClick}
-        />
-        <IconButton
-          aria-label="Copy to clipboard"
-          icon={<MdContentCopy />}
-          onClick={handleClipboardButtonClick}
-        />
         <IconButton
           aria-label="Fullscreen"
           icon={<MdFullscreen />}
           onClick={(e) => setIsFullScreen(true)}
         />
       </Grid>
-      <br></br>
-      <div style={{ marginTop: "50px" }}>
-        <FullScreen
-          isFullScreen={isFullScreen}
-          onChange={(isFullScreen) => {
-            setIsFullScreen(isFullScreen);
-          }}
-        >
-          {isValid(url) ? (
-            <VncScreen
-              url={url}
-              background="white"
-              scaleViewport={true}
-              style={{
-                width: "100%",
-                height: isFullScreen ? window.innerHeight : "80vh",
-              }}
-              debug
-              ref={vncScreenRef}
-              onClipboard={(e) => {
-                console.log("onClipboard", e);
-                if (e && e.detail && e.detail.text) {
-                  navigator.clipboard.writeText(e.detail.text);
-                }
-              }}
+      <div
+        style={{
+          marginTop: "50px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {isValid(url) ? (
+          <VncScreen
+            url={url}
+            background="white"
+            scaleViewport={true}
+            style={{
+              width: "100%",
+              height: isFullScreen ? window.innerHeight : "80vh",
+            }}
+            debug
+            ref={vncScreenRef}
+            onClipboard={(e) => {
+              console.log("onClipboard", e);
+              if (e && e.detail && e.detail.text) {
+                navigator.clipboard.writeText(e.detail.text);
+              }
+            }}
+          />
+        ) : (
+          <div>VNC URL not provided.</div>
+        )}
+        <div style={{ width: "100%", marginTop: "20px" }}>
+          <Grid
+            templateColumns="repeat(3, max-content)"
+            columnGap={4}
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Input
+              mr={2}
+              width={{ base: "200px", md: "100%" }}
+              type="text"
+              value={clipboardText}
+              onChange={handleClipboardInputChange}
             />
-          ) : (
-            <div>VNC URL not provided.</div>
-          )}
-        </FullScreen>
+            <IconButton
+              aria-label="Clear clipboard"
+              icon={<MdClear />}
+              onClick={handleClearButtonClick}
+            />
+            <IconButton
+              aria-label="Copy to clipboard"
+              icon={<MdContentCopy />}
+              onClick={handleClipboardButtonClick}
+            />
+          </Grid>
+        </div>
       </div>
     </>
   );
