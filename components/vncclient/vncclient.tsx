@@ -86,26 +86,27 @@ function App() {
           setIsFullScreen(isFullScreen);
         }}
       >
-        {isValid(url) ? (
-          <VncScreen
-            url={url}
-            background="white"
-            scaleViewport={true}
-            style={{
-              width: "100%",
-              height: isFullScreen ? window.innerHeight : "800px",
-            }}
-            debug
-            onClipboard={(e) => {
-              console.log("onClipboard", e);
-              if (e && e.detail && e.detail.text) {
-                navigator.clipboard.writeText(e.detail.text);
-              }
-            }}
-          />
-        ) : (
-          <div>VNC URL not provided.</div>
-        )}
+      {isValid(url) ? (
+        <VncScreen
+          url={url}
+          background="white"
+          scaleViewport={true}
+          style={{
+            width: "100%",
+            height: isFullScreen ? window.innerHeight : "100%",
+          }}
+          debug
+          ref={vncScreenRef}
+          onClipboard={(e) => {
+            console.log("onClipboard", e);
+            if (e && e.detail && e.detail.text) {
+              navigator.clipboard.writeText(e.detail.text);
+            }
+          }}
+        />
+      ) : (
+        <div>VNC URL not provided.</div>
+      )}
       </FullScreen>
     </>
   );
