@@ -58,7 +58,7 @@ function App() {
         position="absolute"
         top={4}
         right={6}
-        templateColumns="repeat(4, max-content)"
+        templateColumns="repeat(1, max-content)"
         columnGap={4}
       >
         <IconButton
@@ -82,7 +82,7 @@ function App() {
             scaleViewport={true}
             style={{
               width: "100%",
-              height: isFullScreen ? window.innerHeight : "80vh",
+              height: "80vh",
             }}
             debug
             ref={vncScreenRef}
