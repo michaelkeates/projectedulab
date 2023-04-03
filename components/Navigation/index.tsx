@@ -18,7 +18,7 @@ import {
   MdOutlineChatBubbleOutline,
   MdOutlineNotificationsActive,
 } from "react-icons/md";
-import { NavItem } from "./NavItem";
+//import { NavItem } from "./NavItem";
 import { useAuthenticated, useSignOut } from "@nhost/nextjs";
 import NextLink from "next/link";
 import {
