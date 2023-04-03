@@ -1,15 +1,16 @@
-import { IconButton, Grid, Input, Flex } from "@chakra-ui/react";
+import { IconButton, Grid, Input, useColorModeValue } from "@chakra-ui/react";
 import { MdFullscreen, MdContentCopy, MdClear } from "react-icons/md";
 
 import React, { useEffect, useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
-import { FullScreen } from "@chiragrupani/fullscreen-react";
 
 function App() {
   const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
   const [clipboardText, setClipboardText] = useState("");
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
+  const highlightColor = useColorModeValue("yellow.300", "yellow.600");
 
   const isValid = (vncUrl: string) => {
     if (!vncUrl.startsWith("ws://") && !vncUrl.startsWith("wss://")) {
@@ -40,6 +41,10 @@ function App() {
   const handleClipboardButtonClick = () => {
     if (vncScreenRef.current) {
       vncScreenRef.current.clipboardPaste(clipboardText);
+      setIsHighlighted(true);
+      setTimeout(() => {
+        setIsHighlighted(false);
+      }, 2000);
     }
   };
 
@@ -114,6 +119,7 @@ function App() {
               aria-label="Copy to clipboard"
               icon={<MdContentCopy />}
               onClick={handleClipboardButtonClick}
+              bg={isHighlighted ? highlightColor : "gray.100"}
             />
           </Grid>
         </div>

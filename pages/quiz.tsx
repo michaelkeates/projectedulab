@@ -20,9 +20,9 @@ import { authProtected } from "../components/protected-route";
 import { GET_UNANSWERED_QUESTIONS, RESTART_QUIZ } from "../helpers";
 import { useMutation } from "@apollo/client";
 
-import { Question } from "../components/Question";
-import { Results } from "../components/Results";
-import { NoQuestion } from "../components/NoQuestion";
+import { Question } from "../components/Quiz/Question";
+import { Results } from "../components/Quiz/Results";
+import { NoQuestion } from "../components/Quiz/NoQuestion";
 
 import { Sidebar } from "../components/Sidebar";
 

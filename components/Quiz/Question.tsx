@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { SUBMIT_ANSWER } from "../helpers";
+import { SUBMIT_ANSWER } from "../../helpers";
 import { Box, Button, Flex, Heading, Grid } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 
