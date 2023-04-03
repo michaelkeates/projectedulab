@@ -17,7 +17,7 @@ import {
 import { MdMenu } from "react-icons/md";
 import { useAuthenticated } from "@nhost/nextjs";
 
-import { authProtected } from "../components/protected-route";
+import { authProtected } from "../components/Protected-route";
 import { CREATE_NEW_QUESTION } from "../helpers";
 import { useMutation } from "@apollo/client";
 import { Sidebar } from "../components/Sidebar";

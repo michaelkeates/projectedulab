@@ -16,7 +16,7 @@ import { MdMenu } from "react-icons/md";
 import { useAuthenticated } from "@nhost/nextjs";
 import { useAuthQuery } from "@nhost/react-apollo";
 
-import { authProtected } from "../components/protected-route";
+import { authProtected } from "../components/Protected-route";
 import { GET_UNANSWERED_QUESTIONS, RESTART_QUIZ } from "../helpers";
 import { useMutation } from "@apollo/client";
 

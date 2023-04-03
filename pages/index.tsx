@@ -13,7 +13,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
-import { authProtected } from "../components/protected-route";
+import { authProtected } from "../components/Protected-route";
 import { Sidebar } from "../components/Sidebar";
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
@@ -106,7 +106,7 @@ const Home: NextPage = () => {
             padding="15px;"
             textColor="white"
           >
-            <Text fontSize={{ base: "6vw", md: 24 }}>Create Quiz</Text>
+            <Text fontSize={{ base: "6vw", md: 24 }}>Create a Question</Text>
             <br></br>
             <NextLink href="create" passHref>
               <Button

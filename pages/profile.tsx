@@ -21,7 +21,7 @@ import {
 } from "@nhost/nextjs";
 import { useAuthQuery } from "@nhost/react-apollo";
 
-import { authProtected } from "../components/protected-route";
+import { authProtected } from "../components/Protected-route";
 import { BOOKS_QUERY } from "../helpers";
 
 import { Sidebar } from "../components/Sidebar";

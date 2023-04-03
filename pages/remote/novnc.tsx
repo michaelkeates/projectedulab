@@ -3,7 +3,7 @@ import { MdMenu, MdFullscreen } from "react-icons/md";
 import dynamic from "next/dynamic";
 import { useState, useRef } from "react";
 import type { NextPage } from "next";
-import { authProtected } from "../../components/protected-route";
+import { authProtected } from "../../components/Protected-route";
 import { Sidebar } from "../../components/Sidebar";
 
 const DynamicComponent = dynamic(
