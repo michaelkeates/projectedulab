@@ -80,8 +80,6 @@ const noVNC: NextPage = () => {
           onClick={toggleMenu}
         />
         <Box
-          maxW={{ base: "100%", sm: "500px", md: "800px", lg: "90%" }}
-          maxH={{ base: "auto", sm: "250px", md: "450px", lg: "90%" }}
           w="full"
           h="full"
         >

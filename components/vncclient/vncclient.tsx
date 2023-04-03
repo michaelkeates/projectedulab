@@ -58,7 +58,7 @@ function App() {
       >
         <Input
           mr={2}
-          width={{ base: "100%", md: "100%" }}
+          width={{ base: "200px", md: "100%" }}
           type="text"
           value={clipboardText}
           onChange={handleClipboardInputChange}
@@ -80,34 +80,36 @@ function App() {
         />
       </Grid>
       <br></br>
-      <FullScreen
-        isFullScreen={isFullScreen}
-        onChange={(isFullScreen) => {
-          setIsFullScreen(isFullScreen);
-        }}
-      >
-      {isValid(url) ? (
-        <VncScreen
-          url={url}
-          background="white"
-          scaleViewport={true}
-          style={{
-            width: "100%",
-            height: isFullScreen ? window.innerHeight : "800px",
+      <div style={{ marginTop: "50px" }}>
+        <FullScreen
+          isFullScreen={isFullScreen}
+          onChange={(isFullScreen) => {
+            setIsFullScreen(isFullScreen);
           }}
-          debug
-          ref={vncScreenRef}
-          onClipboard={(e) => {
-            console.log("onClipboard", e);
-            if (e && e.detail && e.detail.text) {
-              navigator.clipboard.writeText(e.detail.text);
-            }
-          }}
-        />
-      ) : (
-        <div>VNC URL not provided.</div>
-      )}
-      </FullScreen>
+        >
+          {isValid(url) ? (
+            <VncScreen
+              url={url}
+              background="white"
+              scaleViewport={true}
+              style={{
+                width: "100%",
+                height: isFullScreen ? window.innerHeight : "80vh",
+              }}
+              debug
+              ref={vncScreenRef}
+              onClipboard={(e) => {
+                console.log("onClipboard", e);
+                if (e && e.detail && e.detail.text) {
+                  navigator.clipboard.writeText(e.detail.text);
+                }
+              }}
+            />
+          ) : (
+            <div>VNC URL not provided.</div>
+          )}
+        </FullScreen>
+      </div>
     </>
   );
 }
