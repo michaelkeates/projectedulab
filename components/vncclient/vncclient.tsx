@@ -1,22 +1,21 @@
 import {
-  Box,
-  Flex,
-  HStack,
   IconButton,
-  Stack,
   Grid,
   Input,
 } from "@chakra-ui/react";
-import { MdMenu, MdFullscreen, MdContentCopy } from "react-icons/md";
+import { MdFullscreen, MdContentCopy, MdClear } from "react-icons/md";
 
 import React, { useEffect, useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
 
+import fullscreen from "fullscreen-polyfill";
+
 function App() {
   const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
+  const [clipboardText, setClipboardText] = useState("");
+  const fullScreenRef = useRef<fullscreen>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [clipboardText, setClipboardText] = useState(""); // add state for clipboard text
 
   const isValid = (vncUrl: string) => {
     if (!vncUrl.startsWith("ws://") && !vncUrl.startsWith("wss://")) {
@@ -50,13 +49,44 @@ function App() {
     }
   };
 
+  const handleClearButtonClick = () => {
+    setClipboardText("");
+  };
+
+  const handleFullscreenClick = () => {
+    const element = document.documentElement;
+  
+    if (fullscreen.enabled) {
+      if (isFullScreen) {
+        fullScreenRef.current?.exit();
+      } else {
+        const newFullscreen = new fullscreen(element);
+        newFullscreen.request();
+        fullScreenRef.current = newFullscreen;
+      }
+    }
+  };
+
+  useEffect(() => {
+    fullScreenRef.current?.addEventListener("fullscreenchange", handleFullScreenChange);
+  
+    return () => {
+      fullScreenRef.current?.removeEventListener("fullscreenchange", handleFullScreenChange);
+    };
+  }, []);
+  
+  const handleFullScreenChange = () => {
+    setIsFullScreen(fullScreenRef.current?.isFullscreen || false);
+  };
+  
+
   return (
     <>
       <Grid
         position="absolute"
         top={4}
         right={6}
-        templateColumns="repeat(3, max-content)"
+        templateColumns="repeat(4, max-content)"
         columnGap={4}
       >
         <Input
@@ -67,6 +97,11 @@ function App() {
           onChange={handleClipboardInputChange}
         />
         <IconButton
+          aria-label="Clear clipboard"
+          icon={<MdClear />}
+          onClick={handleClearButtonClick}
+        />
+        <IconButton
           aria-label="Copy to clipboard"
           icon={<MdContentCopy />}
           onClick={handleClipboardButtonClick}
@@ -74,7 +109,7 @@ function App() {
         <IconButton
           aria-label="Fullscreen"
           icon={<MdFullscreen />}
-          //onClick={handleFullscreenClick}
+          onClick={handleFullscreenClick}
         />
       </Grid>
 
@@ -91,8 +126,10 @@ function App() {
           ref={vncScreenRef}
           onClipboard={(e) => {
             console.log("onClipboard", e);
-            navigator.clipboard.writeText(e.detail.text);
-          }}
+            if (e && e.detail && e.detail.text) {
+              navigator.clipboard.writeText(e.detail.text);
+            }
+          }}          
         />
       ) : (
         <div>VNC URL not provided.</div>
