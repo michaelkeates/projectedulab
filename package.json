@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.9",
+    "@chiragrupani/fullscreen-react": "^1.2.5",
     "@codemirror/lang-html": "^6.4.3",
     "@codemirror/lang-javascript": "^6.1.4",
     "@codemirror/lang-python": "^6.1.2",

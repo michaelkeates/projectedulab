@@ -86,8 +86,6 @@ const noVNC: NextPage = () => {
           h="full"
         >
           <DynamicComponent />
-          {/* Render the ClipboardInputBox component with the onClipboard prop */}
-          {/* <ClipboardInputBox onClipboard={(text) => setClipboardText(text)} /> */}
         </Box>
       </Flex>
     </HStack>

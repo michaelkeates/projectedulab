@@ -1,20 +1,14 @@
-import {
-  IconButton,
-  Grid,
-  Input,
-} from "@chakra-ui/react";
+import { IconButton, Grid, Input } from "@chakra-ui/react";
 import { MdFullscreen, MdContentCopy, MdClear } from "react-icons/md";
 
 import React, { useEffect, useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
-
-import fullscreen from "fullscreen-polyfill";
+import { FullScreen } from "@chiragrupani/fullscreen-react";
 
 function App() {
   const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
   const [clipboardText, setClipboardText] = useState("");
-  const fullScreenRef = useRef<fullscreen>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const isValid = (vncUrl: string) => {
@@ -53,33 +47,6 @@ function App() {
     setClipboardText("");
   };
 
-  const handleFullscreenClick = () => {
-    const element = document.documentElement;
-  
-    if (fullscreen.enabled) {
-      if (isFullScreen) {
-        fullScreenRef.current?.exit();
-      } else {
-        const newFullscreen = new fullscreen(element);
-        newFullscreen.request();
-        fullScreenRef.current = newFullscreen;
-      }
-    }
-  };
-
-  useEffect(() => {
-    fullScreenRef.current?.addEventListener("fullscreenchange", handleFullScreenChange);
-  
-    return () => {
-      fullScreenRef.current?.removeEventListener("fullscreenchange", handleFullScreenChange);
-    };
-  }, []);
-  
-  const handleFullScreenChange = () => {
-    setIsFullScreen(fullScreenRef.current?.isFullscreen || false);
-  };
-  
-
   return (
     <>
       <Grid
@@ -109,31 +76,37 @@ function App() {
         <IconButton
           aria-label="Fullscreen"
           icon={<MdFullscreen />}
-          onClick={handleFullscreenClick}
+          onClick={(e) => setIsFullScreen(true)}
         />
       </Grid>
-
-      {isValid(url) ? (
-        <VncScreen
-          url={url}
-          background="white"
-          scaleViewport={true}
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-          debug
-          ref={vncScreenRef}
-          onClipboard={(e) => {
-            console.log("onClipboard", e);
-            if (e && e.detail && e.detail.text) {
-              navigator.clipboard.writeText(e.detail.text);
-            }
-          }}          
-        />
-      ) : (
-        <div>VNC URL not provided.</div>
-      )}
+      <br></br>
+      <FullScreen
+        isFullScreen={isFullScreen}
+        onChange={(isFullScreen) => {
+          setIsFullScreen(isFullScreen);
+        }}
+      >
+        {isValid(url) ? (
+          <VncScreen
+            url={url}
+            background="white"
+            scaleViewport={true}
+            style={{
+              width: "100%",
+              height: isFullScreen ? window.innerHeight : "800px",
+            }}
+            debug
+            onClipboard={(e) => {
+              console.log("onClipboard", e);
+              if (e && e.detail && e.detail.text) {
+                navigator.clipboard.writeText(e.detail.text);
+              }
+            }}
+          />
+        ) : (
+          <div>VNC URL not provided.</div>
+        )}
+      </FullScreen>
     </>
   );
 }
