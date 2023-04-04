@@ -96,16 +96,6 @@ export const Navigation = ({ collapse }) => {
           colorScheme={"blackAlpha"}
         />
       </NextLink>
-        <NextLink href="/profile" passHref>
-          <IconButton
-            variant="ghost"
-            aria-label="search"
-            icon={<AiTwotoneSetting />}
-            fontSize={26}
-            color="blackAlpha.400"
-            colorScheme={"blackAlpha"}
-          />
-        </NextLink>
         <IconButton
           variant="ghost"
           aria-label="search"
