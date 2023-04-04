@@ -115,15 +115,6 @@ function CodeEditor() {
           </MenuList>
         </Menu>
       </Grid>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-          flexDirection: "column",
-        }}
-      >
         <CodeMirror
           value={code}
           height="80vh"
@@ -131,7 +122,6 @@ function CodeEditor() {
           extensions={[getLanguage()]}
           onChange={onChange}
         />
-      </div>
     </div>
   );
 }
