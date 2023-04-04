@@ -72,10 +72,7 @@ const Home: NextPage = () => {
           left={4}
           onClick={toggleMenu}
         />
-        <Box w="100%" p={0} m={0}
-          w="full"
-          h="full"
-        >
+        <Box>
           <CodeEditor />
         </Box>
       </Flex>
