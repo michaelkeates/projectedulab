@@ -49,8 +49,8 @@ const Home: NextPage = () => {
       <Flex
         as="main"
         w="full"
-        minH={{ base: "100vh", md: "auto" }}
         h="full"
+        minH={{ base: "100vh", md: "auto" }}
         bg="white"
         alignItems="center"
         justifyContent="center"
@@ -72,7 +72,12 @@ const Home: NextPage = () => {
           left={4}
           onClick={toggleMenu}
         />
-        <CodeEditor />
+        <Box w="100%" p={0} m={0}
+          w="full"
+          h="full"
+        >
+          <CodeEditor />
+        </Box>
       </Flex>
     </HStack>
   );
