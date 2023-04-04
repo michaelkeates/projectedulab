@@ -78,8 +78,8 @@ const Home: NextPage = () => {
         </Text>
         <Box
           borderRadius="lg"
-          mb={6}
-          p={3}
+          mb={{ base: 6, md: 8 }}
+          p={{ base: 2, md: 3, lg: 4 }}
           textAlign="center"
           bg="blue.400"
           padding="15px;"
@@ -98,8 +98,8 @@ const Home: NextPage = () => {
         >
           <Box
             borderRadius="lg"
-            mb={6}
-            p={3}
+            mb={{ base: 6, md: 8 }}
+            p={{ base: 2, md: 3, lg: 4 }}
             textAlign="center"
             bg="blue.400"
             css={{ backdropFilter: "blur(10px)" }}
@@ -107,13 +107,15 @@ const Home: NextPage = () => {
             textColor="white"
           >
             <Text fontSize={{ base: "6vw", md: 24 }}>Create a Question</Text>
-            <br></br>
             <NextLink href="create" passHref>
               <Button
                 colorScheme="blue"
                 width="100%"
                 marginBottom="5%"
                 fontSize={{ base: "4vw", md: 16 }}
+                mb={{ base: 6, md: 8 }}
+                p={{ base: 2, md: 3, lg: 4 }}
+                marginTop="25px"
               >
                 Let's Go!
               </Button>
@@ -121,8 +123,8 @@ const Home: NextPage = () => {
           </Box>
           <Box
             borderRadius="lg"
-            mb={6}
-            p={3}
+            mb={{ base: 6, md: 8 }}
+            p={{ base: 2, md: 3, lg: 4 }}
             textAlign="center"
             bg="red.400"
             css={{ backdropFilter: "blur(10px)" }}
@@ -130,13 +132,15 @@ const Home: NextPage = () => {
             textColor="white"
           >
             <Text fontSize={{ base: "6vw", md: 24 }}>Take Quiz</Text>
-            <br></br>
             <NextLink href="quiz" passHref>
               <Button
                 colorScheme="red"
                 width="100%"
                 marginBottom="5%"
                 fontSize={{ base: "4vw", md: 16 }}
+                mb={{ base: 6, md: 8 }}
+                p={{ base: 2, md: 3, lg: 4 }}
+                marginTop="25px"
               >
                 Let's Go!
               </Button>
@@ -144,8 +148,8 @@ const Home: NextPage = () => {
           </Box>
           <Box
             borderRadius="lg"
-            mb={6}
-            p={3}
+            mb={{ base: 6, md: 8 }}
+            p={{ base: 2, md: 3, lg: 4 }}
             textAlign="center"
             bg="green.400"
             css={{ backdropFilter: "blur(10px)" }}
@@ -153,13 +157,15 @@ const Home: NextPage = () => {
             textColor="white"
           >
             <Text fontSize={{ base: "6vw", md: 24 }}>Code Editor</Text>
-            <br></br>
             <NextLink href="code" passHref>
               <Button
                 colorScheme="green"
                 width="100%"
                 marginBottom="5%"
                 fontSize={{ base: "4vw", md: 16 }}
+                mb={{ base: 6, md: 8 }}
+                p={{ base: 2, md: 3, lg: 4 }}
+                marginTop="25px"
               >
                 Let's Go!
               </Button>
@@ -167,8 +173,8 @@ const Home: NextPage = () => {
           </Box>
           <Box
             borderRadius="lg"
-            mb={6}
-            p={3}
+            mb={{ base: 6, md: 8 }}
+            p={{ base: 2, md: 3, lg: 4 }}
             textAlign="center"
             bg="orange.400"
             css={{ backdropFilter: "blur(10px)" }}
@@ -176,13 +182,15 @@ const Home: NextPage = () => {
             textColor="white"
           >
             <Text fontSize={{ base: "6vw", md: 24 }}>Virtual Machine</Text>
-            <br></br>
             <NextLink href="remote/novnc" passHref>
               <Button
                 colorScheme="orange"
                 width="100%"
                 marginBottom="5%"
                 fontSize={{ base: "4vw", md: 16 }}
+                mb={{ base: 6, md: 8 }}
+                p={{ base: 2, md: 3, lg: 4 }}
+                marginTop="25px"
               >
                 Let's Go!
               </Button>
