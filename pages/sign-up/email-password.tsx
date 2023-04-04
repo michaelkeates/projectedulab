@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useSignUpEmailPassword } from "@nhost/nextjs";
-import { Flex, HStack, Text, Button } from "@chakra-ui/react";
+import { Flex, HStack, Text, Button, Box } from "@chakra-ui/react";
 import AuthLink from "../../components/AuthLink";
 import SignUpLayout from "../../layouts/SignUpLayout";
 
@@ -55,10 +55,24 @@ export const SignUpPasswordPage: NextPage = () => {
   };
   //return JSX to render the sign up page UI
   return (
-    <HStack w="full" h="100vh" bg="gray.100" padding={10}>
+    <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        marginLeft="3vh"
+        marginTop="5vh"
+        zIndex={1}
+        h="full"
+        bg="gray.100"
+        overflow="hidden"
+        transition="width 0.3s ease-in-out"
+      >
+      </Box>
       <Flex
         as="main"
         w="full"
+        minH={{ base: "100vh", md: "auto" }}
         h="full"
         bg="white"
         alignItems="center"
@@ -66,6 +80,8 @@ export const SignUpPasswordPage: NextPage = () => {
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
+        zIndex={1}
+        right={1}
       >
         {/*rendering a sign up layout component*/}
         <SignUpLayout>

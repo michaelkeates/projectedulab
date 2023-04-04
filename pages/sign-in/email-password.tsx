@@ -8,7 +8,7 @@ import { showNotification } from "@mantine/notifications"; //import notification
 import { useSignInEmailPassword } from "@nhost/nextjs"; //import signIn function from Nhost library
 import AuthLink from "../../components/AuthLink"; //import AuthLink component
 import SignInLayout from "../../layouts/SignInLayout"; //import SignInLayout component
-import { Flex, HStack, Button, Text } from "@chakra-ui/react"; //import UI components from Chakra-UI library
+import { Flex, HStack, Button, Text, Box } from "@chakra-ui/react"; //import UI components from Chakra-UI library
 
 export const SignInPasswordPage: NextPage = () => { //create functional component
   const router = useRouter(); //initialize router hook
@@ -37,10 +37,24 @@ export const SignInPasswordPage: NextPage = () => { //create functional componen
   };
 
   return (
-    <HStack w="full" h="100vh" bg="gray.100" padding={10}> {/*create horizontal stack*/}
+    <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        marginLeft="3vh"
+        marginTop="5vh"
+        zIndex={1}
+        h="full"
+        bg="gray.100"
+        overflow="hidden"
+        transition="width 0.3s ease-in-out"
+      >
+      </Box>
       <Flex
         as="main"
         w="full"
+        minH={{ base: "100vh", md: "auto" }}
         h="full"
         bg="white"
         alignItems="center"
@@ -48,6 +62,8 @@ export const SignInPasswordPage: NextPage = () => { //create functional componen
         flexDirection="column"
         position="relative"
         borderRadius="3xl"
+        zIndex={1}
+        right={1}
       >
         <SignInLayout> {/*import SignInLayout component*/}
           <SimpleGrid cols={1} spacing={6}>
