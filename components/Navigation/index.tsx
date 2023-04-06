@@ -1,49 +1,31 @@
-import {
-  IconProps,
-  List,
-  ListItem,
-  Text,
-  Button,
-  IconButton,
-  Flex,
-} from "@chakra-ui/react";
-import {
-  MdOutlineSpaceDashboard,
-  MdOutlineShoppingBag,
-  MdMailOutline,
-  MdOutlineFlag,
-  MdCalendarToday,
-  MdOutlineSupervisorAccount,
-  MdOutlineSettingsInputComposite,
-  MdOutlineChatBubbleOutline,
-  MdOutlineNotificationsActive,
-} from "react-icons/md";
-//import { NavItem } from "./NavItem";
-import { useAuthenticated, useSignOut } from "@nhost/nextjs";
+//components/Navigation/index.tsx
+
+//import dependencies/packages
+//import styling components from chakra
+import { IconButton, Flex } from "@chakra-ui/react";
+//import useSignOut hook from nhost
+import { useSignOut } from "@nhost/nextjs";
+//import NextLink component from next to allow for navigation between pages
 import NextLink from "next/link";
+//import icons
 import {
-  AiOutlineSearch,
   AiFillHome,
   AiFillQuestionCircle,
   AiTwotoneSnippets,
   AiTwotoneExperiment,
-  AiTwotoneSetting,
   AiOutlineLogout,
-  AiTwotoneCode
+  AiTwotoneCode,
 } from "react-icons/ai";
-import { BiSquareRounded } from "react-icons/bi";
 
+//create Navigation component
 export const Navigation = ({ collapse }) => {
-  const isAuthenticated = useAuthenticated();
+  //use useSignOut hook to sign out user
   const { signOut } = useSignOut();
 
+  //return JSX for Navigation component to display navigation bar
   return (
     <Flex
-      //w="full"
-      //alignItems="center"
-      //justifyContent="space-between"
       flexDirection={collapse ? "column" : "column"}
-      //gap={4}
       paddingTop="55px"
     >
       <NextLink href="/" passHref>
@@ -96,15 +78,15 @@ export const Navigation = ({ collapse }) => {
           colorScheme={"blackAlpha"}
         />
       </NextLink>
-        <IconButton
-          variant="ghost"
-          aria-label="search"
-          icon={<AiOutlineLogout />}
-          fontSize={26}
-          color="red.400"
-          onClick={signOut}
-          colorScheme={"blackAlpha"}
-        />
+      <IconButton
+        variant="ghost"
+        aria-label="search"
+        icon={<AiOutlineLogout />}
+        fontSize={26}
+        color="red.400"
+        onClick={signOut}
+        colorScheme={"blackAlpha"}
+      />
     </Flex>
   );
 };

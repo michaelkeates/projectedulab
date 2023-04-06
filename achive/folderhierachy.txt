@@ -1,0 +1,19 @@
+my-nextjs-app/
+├── pages/
+│   ├── api/
+│   │   └── hello.js
+│   ├── _app.js
+│   ├── _document.js
+│   ├── index.js
+│   └── ...
+├── public/
+│   ├── favicon.ico
+│   └── ...
+├── styles/
+│   ├── globals.css
+│   └── ...
+├── .gitignore
+├── next.config.js
+├── package.json
+├── README.md
+└── yarn.lock

@@ -1,15 +1,7 @@
+//import apollo client for graphql queries
 import { gql, } from '@apollo/client'
 
-export const BOOKS_QUERY = gql`
-  query BookQuery {
-    books {
-      id
-      title
-    }
-  }
-`
-;
-
+//graphql query exported to const to get all unanswere questions
 export const GET_UNANSWERED_QUESTIONS = gql`
 query unanswered_questions {
   auth_unanswered_questions(args: {hasura_session: "x-hasura-user-id"}) {
@@ -25,7 +17,7 @@ query unanswered_questions {
 `
 ;
 
-
+//graphql query exported to const to mutate/create/insert a question
 export const CREATE_NEW_QUESTION = gql`
 mutation create_new_question(
   $question: String!
@@ -45,7 +37,7 @@ mutation create_new_question(
 `
 ;
 
-
+//graphql query exported to const to mutate/submit/insert answer to question
 export const SUBMIT_ANSWER = gql`
 mutation submit_question($answer_id: uuid, $question_id: uuid) {
   insert_auth_users_answers_one(
@@ -57,7 +49,7 @@ mutation submit_question($answer_id: uuid, $question_id: uuid) {
 `
 ;
 
-
+//graphql query exported to const to restart quiz by deleting all answers
 export const RESTART_QUIZ = gql`
 mutation restartQuiz {
   delete_auth_users_answers(where: {}) {

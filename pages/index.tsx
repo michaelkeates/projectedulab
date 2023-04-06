@@ -1,35 +1,40 @@
+//import NextPage type from "next"
 import type { NextPage } from "next";
+
+//import useState hook from React, allowing to switch between two states for sidebar, closed or open
 import { useState } from "react";
+
+//import NextLink, Box, Flex, HStack, IconButton, Text, Button, and Grid components from Chakra UI
 import NextLink from "next/link";
-import { Title } from "@mantine/core";
-import {
-  Box,
-  Flex,
-  HStack,
-  IconButton,
-  Text,
-  Button,
-  Grid,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton, Text, Button, Grid } from "@chakra-ui/react";
+
+//import MdMenu icon from react-icons/md
 import { MdMenu } from "react-icons/md";
+
+//import authProtected function from protected-route.js file so user cannot access Home page without being authenticated first
 import { authProtected } from "../components/protected-route";
+
+//import Sidebar component from Sidebar.js file
 import { Sidebar } from "../components/Sidebar";
 
-// * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
-
+//create Home component with NextPage type
 const Home: NextPage = () => {
+  
+  //use useState hook to create collapse and isMenuOpen state variables and their setter functions
   const [collapse, setCollapse] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  //function to set isMenuOpen state variable based on menu open or close state
   const handleMenuStateChange = (state: { isOpen: boolean }) => {
     setIsMenuOpen(state.isOpen);
   };
 
+  //function to toggle isMenuOpen state variable on button click
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  //return JSX for Home component, this is what you see in page
   return (
     <HStack w="full" h="100vh" bg="gray.100" padding={{ base: 2, md: 5 }}>
       <Box
@@ -202,4 +207,5 @@ const Home: NextPage = () => {
   );
 };
 
+//export Home component wrapped in authProtected so that it can only be accessed by authenticated users
 export default authProtected(Home);
