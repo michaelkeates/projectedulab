@@ -1,6 +1,5 @@
 //components/Navigation/index.tsx
 
-//import dependencies/packages
 //import styling components from chakra
 import { IconButton, Flex } from "@chakra-ui/react";
 //import useSignOut hook from nhost
