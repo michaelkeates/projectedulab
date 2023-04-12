@@ -90,7 +90,6 @@ export const SignInPasswordPage: NextPage = () => { //create functional componen
               </Button>
             </SimpleGrid>
           </SimpleGrid>
-          <Divider />
         </SignInLayout>
       </Flex>
     </HStack>

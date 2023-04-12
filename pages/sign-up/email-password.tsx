@@ -131,7 +131,6 @@ export const SignUpPasswordPage: NextPage = () => {
               </AuthLink>
             </SimpleGrid>
           </SimpleGrid>
-          <Divider />
         </SignUpLayout>
       </Flex>
     </HStack>
