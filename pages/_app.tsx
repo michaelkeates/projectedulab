@@ -22,12 +22,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   // const AnyComponent = Component as any
   return (
     <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
-      <NhostApolloProvider nhost={nhost}>
-        <NotificationsProvider position="top-right" zIndex={2077}>
+      <NhostApolloProvider>
         <ChakraProvider>
           <Component {...pageProps} />
         </ChakraProvider>
-        </NotificationsProvider>
       </NhostApolloProvider>
     </NhostProvider>
   );
