@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // const AnyComponent = Component as any
   return (
     <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
-      <NhostApolloProvider nhost={nhost}>
+      <NhostApolloProvider graphqlUrl={BACKEND_URL}>
         <NotificationsProvider position="top-right" zIndex={2077}>
           <ChakraProvider>
             <Component {...pageProps} />
