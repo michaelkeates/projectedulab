@@ -1,12 +1,13 @@
 //import NextPage type from "next"
 import type { NextPage } from "next";
 //import useState hook from React, allowing to switch between two states for sidebar, closed or open
-import { useState } from "react";
+import { useState, } from "react";
 import NextLink from "next/link";
 import { Box, Flex, HStack, IconButton, Text, Button, Grid } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 //import authProtected function from protected-route.js file so user cannot access Home page without being authenticated first
 import { authProtected } from "../components/protected-route";
+import { useUserEmail } from "@nhost/nextjs"; //import signIn function from Nhost library
 
 //import Sidebar component from Sidebar.js file
 import { Sidebar } from "../components/Sidebar";
@@ -27,6 +28,8 @@ const Home: NextPage = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const userEmail = useUserEmail();
 
   //return JSX for Home component, this is what you see in page
   return (
@@ -87,7 +90,7 @@ const Home: NextPage = () => {
           marginRight="2"
           fontSize={{ base: "4vw", md: 21 }}
         >
-          Hi! Select one of the options below to get started.
+          Welcome back {userEmail}! Select one of the options below to get started.
         </Box>
         <Grid
           templateColumns="repeat(2, 1fr)"

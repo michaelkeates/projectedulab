@@ -1,5 +1,13 @@
 //import apollo client for graphql queries
-import { gql, } from '@apollo/client'
+import { gql } from '@apollo/client'
+
+export const GET_EMAIL = gql`
+  query getUser($userId: String!) {
+    user_by_pk(id: $userId) {
+      email
+    }
+  }
+`;
 
 //graphql query exported to const to get all unanswere questions
 export const GET_UNANSWERED_QUESTIONS = gql`
