@@ -1,4 +1,4 @@
-import { Box, Flex, Icon, IconButton, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon } from "@chakra-ui/react";
 import { BiSquareRounded } from "react-icons/bi";
 
 export const Logo = ({ collapse }) => (

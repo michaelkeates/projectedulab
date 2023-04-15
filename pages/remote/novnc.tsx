@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, IconButton, Stack } from "@chakra-ui/react";
-import { MdMenu, MdFullscreen } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
 import dynamic from "next/dynamic";
 import { useState, useRef } from "react";
 import type { NextPage } from "next";
@@ -10,7 +10,8 @@ const DynamicComponent = dynamic(
   //import the vncclient component
   () => import("../../components/vncclient/vncclient"),
   {
-    //server-Side Rendering is disabled
+    //server-Side Rendering is disabled, so the component is only rendered on the client-side
+    //this was the only way to get it working
     ssr: false,
   }
 );
@@ -83,6 +84,7 @@ const noVNC: NextPage = () => {
           w="full"
           h="full"
         >
+          {/*inside the return we simply add the vncclient by adding below as all coding was done in components*/}
           <DynamicComponent />
         </Box>
       </Flex>

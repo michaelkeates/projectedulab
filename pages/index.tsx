@@ -1,16 +1,10 @@
 //import NextPage type from "next"
 import type { NextPage } from "next";
-
 //import useState hook from React, allowing to switch between two states for sidebar, closed or open
 import { useState } from "react";
-
-//import NextLink, Box, Flex, HStack, IconButton, Text, Button, and Grid components from Chakra UI
 import NextLink from "next/link";
 import { Box, Flex, HStack, IconButton, Text, Button, Grid } from "@chakra-ui/react";
-
-//import MdMenu icon from react-icons/md
 import { MdMenu } from "react-icons/md";
-
 //import authProtected function from protected-route.js file so user cannot access Home page without being authenticated first
 import { authProtected } from "../components/protected-route";
 

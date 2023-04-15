@@ -4,11 +4,7 @@ import {
   Box,
   Flex,
   HStack,
-  IconButton,
-  Text,
-  Button,
-  Grid,
-  Stack,
+  IconButton
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { authProtected } from "../components/protected-route";

@@ -1,8 +1,6 @@
-import { AppShell, Drawer, Header, MantineProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 import { NhostClient, NhostProvider } from "@nhost/nextjs";
 import { NhostApolloProvider } from "@nhost/react-apollo";
-//import { inspect } from '@xstate/inspect'
 import type { AppProps } from "next/app";
 import { BACKEND_URL } from "../helpers";
 import "../styles/globals.css?inline";
@@ -16,6 +14,7 @@ const devTools =
 //    iframe: false
 //  })
 //}
+
 const nhost = new NhostClient({ backendUrl: BACKEND_URL, devTools });
 function MyApp({ Component, pageProps }: AppProps) {
   // * Monorepo-related. See: https://stackoverflow.com/questions/71843247/react-nextjs-type-error-component-cannot-be-used-as-a-jsx-component

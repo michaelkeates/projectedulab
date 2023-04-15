@@ -1,3 +1,4 @@
+//import needed dependencies including programming languages
 import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -5,8 +6,8 @@ import { python } from "@codemirror/lang-python";
 import { csharp } from "@replit/codemirror-lang-csharp";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
-//import { linter } from "@codemirror/lint";
 
+//import styling and icon
 import {
   Grid,
   IconButton,
@@ -14,24 +15,24 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Select,
 } from "@chakra-ui/react";
 import {
-  MdFullscreen,
   MdLanguage,
-  MdContentCopy,
-  MdClear,
 } from "react-icons/md";
 
 function CodeEditor() {
+  //declare code as variable, set to console.log('hello world!') by default
   const [code, setCode] = useState("console.log('hello world!');");
+  //declare language as variable, set to javascript by default
   const [language, setLanguage] = useState("javascript");
 
+  //useCallback hook to update code variable when onChange event is triggered
   const onChange = React.useCallback((value, viewUpdate) => {
     console.log("value:", value);
     setCode(value);
   }, []);
 
+  //change language variable when language is changed in dropdown using switch statements
   const handleLanguageChange = (language) => {
     setLanguage(language);
     switch (language) {
@@ -61,6 +62,7 @@ function CodeEditor() {
     }
   };
 
+  //use switch statements to return correct language
   const getLanguage = () => {
     switch (language) {
       case "javascript":

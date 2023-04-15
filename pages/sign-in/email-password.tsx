@@ -1,9 +1,10 @@
 //pages/sign-in/email-password.tsx
 
+//import dependencies
 import { NextPage } from "next"; //import Next.js types
 import { useRouter } from "next/router"; //import router hook
 import { useState } from "react"; //import React hook
-import { Divider, PasswordInput, SimpleGrid, TextInput } from "@mantine/core"; //import UI components from Mantine library
+import { PasswordInput, SimpleGrid, TextInput } from "@mantine/core"; //import UI components from Mantine library
 import { showNotification } from "@mantine/notifications"; //import notification function from Mantine library
 import { useSignInEmailPassword } from "@nhost/nextjs"; //import signIn function from Nhost library
 import AuthLink from "../../components/AuthLink"; //import AuthLink component

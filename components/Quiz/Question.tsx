@@ -1,16 +1,19 @@
+//import dependencies
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SUBMIT_ANSWER } from "../../helpers";
-import { Box, Button, Flex, Heading, Grid } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 
 export function Question({ question, onNextClicked }) {
+  //declare variables for answered, selectedOption, submitAnswer, and selectedButton
   const [answered, setAnswered] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
   const [submitAnswer] = useMutation(SUBMIT_ANSWER);
   const [selectedButton, setSelectedButton] = useState(null);
 
   const onOptionClicked = async (option, index) => {
+    //if answered is true, return
     try {
       await submitAnswer({
         variables: {
@@ -21,11 +24,13 @@ export function Question({ question, onNextClicked }) {
       setAnswered(true);
       setSelectedOption(option.answer);
       setSelectedButton(index);
+      //else try catch the error
     } catch (error) {
       console.log(error);
     }
   };
 
+  //declare submitQuestion function
   const submitQuestion = () => {
     setAnswered(false);
     setSelectedOption({});

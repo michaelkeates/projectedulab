@@ -5,13 +5,18 @@ import React, { useEffect, useState, useRef } from "react";
 import { VncScreen } from "react-vnc";
 
 function App() {
-  const [url, setUrl] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
+  //declare url as variable
+  const [url] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
+  //useRef hook to create a reference to the VncScreen component to allow for clipboard functionality
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
+  //declare clipboardText as variable, set to empty string
   const [clipboardText, setClipboardText] = useState("");
   const [isFullScreen, setIsFullScreen] = useState(false);
+  //declare isHighlighted as variable, set to false
   const [isHighlighted, setIsHighlighted] = useState(false);
   const highlightColor = useColorModeValue("yellow.300", "yellow.600");
 
+  //do quick check to make sure url is valid and starts with ws or wss
   const isValid = (vncUrl: string) => {
     if (!vncUrl.startsWith("ws://") && !vncUrl.startsWith("wss://")) {
       return false;
@@ -20,6 +25,7 @@ function App() {
     return true;
   };
 
+  //useEffect hook to add event listener to window to listen for clipboardUpdate event
   useEffect(() => {
     const handleClipboardUpdate = (e) => {
       navigator.clipboard.writeText(e.detail.text);
@@ -32,12 +38,14 @@ function App() {
     };
   }, []);
 
+  //update clipboardText variable when input value changes
   const handleClipboardInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setClipboardText(e.target.value);
   };
 
+  //add functionality to copy text to clipboard when button is clicked
   const handleClipboardButtonClick = () => {
     if (vncScreenRef.current) {
       vncScreenRef.current.clipboardPaste(clipboardText);
@@ -48,6 +56,7 @@ function App() {
     }
   };
 
+  //add functionality to clear clipboard when button is clicked
   const handleClearButtonClick = () => {
     setClipboardText("");
   };
@@ -75,6 +84,7 @@ function App() {
           alignItems: "center",
         }}
       >
+        {/*only display vncscreen if url is valid, othherwise show simple div message that it isnt provided*/}
         {isValid(url) ? (
           <VncScreen
             url={url}
@@ -84,14 +94,13 @@ function App() {
               width: "100%",
               height: "80vh",
             }}
-            debug
-            ref={vncScreenRef}
             onClipboard={(e) => {
               console.log("onClipboard", e);
               if (e && e.detail && e.detail.text) {
                 navigator.clipboard.writeText(e.detail.text);
               }
             }}
+            ref={vncScreenRef}
           />
         ) : (
           <div>VNC URL not provided.</div>
@@ -103,18 +112,22 @@ function App() {
             justifyContent="center"
             alignItems="center"
           >
+            {/*the input box, update the string inside by calling the function on change*/}
             <Input
               mr={2}
               width={{ base: "200px", md: "100%" }}
               type="text"
               value={clipboardText}
               onChange={handleClipboardInputChange}
+              marginBottom="20px"
             />
+            {/*button when clicked on calls the clear function*/}
             <IconButton
               aria-label="Clear clipboard"
               icon={<MdClear />}
               onClick={handleClearButtonClick}
             />
+            {/*button to call the function to copy string to clipboard*/}
             <IconButton
               aria-label="Copy to clipboard"
               icon={<MdContentCopy />}

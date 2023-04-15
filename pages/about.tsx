@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import { Container, Title } from "@mantine/core";
 
 export const AboutPage: React.FC = () => {
