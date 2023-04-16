@@ -13,7 +13,7 @@ const nhost = new NhostClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
-      <NhostApolloProvider nhost={nhost}>
+      <NhostApolloProvider nhost={BACKEND_URL2}>
         <NotificationsProvider position="top-right" zIndex={2077}>
           <ChakraProvider>
             <Component {...pageProps} />
