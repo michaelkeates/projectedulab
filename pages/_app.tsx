@@ -6,6 +6,7 @@ import { BACKEND_URL } from "../helpers";
 import "../styles/globals.css?inline";
 import { ChakraProvider } from "@chakra-ui/react";
 
+//@ts-ignore
 const nhost = new NhostClient({
   backendUrl: BACKEND_URL,
 });
