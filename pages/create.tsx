@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-
 import {
   Flex,
   HStack,
@@ -16,15 +15,12 @@ import {
 } from "@chakra-ui/react";
 import { MdMenu } from "react-icons/md";
 import { useAuthenticated } from "@nhost/nextjs";
-
 import { authProtected } from "../components/protected-route";
 import { CREATE_NEW_QUESTION } from "../helpers";
 import { useMutation } from "@apollo/client";
 import { Sidebar } from "../components/Sidebar";
 
-// * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
-
-const Home: NextPage = () => {
+const Create: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
   const isAuthenticated = useAuthenticated();
 
@@ -38,6 +34,7 @@ const Home: NextPage = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  //have input boxes empty by default
   const [questionForm, setQuestionForm] = useState({
     question: "",
     answer_1: "",
@@ -46,10 +43,13 @@ const Home: NextPage = () => {
     answer_4: "",
     correct: "",
   });
+  //define a GraphQL mutation hook for creating a new quiz question
   const [createQuiz] = useMutation(CREATE_NEW_QUESTION);
+  //define a function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      //call the createQuiz function with the question and answers provided in the form
       await createQuiz({
         variables: {
           question: questionForm.question,
@@ -80,6 +80,7 @@ const Home: NextPage = () => {
       return alert("Failed to add quiz question");
     }
 
+    //reset the form values
     setQuestionForm({
       question: "",
       answer_1: "",
@@ -90,6 +91,7 @@ const Home: NextPage = () => {
     });
   };
 
+  //define a function to handle input changes on the form
   const handleInputChange = (event) => {
     const {
       target: { name, value },
@@ -283,4 +285,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default authProtected(Home);
+export default authProtected(Create);
