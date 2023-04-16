@@ -1,10 +1,14 @@
+//this component is used to protect routes from unauthenticated users
+//components/protected-route.tsx
+
+//import dependencies
 import { useAuthenticationStatus } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 export function authProtected(Comp) {
   return function AuthProtected(props) {
-    //use router to redirect to sign-in page if user is not authenticated
+    //declare router variable and initialize it with useRouter hook
     const router = useRouter()
     //useAuthenticationStatus hook to check if user is authenticated
     const { isLoading, isAuthenticated } = useAuthenticationStatus()

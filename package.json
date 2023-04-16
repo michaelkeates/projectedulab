@@ -25,7 +25,7 @@
     "@next/font": "13.1.2",
     "@nhost/nextjs": "^1.13.2",
     "@nhost/react": "^1.13.2",
-    "@nhost/react-apollo": "^4.13.2",
+    "@nhost/react-apollo": "^4.13.5",
     "@replit/codemirror-lang-csharp": "^6.1.0",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",

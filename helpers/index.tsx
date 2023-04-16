@@ -1,2 +1,2 @@
 export * from './queries'
-export const BACKEND_URL = 'https://database.michaelkeates.co.uk'
+export const BACKEND_URL2 = 'https://database.michaelkeates.co.uk'
