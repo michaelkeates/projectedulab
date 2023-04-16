@@ -1,5 +1,5 @@
 //import apollo client for graphql queries
-import { gql, useQuery } from '@apollo/client'
+import { gql } from '@apollo/client'
 
 export const GET_UNANSWERED_QUESTIONS = gql`
 query unanswered_questions {
