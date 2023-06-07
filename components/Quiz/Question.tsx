@@ -1,6 +1,7 @@
 //import dependencies
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
+//call the graphql mutation
 import { SUBMIT_ANSWER } from "../../helpers/queries";
 import { Box, Button, Flex, Grid } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";

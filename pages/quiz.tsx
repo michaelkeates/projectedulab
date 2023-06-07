@@ -1,6 +1,6 @@
+//import dependencies
 import type { NextPage } from "next";
 import { useState } from "react";
-
 import {
   Box,
   Flex,
@@ -16,16 +16,17 @@ import { useAuthenticated } from "@nhost/nextjs";
 import { useQuery } from "@apollo/client";
 
 import { authProtected } from "../components/protected-route";
+//import the graphql queries to be used here
 import { GET_UNANSWERED_QUESTIONS, RESTART_QUIZ } from "../helpers";
 import { useMutation } from "@apollo/client";
 
+//import the needed components such as the question
 import { Question } from "../components/Quiz/Question";
 import { Results } from "../components/Quiz/Results";
 import { NoQuestion } from "../components/Quiz/NoQuestion";
 
 import { Sidebar } from "../components/Sidebar";
 
-// * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
 const Quiz: NextPage = () => {
   const { loading, data } = useQuery(GET_UNANSWERED_QUESTIONS);

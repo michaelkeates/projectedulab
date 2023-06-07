@@ -11,8 +11,6 @@ import { authProtected } from "../components/protected-route";
 import { Sidebar } from "../components/Sidebar";
 import CodeEditor from "../components/CodeEditor";
 
-// * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
-
 const Home: NextPage = () => {
   const [collapse, setCollapse] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

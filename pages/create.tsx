@@ -1,3 +1,4 @@
+//import needed dependencies
 import type { NextPage } from "next";
 import { useState } from "react";
 import {
@@ -16,6 +17,7 @@ import {
 import { MdMenu } from "react-icons/md";
 import { useAuthenticated } from "@nhost/nextjs";
 import { authProtected } from "../components/protected-route";
+//import graphql query to be used here
 import { CREATE_NEW_QUESTION } from "../helpers";
 import { useMutation } from "@apollo/client";
 import { Sidebar } from "../components/Sidebar";
@@ -152,6 +154,7 @@ const Create: NextPage = () => {
         >
           Create a new quiz Question!
         </Text>
+        {/*render the needed input boxes for question and answers only if user is logged in and authenticated*/}
         {isAuthenticated && (
           <Box ml={[2, 4]} mr={[2, 4]}>
             <ul>

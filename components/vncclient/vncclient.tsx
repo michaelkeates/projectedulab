@@ -6,7 +6,7 @@ import { VncScreen } from "react-vnc";
 
 function App() {
   //declare url as variable
-  const [url] = useState("wss://test.michaelkeates.co.uk/wsproxy/");
+  const [url] = useState("wss://IPADDRESS/wsproxy/");
   //useRef hook to create a reference to the VncScreen component to allow for clipboard functionality
   const vncScreenRef = useRef<React.ElementRef<typeof VncScreen>>(null);
   //declare clipboardText as variable, set to empty string
