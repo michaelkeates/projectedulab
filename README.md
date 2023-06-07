@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.michaelkeates.co.uk/_next/image?url=https%3A%2F%2Frepository-images.githubusercontent.com%2F512177047%2F0d150de4-ee11-4ebb-ae09-4f08cbe116b8&w=640&q=75" width="300px" height="300px"/>
+  <img src="https://repository-images.githubusercontent.com/581304081/2ef66aee-afbe-43d5-b6ef-59f5c8e5792f" width="300px" height="300px"/>
 </p>
 <h1 align="center">Project eduLab</h1>
 <p align="center">
@@ -8,16 +8,16 @@
 <img src="https://img.shields.io/badge/license-Unlicense-blue.svg" alt="License: Unlicense">
 </a>
 
-<a href="https://github.com/michaelkeates/Hammurabi/issues">
-<img src="https://img.shields.io/github/issues/michaelkeates/Hammurabi.svg" alt="Issues">
+<a href="https://github.com/michaelkeates/projectedulab/issues">
+<img src="https://img.shields.io/github/issues/michaelkeates/projectedulab.svg" alt="Issues">
 </a>
 
-<a href="https://github.com/michaelkeates/Hammurabi/fork">
-<img src="https://img.shields.io/github/forks/michaelkeates/Hammurabi.svg" alt="Forks">
+<a href="https://github.com/michaelkeates/projectedulab/fork">
+<img src="https://img.shields.io/github/forks/michaelkeates/projectedulab.svg" alt="Forks">
 </a>
 
-<a href="https://github.com/michaelkeates/Hammurabi">
-<img src="https://img.shields.io/github/stars/michaelkeates/Hammurabi.svg" alt="Stars">
+<a href="https://github.com/michaelkeates/projectedulab">
+<img src="https://img.shields.io/github/stars/michaelkeates/projectedulab.svg" alt="Stars">
 </a>
 
 </p>
