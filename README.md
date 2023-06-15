@@ -61,16 +61,16 @@ Project eduLab is a project that aims to produce an alternative 'proof of concep
 
 <h2 align="left">Images</h1>
 
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.30-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.41-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.51-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-12.03.13-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-16-at-10.26.56.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.19-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.44.52-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.45.30-scaled.jpeg" width="100px" height="67px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.46.08-scaled.jpeg" width="100px" height="95px"/>
-  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.46.25-scaled.jpeg" width="100px" height="95px"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.30-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.41-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.51-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-12.03.13-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-16-at-10.26.56.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.19-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.44.52-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.45.30-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.46.08-scaled.jpeg" width="100%"/>
+  <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.46.25-scaled.jpeg" width="100%"/>
 <br>
 <h3 align="left">Author</h3>
 <ul>
