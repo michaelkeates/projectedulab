@@ -61,7 +61,6 @@ Project eduLab is a project that aims to produce an alternative 'proof of concep
 
 <h2 align="left">Images</h1>
 
-<p align="center">
   <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.30-scaled.jpeg" width="100px" height="67px"/>
   <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.41-scaled.jpeg" width="100px" height="67px"/>
   <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.48.51-scaled.jpeg" width="100px" height="67px"/>
@@ -72,7 +71,6 @@ Project eduLab is a project that aims to produce an alternative 'proof of concep
   <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.45.30-scaled.jpeg" width="100px" height="67px"/>
   <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.46.08-scaled.jpeg" width="100px" height="95px"/>
   <img src="https://blog.michaelkeates.co.uk/wp-content/uploads/2023/06/Screenshot-2023-04-04-at-11.46.25-scaled.jpeg" width="100px" height="95px"/>
-</p>
 <br>
 <h3 align="left">Author</h3>
 <ul>
