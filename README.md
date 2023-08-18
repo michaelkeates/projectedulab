@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://repository-images.githubusercontent.com/581304081/2ef66aee-afbe-43d5-b6ef-59f5c8e5792f" width="300px" height="300px"/>
+  <img src="https://repository-images.githubusercontent.com/581304081/befe352d-ad60-46cd-acfc-d7b6e639e097" width="300px" height="300px"/>
 </p>
 <h1 align="center">Project eduLab</h1>
 <p align="center">
