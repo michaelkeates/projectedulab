@@ -2,25 +2,7 @@
   <img src="https://repository-images.githubusercontent.com/581304081/befe352d-ad60-46cd-acfc-d7b6e639e097" width="300px" height="300px"/>
 </p>
 <h1 align="center">Project eduLab</h1>
-<p align="center">
 
-<a href="http://unlicense.org/">
-<img src="https://img.shields.io/badge/license-Unlicense-blue.svg" alt="License: Unlicense">
-</a>
-
-<a href="https://github.com/michaelkeates/projectedulab/issues">
-<img src="https://img.shields.io/github/issues/michaelkeates/projectedulab.svg" alt="Issues">
-</a>
-
-<a href="https://github.com/michaelkeates/projectedulab/fork">
-<img src="https://img.shields.io/github/forks/michaelkeates/projectedulab.svg" alt="Forks">
-</a>
-
-<a href="https://github.com/michaelkeates/projectedulab">
-<img src="https://img.shields.io/github/stars/michaelkeates/projectedulab.svg" alt="Stars">
-</a>
-
-</p>
 A nextJS app developed in Typescript and nhost as the backend.
 <br></br>
 <br></br>
